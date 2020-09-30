@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="report" namespace="" extends="default">
+		<!-- Report action start -->
+		<action name="commonReportAction" class="reportAction" method="getReport">
+			<result name="Success">/jsp/reports/commonReport.jsp</result>
+		</action>
+		<action name="FilterTransactionAction" class="reportAction"
+			method="reportFilterAction">
+			<result name="Success">/jsp/reports/reportTransactionFilter.jsp</result>
+		</action>
+		<action name="FilterDateAction">
+			<result>/jsp/reports/reportdatefilter.jsp</result>
+		</action>
+		<action name="FilterAccrualAction">
+			<result>/jsp/reports/reportAccrualFilter.jsp</result>
+		</action>
+		<!-- Report action end -->
+	</package>
+</struts>

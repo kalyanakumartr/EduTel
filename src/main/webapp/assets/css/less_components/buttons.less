@@ -1,0 +1,303 @@
+// Btns global styles
+.btn {
+	
+}
+
+// Primary btn
+.btn-primary {
+	color: @grey-lt-dk;
+	border: 2px solid @grey-lt-dk;
+	background-color: transparent;
+	border-radius: 0;
+}
+
+.btn-primary:hover {
+	
+}
+
+.btn-primary:focus,
+.btn-primary:active {
+	
+}
+
+.btn-primary:active:focus {
+	outline: none;
+}
+
+input[type=submit]:hover {
+	background-color: @green;
+	color: @white;
+	border-color: @green;
+	box-shadow: none;
+}
+
+// Default btn
+.post-password-form input[type="submit"],
+.form-submit .submit,
+.button,
+.btn-default {
+	display: inline-block;
+	min-width: 135px;
+	margin-bottom: 0;
+	font-size: 14px;
+	font-weight: 700;
+	white-space: nowrap;
+	vertical-align: middle;
+	touch-action: manipulation;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	background-image: none;
+	padding: 12.5px 15px;
+	color: @white;
+	border: 2px solid @blue-link;
+	
+	border: 0;
+	
+	background-color: @blue-link;
+	border-radius: 0;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	text-align: center;
+	outline: none !important;
+	& .link-title {
+		font-size: 14px;
+		text-transform: uppercase;
+	}
+}
+
+.button,
+.btn.btn-default,
+.textwidget .btn {
+	position: relative;
+	overflow: hidden;
+	-webkit-transform: translateZ(0);
+	z-index: 30;
+	&:after {
+		.pseudo(absolute, 100%, 100%);
+		left: -100%;
+		top: 0;
+		background: rgba(0,0,0,0.1);
+		z-index: -1;
+	}
+	&:hover {
+		border-color: @white;
+		color: @white;
+		background-color: @blue-link;
+		&:after {
+			left: 0;
+		}
+	}
+}
+
+.textwidget .btn:active,
+.textwidget .btn:focus,
+.form-submit .submit:active,
+.form-submit .submit:focus,
+.button:focus,
+.button:active,
+.btn-default:active,
+.btn-default:focus { 
+	background-color: @blue-link;
+	color: @white;
+	border-color: @blue-link;
+	box-shadow: none;
+	text-decoration: none !important;
+}
+
+.btn-default:active:focus {
+	outline: none;
+}
+
+// btn sizes
+.btn-lg {
+	
+}
+
+.btn-sm {
+	min-width: 106px;
+	padding: 7px 10px;
+	& .link-title {
+		font-size: 12px;
+		text-transform: none;
+	}
+}
+
+.btn-xs {
+	
+}
+
+// Carousel btn
+.btn-carousel-control {
+	position: relative;
+	float: left;
+	width: 35px;
+	height: 36px;
+	vertical-align: top;
+	text-align: center;
+	line-height: 32px;
+	color: @orange-dk;
+	border: 2px solid @orange-dk;
+	text-decoration: none !important;
+	overflow: hidden;
+	& i {
+		position: relative;
+		font-size: 14px;
+		z-index: 11;
+	}
+	&:hover {
+		text-decoration: none;
+		color: @white;
+	}
+	&:focus {
+		color: @white;
+	}
+	&:active {
+		color: @white;
+	}
+	&.simple_carousel_prev {
+		&:after {
+			right: -100%;
+		}	
+		&:hover:after {
+			right: 0;
+		}
+	}
+	&.simple_carousel_next {
+		&:after {
+			left: -100%;
+		}	
+		&:hover:after {
+			left: 0;
+		}
+	}
+	
+	&.simple_carousel_next:focus {
+		&:after {
+			left: 0%;
+		}
+	}
+	&.simple_carousel_prev:focus {
+		&:after {
+			right: 0%;
+		}
+	}
+	
+	
+	&:after {
+		.pseudo(absolute, 100%, 100%);
+		top: 0;
+		background-color: @orange-dk;
+	}
+}
+
+// Icon buttons
+.icon-btn {
+	display: inline-block;
+	position: relative;
+	padding-left: 46px;
+	border: 2px solid transparent;
+	text-decoration: none !important;
+	& .icon_in_btn {
+		position: absolute;
+		padding: 0 23px;
+		height: 100%;
+		top: 0;
+		left: 0;
+		text-align: center;
+		font-size: 16px;
+		border-right: 2px solid transparent;
+		&:before {
+			position: absolute;
+			top: 50%;
+			left: 0;
+			width: 100%;
+			.transformY();
+		}
+	}
+	& .link-title {
+		display: block;
+		padding: 8.5px 14.5px;
+		min-width: 144px;
+		line-height: 1.66666666;
+		font-size: 12px;
+		font-weight: 700;
+		text-transform: uppercase;
+		text-align: center;
+	}
+	&:hover {
+		& .link-title {
+			text-decoration: none;
+		}
+	}
+}
+
+.tp-caption {
+	-webkit-transform: translateZ(0);
+	& .icon-btn {
+		border-color: @white;
+		color: @white;
+		&:hover {
+			border-color: @orange-dk;
+			.icon_in_btn {
+				color: @orange-dk;
+				border-color: @orange-dk;
+			}
+			& .link-title {
+				background-color: @orange-dk;
+				color: @white;
+			}
+		}
+	}
+	& .icon_in_btn {
+		border-color: @white;
+	}
+	
+	& .link-title {
+		background-color: @white;
+		color: @grey-text;
+	}
+}
+
+.see_more a{
+	position: relative;
+	display: inline-block;
+	margin: 0;
+	min-width: 135px;
+	padding: 14px 20px;
+	border: 2px solid @orange-dk;	
+	text-decoration: none !important;
+	text-align: center;
+	text-transform: uppercase;
+	overflow: hidden;
+	&:after {
+		.pseudo(absolute, 100%, 100%);
+		top: 0;
+		left: -100%;
+		background-color: @orange-dk;
+		z-index: -1;
+	}
+	&:hover {
+		color: @white;
+		&:after {
+			left: 0;
+		}
+	}
+}
+
+.btn-no-icon {
+	& .link-title {
+		background-color: transparent !important;
+	}
+}
+
+.post-password-form {
+	& input[type=submit] {
+		position: relative;
+		top: -1px;
+		padding: 11.5px 15px;
+		vertical-align: bottom;
+	}
+}

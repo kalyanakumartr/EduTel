@@ -1,0 +1,18 @@
+
+INSERT INTO `edutel`.`messages` (`messageId`, `messageName`, `message`, `messageType`, `messageSubject`, `deliveryDate`, `createdBy`, `createdDate`, `modifiedBy`, `modifiedDate`, `status`) VALUES ('TestSeriesAnswer_Email_Admin', 'TestSeriesAnswer_Email_Admin', '<html><head><body><table cellpadding="25px;" width="850px;"><tr>
+<td><p><input type="image"src="http://www.edutelacademy.com/images/png/edutellogo.png"></p><p><span style="font-size: 11pt; font-family: Trebuchet MS, Helvitica, Arial">Dear Admin,</span></p> <br><p><span style="font-size: 11pt; font-family: Trebuchet MS, Helvitica, Arial">New Test Series Answer received.</span>
+</p> <br><p><span style="font-size: 11pt; font-family: Trebuchet MS, Helvitica, Arial">Stduent Id is &nbsp;<b style="color: #0000FF">${Users.usUserID}$</b></span></p><p><span style="font-size: 11pt; font-family: Trebuchet MS, Helvitica, Arial">Stduent Name is &nbsp;<b style="color: #0000FF">${Users.usUserName}$</b>
+</span></p><p><span style="font-size: 11pt; font-family: Trebuchet MS, Helvitica, Arial">Stduent Mobile No is &nbsp;<b style="color: #0000FF">${Users.usMobileNo}$</b></span></p><p><span style="font-size: 11pt; font-family: Trebuchet MS, Helvitica, Arial">School Name is &nbsp;<b style="color: #0000FF">
+${Users.school.scSchoolName}$,&nbsp;${Users.school.scCity}$</b></span></p><p><span style="font-size: 11pt; font-family: Trebuchet MS, Helvitica, Arial">Batch is &nbsp;<b style="color: #0000FF">${Users.usBatch}$</b></span></p><p><span style="font-size: 11pt; font-family: Trebuchet MS, Helvitica, Arial">Exam Name is &nbsp;
+<b style="color: #0000FF">${OnlineExamQuestion.onlineExam.oeExamName}$</b></span></p><p><span style="font-size: 11pt; font-family: Trebuchet MS, Helvitica, Arial">Question Name is &nbsp;<b style="color: #0000FF">${OnlineExamQuestion.oeQuestion}$</b> </span></p><p><span style="font-size: 11pt; font-family: Trebuchet MS, Helvitica, Arial">Help Desk - 7401259090</span></p><p><span style="font-size: 11pt; font-family: Trebuchet MS, Helvitica, Arial">Technical 
+support -7299038080</span></p><p><span style="font-size: 11pt; font-family: Trebuchet MS, Helvitica, Arial">By,<br>Admin </span></p><p><span style="font-size: 11pt; font-family: Trebuchet MS, Helvitica, Arial"><b style="color: #0000FF">Edutel Academy</b><br></td></tr></table><br><p><span style="font-family: Trebuchet MS, Arial, sans-serif">Thankyou 
+for registering with Edutel Academy.</span></p><p><span style="font-family: Trebuchet MS, Arial, sans-serif">EdutelAcademy Team</span></p><p><span style="font-size: 11pt; font-family: Trebuchet MS, Arial, sans-serif;">For any query or assistance, feel free to&nbsp;</span><ahref ="admin@edutelacademy.com" target="_blank"> <span 
+style="font-size: 11pt; font-family: Trebuchet MS, Arial, sans-serif;">Contact Us</span> </a></p></td></tr></table></body></html>', 'Email', 'Test Series Answer Received', '2015-02-17 10:45:00', 'SuperAdmin', '2015-02-17 10:45:00', NULL, NULL, b'1');
+
+
+
+
+
+
+UPDATE  `edutel`.`constproperty` SET  `constValue` = 'Users,School,SerialKeyGenerate,SerialKeyUserMapping,OnlineExam,OnlineExamQuestion',
+`constActive` = b '1' WHERE  `constproperty`.`constId` =94;

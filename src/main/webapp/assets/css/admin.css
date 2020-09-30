@@ -1,0 +1,47 @@
+.stm_theme_icon_font_table {
+	
+}
+
+.stm_theme_icon_font_table i:hover {
+	cursor: pointer;
+}
+
+.stm_theme_icon_font_table {
+	display: none;
+}
+
+.stm_theme_icon_font_table.visible {
+	display: block;
+}
+
+.wp-core-ui .button.stm_theme_choose_fa_icons {
+	margin-bottom: 15px;
+}
+
+.cat_icon_chosen {
+	background-color: #307ad5;
+	color: #fff;
+}
+
+.stm_theme_icon_font_table td {
+	text-align: center;
+}
+
+.wp-core-ui .button.stm_theme_choose_custom_icons {
+	margin-bottom: 15px;
+}
+
+.stm_theme_cat_chosen_icon_preview {
+	margin: 10px 0;
+}
+
+.stm_theme_cat_chosen_icon_preview i{
+	padding: 5px;
+	font-size: 65px;
+	background-color: #000;
+	color: #fff;
+}
+
+.xdsoft_stm_datetimepicker {
+	z-index: 999999;
+}

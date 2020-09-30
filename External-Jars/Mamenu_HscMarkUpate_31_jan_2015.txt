@@ -1,0 +1,4 @@
+
+INSERT INTO `mamenu` (`maMenuId`, `maMenuName`, `maMenuActionURL`, `maMenuToolTip`, `maMenuOnClick`, `maMenuOnBlur`, `maMenuOnMouseOver`, `maParentId`, `maSubMenuOrder`, `maSubMenuCount`, `maMenuLevel`) VALUES  ('M0042', 'HSC Mark Update', 'adminMarkPreUpdate.do', '0', '0', '0', '0', 'M0001', 8, 0, 'BH');
+
+INSERT INTO `mamenurole` (`maMRAutoId`, `maMenuId`, `rlRoleId`) VALUES (84, 'M0042', 'SuperAdminRole'), (85, 'M0042', 'Employee');

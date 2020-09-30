@@ -1,0 +1,90 @@
+// Less structure of setups - this comment will not be shown in compiled css - mixins located in less_components/mixins and 
+// all global variables of fonts and colors styles in less_components/base_variables.
+
+ 
+/* 
+Table of content
+0 Wordpress core styles
+
+1 Base styles
+	1.1 Buttons
+	1.2 Form-controls, form-groups
+	1.3 Layout styles
+	1.4 Typography
+	
+2 Headers styles
+    
+3 Site styles
+	3.1 ST styles
+	3.2 Widgets
+    
+4 Footer styles
+
+6 Vendors
+	//6.1 Waves	
+	6.2 Countdown
+	6.3 Woocommerce
+	6.4 VC standart modules
+	
+7 Mobile styles
+	7.1 Responsive bootstrap enhanced base styles
+	7.2 Responsive site styles	
+*/
+
+// Mixins
+@import "less_components/mixins.less";
+
+// Colors and fonts setups
+@import "less_components/base_variables.less";
+
+/* 0 Wordpress core styles */
+
+@import "less_components/wordpress_core.less";
+
+/* 1 Base Styles */
+
+	/* 1.1 Buttons */
+	@import "less_components/buttons.less";
+	
+	/* 1.1 Form controls, form groups */
+	@import "less_components/forms.less";
+	
+	/* 1.3 Layout styles */
+	@import "less_components/layout.less";
+	
+	/* 1.4 Typography styles */
+	@import "less_components/typography.less";
+
+/* 2 Header */
+@import "less_components/header.less";
+	
+/* 3 Site styles */
+	
+	/* 3.1 ST styles */
+	@import "less_components/st_styles_less.less";
+	
+	/* 3.2 Widgets */
+	@import "less_components/widgets.less";
+	
+/* 4 footer */
+@import "less_components/footer.less";
+
+
+
+/* 6 Vendors */
+	/* 6.1 Waves */
+	//@import "less_components/waves.less";
+	/* 6.2 Countdown */
+	@import "less_components/countdown.less";	
+	/* 6.3 Woocommerce */
+	@import "less_components/woocommerce.less";
+	/* 6.4 VC */
+	@import "less_components/vc_standart.less";
+	
+/* 7 Mobile styles */
+
+	/* 7.1 Responsive bootstrap enhanced base styles */
+	@import "less_components/responsive_base.less";
+	
+	/* 7.2 Responsive site styles */
+	@import "less_components/responsive.less";

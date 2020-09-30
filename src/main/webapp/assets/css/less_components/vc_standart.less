@@ -1,0 +1,335 @@
+@tabs_grey: #f0f2f5;
+@tabs_blue: #457992;
+// Tabs
+.wpb_tabs {
+	& .wpb_tabs_nav.ui-tabs-nav {
+		& li {
+			float: left;
+			border-left: 1px solid @white;
+			margin-right: 0;
+			font-size: 0;
+			& a {
+				padding: 11.5px 10px;
+				font-size: 14px;
+				text-transform: uppercase;
+				background-color: @tabs_blue;
+				color: @white;
+				text-align: center;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+			&.ui-state-active {
+				& a {
+					background-color: @tabs_grey;
+					color: @tabs_blue;
+				}
+			}
+			&:first-child {
+				border: 0;
+			}
+		}
+	}
+	&.wpb_content_element .wpb_tour_tabs_wrapper .wpb_tab, .wpb_content_element .wpb_accordion_wrapper .wpb_accordion_content {
+		padding: 37px 51px 44px;
+		& h4,
+		.h4 {
+			margin-bottom: 20px;
+		}
+	}
+	& .form-control {
+		background-color: @white;
+		&:active {
+			border-color: @blue-link;
+		}
+		&:focus {
+			border-color: @blue-link;
+		}
+	}
+}
+
+.wpb_content_element .wpb_accordion_wrapper .wpb_accordion_header, .wpb_content_element.wpb_tabs .wpb_tour_tabs_wrapper .wpb_tab {
+	background-color: @tabs_grey !important;
+}
+
+.vc_toggle {
+	background-color: @tabs_blue;
+	& .vc_toggle_title {
+		padding: 11px 10px 11px;
+		& > h4 {
+			color: @white;
+		}
+		& .vc_toggle_icon:after,
+		& .vc_toggle_icon:before {
+			border-color: @white !important;	
+		}
+	}
+	& .vc_toggle_content {
+		margin-top: 0;
+		padding: 15px 10px 0;
+		background-color: @tabs_grey;
+		& p {
+			margin-bottom: 15px;
+		}
+	}
+	&.vc_toggle_active {
+		& .vc_toggle_title {
+			background-color: @tabs_grey;
+			& > h4 {
+				color: @tabs_blue;
+			}
+			& .vc_toggle_icon:after,
+			& .vc_toggle_icon:before {
+				border-color: @tabs_blue !important;	
+			}
+		}
+	}
+}
+
+.wpb_content_element.wpb_tour .wpb_tour_tabs_wrapper .wpb_tabs_nav li.ui-tabs-active {
+	background-color: @tabs_grey;
+	& a {
+		color: @tabs_blue;
+	}
+}
+
+.wpb_content_element.wpb_tour {
+	& .wpb_tour_tabs_wrapper {
+		background-color: @tabs_grey;
+		& .wpb_tabs_nav li {
+			margin: 0;
+			background-color: @tabs_blue;
+			border-bottom: 1px solid @white;
+			& a {
+				padding: 12px 11px;
+				text-transform: uppercase;
+				color: @white;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				overflow: hidden;
+			}
+			&:last-child {
+				border-bottom: 0;
+			}
+		}
+		& .wpb_tab {
+			padding: 11px;
+		}
+	}
+}
+
+.wpb_accordion.wpb_content_element {
+	& .wpb_accordion_wrapper {
+		& .wpb_accordion_section {
+			border-bottom: 1px solid @white;
+			& .wpb_accordion_header {
+				margin-bottom: 0;
+				outline: none !important;
+				& a {
+					padding: 12px 11px;
+					outline: none !important;
+					text-transform: uppercase;
+					color: @white;
+					background-color: @tabs_blue;
+				}
+				&.ui-state-active {
+					& a {
+						background-color: @tabs_grey;
+						color: @tabs_blue;
+					}
+				}
+			}
+			& .ui-state-default .ui-icon {
+				top: 15px;
+			}
+		}
+		& .wpb_accordion_content {
+			background-color: @tabs_grey;
+			padding: 12px;
+		}
+	}
+}
+
+.ui-accordion-header-icon:hover {
+	cursor: pointer;
+}
+
+.vc_progress_bar.wpb_content_element {
+	& .vc_single_bar {
+		box-shadow: none;
+		background-color: @tabs_grey;
+		& .vc_label {
+			color: @white;
+		}
+	}
+}
+
+
+
+// New VC toggles
+.vc_tta-tabs.vc_tta-tabs-position-top.vc_tta-color-blue {
+	& .vc_tta-tabs-container {
+		margin-right: 0 !important;
+		& .vc_tta-tabs-list {
+			display: table !important;
+			table-layout: fixed;
+			width: 100%;
+			margin-left: 0 !important;
+			& li.vc_tta-tab {
+				display: table-cell;
+				& a {
+					padding: 12px 20px;
+					background-color: @tabs_blue;
+					border: 0;
+					border-left: 1px solid @white;
+					border-radius: 0;
+					color: @white;
+					text-transform: uppercase;
+					text-align: center;
+					font-size: 14px;
+					& span.vc_tta-title-text {
+						color: @white;
+					}
+				}
+				&:first-child {
+					& a {
+						border-left: 0;
+					}
+				}
+				&.vc_active {
+					& a {
+						background-color: @tabs_grey;
+						& span.vc_tta-title-text {
+							color: @tabs_blue;
+						}
+					}
+				}
+			}
+		}
+	}
+	& .vc_tta-panels-container {
+		& .vc_tta-panels {
+			border: 0 !important;
+			border-radius: 0 !important;
+			background-color: @tabs_grey !important;
+			& .vc_tta-panel-body {
+				padding: 37px 51px 44px;
+				border: 0;
+				border-radius: 0;
+				background-color: @tabs_grey;
+			}
+		}
+	}
+}
+
+
+// New VC toggles
+.vc_tta-tabs.vc_tta-tabs-position-left.vc_tta-color-blue {
+	& .vc_tta-tabs-container {
+		margin-right: 0 !important;
+		& .vc_tta-tabs-list {
+			& li.vc_tta-tab {
+				& a {
+					padding: 12px 20px;
+					background-color: @tabs_blue;
+					border: 0;
+					border-left: 0;
+					border-radius: 0;
+					color: @white;
+					text-transform: uppercase;
+					text-align: left;
+					font-size: 14px;
+					& span.vc_tta-title-text {
+						color: @white;
+					}
+				}
+				&:first-child {
+					& a {
+						border-left: 0;
+					}
+				}
+				&.vc_active {
+					& a {
+						background-color: @tabs_grey;
+						& span.vc_tta-title-text {
+							color: @tabs_blue;
+						}
+					}
+				}
+			}
+		}
+	}
+	& .vc_tta-panels-container {
+		& .vc_tta-panels {
+			border: 0 !important;
+			border-radius: 0 !important;
+			background-color: @tabs_grey !important;
+			& .vc_tta-panel-body {
+				padding: 37px 51px 44px;
+				border: 0;
+				border-radius: 0;
+				background-color: @tabs_grey;
+			}
+		}
+	}
+}
+
+.vc_tta-accordion.vc_tta-color-blue {
+	& .vc_tta-panels-container {
+		& .vc_tta-panels {
+			& .vc_tta-panel {
+				& .vc_tta-panel-heading {
+					background-color: @tabs_blue !important;
+					border: 0;
+					border-radius: 0 !important;
+					& .vc_tta-title-text {
+						color: @white;
+						text-transform: uppercase;
+					}
+					& .vc_tta-controls-icon:before {
+						border-color: @white !important;
+					}
+					& .vc_tta-controls-icon:after {
+						border-color: @white !important;
+					}
+				}
+				&.vc_active {
+					& .vc_tta-panel-heading {
+						background-color: @tabs_grey !important;
+						& .vc_tta-title-text {
+							color: @tabs_blue;
+						}
+						& .vc_tta-controls-icon:before {
+							border-color: @tabs_blue !important;
+						}
+						& .vc_tta-controls-icon:after {
+							border-color: @tabs_blue !important;
+						}
+					}
+				}
+			}
+			& .vc_tta-panel-body {
+				border: 0;
+				background-color: @tabs_grey !important;
+			}
+		}
+	}
+}
+
+
+
+
+
+.vc_separator h4 {
+	padding: 0 15px;
+}
+
+.vc_toggle .vc_toggle_title { 
+	& .vc_toggle_icon {
+		margin-top: 3px;
+	}
+}
+
+
+.vc_progress_bar.wpb_content_element {
+	margin-bottom: 15px;
+}

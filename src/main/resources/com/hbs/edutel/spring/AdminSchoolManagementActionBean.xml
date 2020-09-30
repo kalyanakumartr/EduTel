@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="adminSchoolManagementAction" class="com.hbs.edutel.action.AdminSchoolManagementAction"
+		scope="session">
+		<property name="userBo" ref="userBo"></property>
+		<property name="adminBo" ref="adminBo"></property>
+		<property name="propFactory" ref="propFactory"></property>
+		<property name="cities" value="${edutel.cities}"></property>
+		<property name="states" value="${edutel.states}"></property>
+	</bean>
+</beans>

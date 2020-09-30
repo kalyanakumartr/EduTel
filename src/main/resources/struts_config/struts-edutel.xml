@@ -1,0 +1,823 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="edutel" namespace="" extends="default">
+		<result-types>
+			<result-type name="json" class="org.apache.struts2.json.JSONResult" />
+		</result-types>
+		<action name="generateSerialKey" class="adminSerialKeyGenerateAction"
+			method="generateSerialKey">
+			<result name="Success">/jsp/edutel/edutel_serial_key_generate.jsp
+			</result>
+			<result name="Failure">/jsp/edutel/edutel_serial_key_generate.jsp
+			</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+		<action name="printSerialKey" class="adminSerialKeyGenerateAction"
+			method="printSerialKey">
+			<result name="Success">/jsp/edutel/edutel_serial_key_generate.jsp
+			</result>
+			<result name="Failure">/jsp/edutel/edutel_serial_key_generate.jsp
+			</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+		<action name="createAndSaveSerialKey" class="adminSerialKeyGenerateAction"
+			method="createAndSaveSerialKey">
+			<result name="Success" type="redirect">generateSerialKey.do?p=1</result>
+			<result name="Failure" type="redirect">generateSerialKey.do?p=1</result>
+			<result name="AccessDenied" type="redirect">generateSerialKey.do?p=1
+			</result>
+		</action>
+
+		<action name="getSerialKeyAssignedUsersList" class="adminSerialKeyGenerateAction"
+			method="getSerialKeyAssignedUsersList">
+			<result name="Success" type="json" />
+		</action>
+
+		<action name="serialKeyValidate" class="adminSerialKeyGenerateAction"
+			method="serialKeyValidate">
+			<result name="Success">/jsp/edutel/edutel_student_key_activation.jsp
+			</result>
+			<result name="Failure">/jsp/edutel/edutel_student_key_activation.jsp
+			</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+		<action name="serialKeyValidateAndActivate" class="adminSerialKeyGenerateAction"
+			method="serialKeyValidateAndActivate">
+			<result name="Success">/jsp/edutel/edutel_user_registration.jsp</result>
+			<result name="Failure">/jsp/edutel/edutel_student_key_activation.jsp
+			</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+
+		<!-- User Action Starts -->
+		<action name="userPreRegistration" class="adminUserManagementAction"
+			method="userPreRegistration">
+			<result name="Success">/jsp/edutel/edutel_user_registration.jsp</result>
+		</action>
+
+		<action name="userRegistration" class="adminUserManagementAction"
+			method="userRegistration">
+			<result name="Success">/jsp/edutel/edutel_user_search.jsp
+			</result>
+			<result name="Failure">/jsp/edutel/edutel_user_search.jsp
+			</result>
+			<result name="Student">/jsp/edutel/edutel_home.jsp</result>
+		</action>
+
+		<action name="userPreUpdate" class="adminUserManagementAction"
+			method="userPreUpdate">
+			<result name="Success">/jsp/edutel/edutel_user_update.jsp</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+
+		<action name="userUpdate" class="adminUserManagementAction"
+			method="userUpdate">
+			<result name="Student" type="redirect">dashBoardStudent.do</result>
+			<result name="Employee">/jsp/edutel/edutel_user_search.jsp
+			</result>
+			<result name="Franchisee">/jsp/edutel/edutel_user_search.jsp
+			</result>
+
+			<result name="Success">/jsp/edutel/edutel_user_search.jsp
+			</result>
+			<result name="Failure">/jsp/edutel/edutel_user_search.jsp
+			</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp </result>
+		</action>
+
+		<action name="deleteUser" class="adminUserManagementAction"
+			method="deleteUser">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+
+		<action name="resetPassword" class="adminUserManagementAction"
+			method="resetPassword">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+
+		<action name="userSearch" class="adminUserManagementAction"
+			method="userSearch">
+			<result name="Success">/jsp/edutel/edutel_user_search.jsp</result>
+			<result name="Student" type="redirect">dashBoardStudent.do</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+
+		<action name="userListByJson" class="adminUserManagementAction"
+			method="userListByJson">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+		<!-- User Action End -->
+
+		<!-- Student Enquiry Action Starts -->
+
+		<action name="studentPreEnquiry" class="adminStudentEnquiryAction"
+			method="studentPreEnquiry">
+			<result name="Success">/jsp/edutel/edutel_student_enquiry.jsp</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+
+		<action name="studentEnquiry" class="adminStudentEnquiryAction"
+			method="studentEdutelEnquiry">
+			<result name="Success">/jsp/edutel/edutel_home.jsp</result>
+		</action>
+
+		<action name="studentEdutelEnquiryList" class="adminStudentEnquiryAction"
+			method="studentEdutelEnquiryList">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+
+		<action name="searchEnquiry" class="adminStudentEnquiryAction"
+			method="searchEnquiry">
+			<result name="Success">/jsp/edutel/edutel_student_enquiry_search.jsp
+			</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+
+
+		<action name="deleteEnquiry" class="adminStudentEnquiryAction"
+			method="deleteEnquiry">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+
+		<!-- Student Enquiry Action End -->
+
+		<!-- College Action Starts -->
+
+		<action name="collegePreRegistration" class="adminCollegeManagementAction"
+			method="collegePreRegistration">
+			<result name="Success">/jsp/edutel/edutel_college_registration.jsp
+			</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+
+		<action name="collegeRegistration" class="adminCollegeManagementAction"
+			method="collegeRegistration">
+			<result name="Success">/jsp/edutel/edutel_college_search.jsp
+			</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+
+		<action name="collegePreUpdate" class="adminCollegeManagementAction"
+			method="collegePreUpdate">
+			<result name="Success">/jsp/edutel/edutel_college_update.jsp</result>
+			<result name="Failure">/jsp/edutel/edutel_college_update.jsp</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+
+		<action name="collegeUpdate" class="adminCollegeManagementAction"
+			method="collegeUpdate">
+			<result name="Success">/jsp/edutel/edutel_college_search.jsp
+			</result>
+			<result name="Faliure">/jsp/edutel/edutel_college_search.jsp
+			</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+
+		<action name="deleteCollege" class="adminCollegeManagementAction"
+			method="deleteCollege">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+
+		<action name="searchCollege" class="adminCollegeManagementAction"
+			method="searchCollege">
+			<result name="Success">/jsp/edutel/edutel_college_search.jsp</result>
+			<result name="Failure">/jsp/edutel/edutel_college_search.jsp</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+
+		<action name="collegeListByJson" class="adminCollegeManagementAction"
+			method="collegeListByJson">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+
+		<action name="viewOnlineFormRequest" class="adminCollegeManagementAction"
+			method="viewOnlineFormRequest">
+			<result name="Admin">/jsp/edutel/edutel_online_eform_search.jsp
+			</result>
+			<result name="Success">/jsp/edutel/edutel_online_eform.jsp</result>
+			<result name="Failure">/jsp/edutel/edutel_online_eform.jsp</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+
+		<action name="purchaseEForm" class="adminCollegeManagementAction"
+			method="purchaseEForm">
+			<result name="Success" type="redirect">viewOnlineFormRequest.do</result>
+			<result name="Failure" type="redirect">viewOnlineFormRequest.do</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+
+		<action name="submitOnlineFormRequest" class="adminCollegeManagementAction"
+			method="submitOnlineFormRequest">
+			<result name="Success">/jsp/edutel/edutel_online_eform.jsp</result>
+			<result name="Failure">/jsp/edutel/edutel_online_eform.jsp</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+		<action name="eformListByJson" class="adminCollegeManagementAction"
+			method="collegeEFormListByJson">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+		<action name="deleteEForm" class="adminCollegeManagementAction"
+			method="deleteEForm">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+		<!-- College Action Starts -->
+
+		<!-- School Action Starts -->
+		<action name="schoolPreRegistration" class="adminSchoolManagementAction"
+			method="schoolPreRegistration">
+			<result name="Success">/jsp/edutel/edutel_school_registration.jsp
+			</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+
+		<action name="schoolRegistration" class="adminSchoolManagementAction"
+			method="schoolRegistration">
+			<result name="Success">/jsp/edutel/edutel_school_search.jsp
+			</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+
+		<action name="schoolPreUpdate" class="adminSchoolManagementAction"
+			method="schoolPreUpdate">
+			<result name="Success">/jsp/edutel/edutel_school_update.jsp</result>
+			<result name="Failure">/jsp/edutel/edutel_school_update.jsp</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+
+		<action name="schoolUpdate" class="adminSchoolManagementAction"
+			method="schoolUpdate">
+			<result name="Success">/jsp/edutel/edutel_school_search.jsp
+			</result>
+			<result name="Faliure">/jsp/edutel/edutel_school_search.jsp
+			</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+
+		<action name="deleteSchool" class="adminSchoolManagementAction"
+			method="deleteSchool">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+
+		<action name="searchSchool" class="adminSchoolManagementAction"
+			method="searchSchool">
+			<result name="Success">/jsp/edutel/edutel_school_search.jsp</result>
+			<result name="Failure">/jsp/edutel/edutel_school_search.jsp</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+
+		<action name="schoolListByJson" class="adminSchoolManagementAction"
+			method="schoolListByJson">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+
+		<!-- School Action End -->
+		<!-- EBook Action Starts -->
+
+		<action name="onlineEBookRepository" class="onlineEBookAction"
+			method="onlineEBookRepository">
+			<result name="Student">/jsp/edutel/edutel_online_ebook_view.jsp</result>
+			<result name="Success">/jsp/edutel/edutel_online_ebook.jsp</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+		<action name="onlineEBookRepositoryUpload" class="onlineEBookAction"
+			method="onlineEBookRepositoryUpload">
+			<result name="Success">/jsp/edutel/edutel_online_ebook.jsp</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+		<action name="onlineEBookListByAjax" class="onlineEBookAction"
+			method="onlineEBookListByAjax">
+			<result name="Success">/jsp/edutel/edutel_online_ebook_view_docs.jsp
+			</result>
+		</action>
+		<action name="onlineEBookListByJson" class="onlineEBookAction"
+			method="onlineEBookListByJson">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+
+		<action name="deleteOnlineEBook" class="onlineEBookAction"
+			method="deleteOnlineEBook">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+		<action name="downloadEBookByAjax" class="onlineEBookAction"
+			method="downloadEBookByAjax">
+			<result name="Success">${downloadFileUrl}</result>
+			<result name="Failure">/jsp/edutel/edutel_online_ebook_view_docs.jsp
+			</result>
+		</action>
+		<!-- EBook Action End -->
+
+		<!-- EBluePrint Action Starts -->
+
+		<action name="onlineEBluePrintRepository" class="onlineEBluePrintAction"
+			method="onlineEBluePrintRepository">
+			<result name="Student">/jsp/edutel/edutel_online_eblueprint_view.jsp
+			</result>
+			<result name="Success">/jsp/edutel/edutel_online_eblueprint.jsp</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+		<action name="onlineEBluePrintRepositoryUpload" class="onlineEBluePrintAction"
+			method="onlineEBluePrintRepositoryUpload">
+			<result name="Success">/jsp/edutel/edutel_online_eblueprint.jsp</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+		<action name="onlineEBluePrintListByAjax" class="onlineEBluePrintAction"
+			method="onlineEBluePrintListByAjax">
+			<result name="Success">/jsp/edutel/edutel_online_eblueprint_view_docs.jsp
+			</result>
+		</action>
+		<action name="downloadEBluePrintByAjax" class="onlineEBluePrintAction"
+			method="downloadEBluePrintByAjax">
+			<result name="Success">${downloadFileUrl}</result>
+			<result name="Failure">/jsp/edutel/edutel_online_eblueprint_view_docs.jsp
+			</result>
+		</action>
+		<action name="onlineEBluePrintListByJson" class="onlineEBluePrintAction"
+			method="onlineEBluePrintListByJson">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+
+		<action name="deleteOnlineEBluePrint" class="onlineEBluePrintAction"
+			method="deleteOnlineEBluePrint">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+		<!-- EBluePrint Action End -->
+
+		<!-- EKeyPoints Action Starts -->
+
+		<action name="onlineEKeyPointsRepository" class="onlineEKeyPointsAction"
+			method="onlineEKeyPointsRepository">
+			<result name="Student">/jsp/edutel/edutel_online_ekeypoints_view.jsp
+			</result>
+			<result name="Success">/jsp/edutel/edutel_online_ekeypoints.jsp</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+		<action name="onlineEKeyPointsRepositoryUpload" class="onlineEKeyPointsAction"
+			method="onlineEKeyPointsRepositoryUpload">
+			<result name="Success">/jsp/edutel/edutel_online_ekeypoints.jsp</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+		<action name="onlineEKeyPointsListByAjax" class="onlineEKeyPointsAction"
+			method="onlineEKeyPointsListByAjax">
+			<result name="Success">/jsp/edutel/edutel_online_ekeypoints_view_docs.jsp
+			</result>
+		</action>
+		<action name="onlineEKeyPointsListByJson" class="onlineEKeyPointsAction"
+			method="onlineEKeyPointsListByJson">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+
+		<action name="deleteOnlineEKeyPoints" class="onlineEKeyPointsAction"
+			method="deleteOnlineEKeyPoints">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+		<action name="downloadEKeyPointsByAjax" class="onlineEKeyPointsAction"
+			method="downloadEKeyPointsByAjax">
+			<result name="Success">${downloadFileUrl}</result>
+			<result name="Failure">/jsp/edutel/edutel_online_ekeypoints_view_docs.jsp
+			</result>
+		</action>
+		<!-- EKeyPoints Action End -->
+
+		<!-- Online Exam Action Starts -->
+		<action name="createOnlinePreExam" class="onlineExamAction"
+			method="createOnlinePreExam">
+			<result name="Success">/jsp/edutel/edutel_online_exam.jsp</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+
+		<action name="createOnlineExam" class="onlineExamAction"
+			method="createOnlineExam">
+			<result name="Success">/jsp/edutel/edutel_online_exam.jsp</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+		<action name="onlineExamListByJson" class="onlineExamAction"
+			method="onlineExamListByJson">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+
+		<action name="deleteOnlineExam" class="onlineExamAction"
+			method="deleteOnlineExam">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+
+		<action name="blockUnlockExam" class="onlineExamAction" method="blockUnlockExam">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+
+		<action name="displayExamPublic" class="onlineExamAction"
+			method="displayExamPublic">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+
+		<!-- Online Exam Assigned Action Starts -->
+		<action name="createOnlinePreExamAssigned" class="onlineExamAction"
+			method="createOnlinePreExamAssigned">
+			<result name="Success">/jsp/edutel/edutel_online_exam_assign.jsp
+			</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+
+		<action name="createOnlineExamAssigned" class="onlineExamAction"
+			method="createOnlineExamAssigned">
+			<result name="Success">/jsp/edutel/edutel_online_exam_assign.jsp
+			</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+
+		<action name="onlineExamAssignedListByJson" class="onlineExamAction"
+			method="onlineExamAssignedListByJson">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+
+		<action name="deleteOnlineExamAssigned" class="onlineExamAction"
+			method="deleteOnlineExamAssigned">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+
+		<action name="blockUnlockOnlineExamAssigned" class="onlineExamAction"
+			method="blockUnlockOnlineExamAssigned">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+
+		<!-- Online Practise Exam Assigned Action Starts -->
+		<action name="createOnlinePrePractiseExam" class="onlineExamAction"
+			method="createOnlinePrePractiseExam">
+			<result name="Student">/jsp/edutel/edutel_online_practise_exam.jsp
+			</result>
+			<result name="Success">/jsp/edutel/edutel_online_practise_exam.jsp
+			</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+		<action name="createOnlinePractiseExam" class="onlineExamAction"
+			method="createOnlinePractiseExam">
+			<result name="Student" type="redirect">dashBoardStudent.do</result>
+			<result name="Success" type="redirect">dashBoardStudent.do</result>
+			<result name="Employee" type="redirect">dashBoardEmployee.do</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+
+		<action name="createOnlinePreExamQuestion" class="onlineExamQuestionAction"
+			method="createOnlinePreExamQuestion">
+			<result name="Success">/jsp/edutel/edutel_online_exam_question.jsp
+			</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+		<action name="createOnlineExamQuestion" class="onlineExamQuestionAction"
+			method="createOnlineExamQuestion">
+			<result name="Success">/jsp/edutel/edutel_online_exam_question.jsp
+			</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+		<action name="onlineExamQuestionListByJson" class="onlineExamQuestionAction"
+			method="onlineExamQuestionListByJson">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+
+		<action name="onlineTestSeriesExamQuestionSearch" class="onlineExamQuestionAction"
+			method="onlineTestSeriesExamQuestionSearch">
+			<result name="Success">/jsp/edutel/edutel_online_exam_question_test_series_search.jsp
+			</result>
+			<result name="Failure">/jsp/edutel/edutel_online_exam_question_test_series_search.jsp
+			</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+
+		<action name="onlineTestSeriesExamQuestionListByJson" class="onlineExamQuestionAction"
+			method="onlineTestSeriesExamQuestionListByJson">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+
+		<action name="onlineTestSeriesExamAnswerSearch" class="onlineExamQuestionAction"
+			method="onlineTestSeriesExamAnswerSearch">
+			<result name="Success">/jsp/edutel/edutel_online_exam_answer_test_series_search.jsp
+			</result>
+			<result name="Failure">/jsp/edutel/edutel_online_exam_answer_test_series_search.jsp
+			</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+
+		<action name="onlineTestSeriesExamAnswerListByJson" class="onlineExamQuestionAction"
+			method="onlineTestSeriesExamAnswerListByJson">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+
+		<action name="onlineTestSeriesExamValidatedAnswerListByJson"
+			class="onlineExamQuestionAction" method="onlineTestSeriesExamAnswerListByJson">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+
+
+		<action name="deleteOnlineExamAnswer" class="onlineExamQuestionAction"
+			method="deleteOnlineExamAnswer">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+
+
+		<action name="deleteOnlineExamQuestion" class="onlineExamQuestionAction"
+			method="deleteOnlineExamQuestion">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+		<action name="blockUnlockExamQuestion" class="onlineExamQuestionAction"
+			method="blockUnlockExamQuestion">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+		<action name="viewImage" class="onlineExamQuestionAction"
+			method="viewImage">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+
+		<action name="performOnlinePreMCQExam" class="onlineExamAction"
+			method="performOnlinePreMCQExam">
+			<result name="Success">/jsp/edutel/edutel_online_practise_exam_mcq.jsp
+			</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+		<action name="performOnlineMCQPracticeExam" class="onlineExamQuestionAction"
+			method="performOnlineMCQPracticeExam">
+			<result name="Success">/jsp/edutel/edutel_online_exam_question_mcq.jsp
+			</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+		<action name="performOnlineMCQExam" class="onlineExamQuestionAction"
+			method="performOnlineMCQExam">
+			<result name="Success">/jsp/edutel/edutel_online_exam_question_mcq.jsp
+			</result>
+			<result name="Failure" type="redirect">dashBoardStudent.do</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+		<action name="downloadCATQuestionsByAjax" class="onlineExamQuestionAction"
+			method="downloadCATQuestionsByAjax">
+			<result name="Success" type="redirect">dashBoardStudent.do</result>
+			<result name="Failure" type="redirect">dashBoardStudent.do</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+		<action name="performOnlineTestSeriesExam" class="onlineExamQuestionAction"
+			method="performOnlineTestSeriesExam">
+			<result name="Success">/jsp/edutel/edutel_online_exam_question_test_series.jsp
+			</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+		<action name="submitOnlineTestSeriesExamAnswer" class="onlineExamQuestionAction"
+			method="submitOnlineTestSeriesExamAnswer">
+			<result name="Student" type="redirect">dashBoardStudent.do</result>
+			<result name="Employee" type="redirect">dashBoardEmployee.do</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+		<action name="downloadTestSeriesAnswerByAjax" class="onlineExamQuestionAction"
+			method="downloadTestSeriesAnswerByAjax">
+			<result name="Success">${downloadFileUrl}</result>
+			<result name="Student" type="redirect">dashBoardStudent.do</result>
+			<result name="Failure">/jsp/edutel/edutel_online_exam_answer_test_series_search.jsp
+			</result>
+		</action>
+		<action name="preUploadValidatedAnswer" class="onlineExamQuestionAction"
+			method="preUploadValidatedAnswer">
+			<result name="Success">/jsp/edutel/edutel_online_exam_answer_test_series_validated.jsp
+			</result>
+			<result name="Failure">/jsp/edutel/edutel_online_exam_answer_test_series_search.jsp
+			</result>
+		</action>
+		<action name="uploadValidatedAnswer" class="onlineExamQuestionAction"
+			method="uploadValidatedAnswer">
+			<result name="Success">/jsp/edutel/edutel_online_exam_answer_test_series_validated.jsp
+			</result>
+			<result name="Failure">/jsp/edutel/edutel_online_exam_answer_test_series_search.jsp
+			</result>
+		</action>
+
+		<action name="loadOnlineExamHistory" class="onlineExamQuestionAction"
+			method="loadOnlineExamHistory">
+			<result name="Success">/jsp/edutel/edutel_online_exam_history.jsp
+			</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+		<action name="updatePractiseExamMarkInHistory" class="onlineExamQuestionAction"
+			method="updatePractiseExamMarkInHistory">
+			<result name="Success">/jsp/edutel/edutel_online_exam_question_mcq.jsp
+			</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+		<action name="executeOnlineExamQuestion" class="onlineExamQuestionAction"
+			method="executeOnlineExamQuestion">
+			<result name="Success">/jsp/edutel/i_edutel_online_exam_question.jsp
+			</result>
+			<result name="Failure">/jsp/edutel/i_edutel_online_exam_question.jsp
+			</result>
+		</action>
+		<action name="validateSelectedAnswer" class="onlineExamQuestionAction"
+			method="validateSelectedAnswer">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+		<action name="deleteOnlineExamEntryForStudent" class="onlineExamAction"
+			method="deleteOnlineExamEntryForStudent">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+		<action name="downloadTestSeriesAnswersByZip" class="onlineExamQuestionAction"
+			method="downloadTestSeriesAnswersByZip">
+			<result name="Success">/jsp/edutel/edutel_online_exam_answer_test_series_search.jsp
+			</result>
+			<result name="Failure">/jsp/edutel/edutel_online_exam_answer_test_series_search.jsp
+			</result>
+		</action>
+
+		<action name="getAnsweredStudentInfoByAjax" class="onlineExamQuestionAction"
+			method="getAnsweredStudentInfoByAjax">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+
+		<action name="validatedAnswersBulkUpload" class="onlineExamQuestionAction"
+			method="validatedAnswersBulkUpload">
+			<result name="Success">/jsp/edutel/edutel_online_exam_answer_test_series_search.jsp
+			</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+
+		<!-- Online Exam Action End -->
+
+		<!-- Toppers club Starts -->
+		<action name="toppersClub" class="adminUserManagementAction"
+			method="topperSearch">
+			<result name="Success">/jsp/edutel/edutel_toppers_club_search.jsp
+			</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+		<action name="toppersListByJson" class="adminUserManagementAction"
+			method="toppersListByJson">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+		<action name="deleteTopper" class="adminUserManagementAction"
+			method="deleteTopper">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+		<!-- Toppers club End -->
+
+		<!-- Dashboard Action Starts -->
+		<action name="dashBoardStudent" class="dashBoardAction" method="getDashBoardInformation">
+			<result name="Success">/jsp/edutel/edutel_student_dashboard.jsp</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+		<action name="dashBoardEmployee" class="dashBoardAction"
+			method="getDashBoardInformation">
+			<result name="Success">/jsp/edutel/edutel_employee_dashboard.jsp
+			</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+		<action name="dashBoardFranchisee" class="dashBoardAction"
+			method="getDashBoardInformation">
+			<result name="Success">/jsp/edutel/edutel_franchisee_dashboard.jsp
+			</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+
+		<action name="exportUnvaliatedTestSeriesAnsPDF" class="dashBoardAction"
+			method="exportUnvaliatedTestSeriesStudnetAnswers">
+			<result name="Success">/jsp/edutel/edutel_employee_dashboard.jsp
+			</result>
+			<result name="Failure">/jsp/edutel/edutel_employee_dashboard.jsp
+			</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+		<!-- Dashboard Action End -->
+
+		<!-- Query Discussion Board -->
+		<action name="queryListByJson" class="queryDiscussionAction"
+			method="queryListByJson">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+		<action name="queryAnswerUpdate" class="queryDiscussionAction"
+			method="queryAnswerUpdate">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+		<action name="deleteQuery" class="queryDiscussionAction"
+			method="deleteQuery">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+		<action name="queryAnswerUpdateRating" class="queryDiscussionAction"
+			method="queryAnswerUpdate">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+		<action name="viewQueryAnswer" class="queryDiscussionAction"
+			method="viewQueryAnswerList">
+			<result name="Success">/jsp/edutel/edutel_user_queryboard.jsp</result>
+			<result name="Library">/jsp/edutel/edutel_library_queryboard.jsp
+			</result>
+			<result name="Admin">/jsp/edutel/edutel_admin_queryboard.jsp</result>
+		</action>
+		<action name="submitQuestionAnswer" class="queryDiscussionAction"
+			method="submitQueryAnswer">
+			<result name="Success" type="redirect">viewQueryAnswer.do</result>
+			<result name="Admin">/jsp/edutel/edutel_admin_queryboard.jsp</result>
+		</action>
+
+		<!-- END -->
+
+		<!--Information and Alerts -->
+
+		<action name="infoAlertSearch" class="adminInfoAlertAction"
+			method="infoAlertSearch">
+			<result name="Success">/jsp/edutel/edutel_information_alerts.jsp
+			</result>
+			<result name="Failure">/jsp/edutel/edutel_information_alerts.jsp
+			</result>
+			<result name="Student">/jsp/edutel/edutel_information_alerts_view.jsp
+			</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+
+		<action name="infoAlertListByJson" class="adminInfoAlertAction"
+			method="infoAlertListByJson">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+
+		<action name="createInformationAlert" class="adminInfoAlertAction"
+			method="createInformationAlert">
+			<result name="Success" type="redirect">infoAlertSearch.do</result>
+			<result name="Failure">/jsp/edutel/edutel_information_alerts.jsp
+			</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+		<action name="deleteInfoAlert" class="adminInfoAlertAction"
+			method="deleteInfoAlert">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+
+		<!-- END -->
+
+
+		<action name="studentMarkEnroll" class="dashBoardAction"
+			method="studentMarkEnroll">
+			<result name="Success" type="redirect">dashBoardStudent.do</result>
+			<result name="Failure" type="redirect">dashBoardStudent.do</result>
+		</action>
+
+		<action name="adminMarkPreUpdate" class="adminUserManagementAction"
+			method="adminMarkPreUpdate">
+			<result name="Success">/jsp/edutel/edutel_admin_mark_update.jsp</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+
+		<action name="studentMarksListByJson" class="adminUserManagementAction"
+			method="getStudentMarksListByJson">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+		<action name="saveStudentHSCMark" class="adminUserManagementAction"
+			method="saveStudentHSCMark">
+			<result name="Success" type="redirect">adminMarkPreUpdate.do</result>
+			<result name="Failure" type="redirect">adminMarkPreUpdate.do</result>
+		</action>
+
+		<action name="nextStudentMarkDetails" class="adminUserManagementAction"
+			method="nextStudentMarkDetails">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+
+	</package>
+</struts>

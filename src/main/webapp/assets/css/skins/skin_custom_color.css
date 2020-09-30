@@ -1,0 +1,19 @@
+body.skin_custom_color ul.page-numbers > li a.page-numbers:hover,
+body.skin_custom_color .btn-carousel-control:hover,
+body.skin_custom_color .btn-carousel-control:focus,
+body.skin_custom_color .btn-carousel-control:active,
+body.skin_custom_color .search-toggler:hover {
+	color: #fff !important;
+}
+
+body.skin_custom_color .stm_countdown_bg .triangled_colored_separator {
+	background-color: #fff !important;
+}
+
+body.skin_custom_color .stm_countdown_bg .triangled_colored_separator .triangle {
+	border-bottom-color: #fff !important;
+}
+
+body.skin_custom_color .tp-caption .icon-btn:hover .link-title {
+	background-color: transparent !important;
+}

@@ -1,0 +1,42 @@
+ALTER TABLE `edutel`.`serialkeygenerate` ADD COLUMN `serialBatch` VARCHAR(10) NULL  AFTER `serialNo` ;
+UPDATE edutel.serialkeygenerate SET serialBatch = '2014_2015';
+
+ALTER TABLE `edutel`.`serialkeygenerate` CHANGE COLUMN `serialBatch` `serialBatch` VARCHAR(10) NOT NULL  ;
+
+ALTER TABLE `edutel`.`serialkeygenerate` ADD COLUMN `serialPromo` VARCHAR(50) NULL  AFTER `serialNo` ;
+UPDATE edutel.serialkeygenerate SET serialPromo = 'Limited';
+
+ALTER TABLE `edutel`.`serialkeygenerate` CHANGE COLUMN `serialPromo` `serialPromo` VARCHAR(50) NOT NULL  ;
+
+CREATE TABLE `studentsmarks` (
+   `usEmployeeId` varchar(50) NOT NULL,
+   `usBatch` varchar(10) DEFAULT NULL,
+   `usHSCNo` varchar(30) DEFAULT NULL,
+   `usHSCMark` varchar(4) DEFAULT NULL,
+   `usSSorPUCMark` varchar(4) DEFAULT NULL,
+   `createdBy` varchar(50) DEFAULT NULL,
+   `createdDate` datetime DEFAULT NULL,
+   `modifiedBy` varchar(50) DEFAULT NULL,
+   `modifiedDate` datetime DEFAULT NULL,
+   `status` bit(1) DEFAULT NULL,
+   PRIMARY KEY (`usEmployeeId`),
+   KEY `studentsmarks_createduser_idx` (`createdBy`),
+   KEY `studentsmarks_modifieduser_idx` (`modifiedBy`),
+   CONSTRAINT `studentsmarks_createduser` FOREIGN KEY (`createdBy`) REFERENCES `users` (`usEmployeeId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+   CONSTRAINT `studentsmarks_modifieduser` FOREIGN KEY (`modifiedBy`) REFERENCES `users` (`usEmployeeId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+   CONSTRAINT `studentsmarks_users` FOREIGN KEY (`usEmployeeId`) REFERENCES `users` (`usEmployeeId`) ON DELETE NO ACTION ON UPDATE NO ACTION
+ ) ENGINE=InnoDB DEFAULT CHARSET=latin1$$
+ 
+ 
+ INSERT INTO STUDENTSMARKS (usEmployeeId,usBatch,createdBy,createdDate,status)
+select usEmployeeId,'2014_2015', 'SuperAdmin', '2015-01-18 12:00:00',1 From `edutel`.`users` where usUsersType = 'Student';
+
+
+ALTER TABLE `edutel`.`messagesusermapping` ADD COLUMN `externalField` VARCHAR(50) NULL  AFTER `status` , ADD COLUMN `externalMessage` LONGTEXT NULL  AFTER `externalField` ;
+
+
+UserIdPassword_Email, UserIdPassword_Email, This is a Test Mesage For UserIdPassword_Email, Email, This is a Test Mesage For UserIdPassword_Email, 2015-01-01 00:00:00, SuperAdmin, 2015-01-01 00:00:00, SuperAdmin, 2015-01-01 00:00:00, 1
+UserIdPassword_SMS, UserIdPassword_SMS, This is a Test Mesage For UserIdPassword_SMS, SMS, , 2015-01-01 00:00:00, SuperAdmin, 2015-01-01 00:00:00, SuperAdmin, 2015-01-01 00:00:00, 1
+UserRegistrationReceipt_Email, UserRegistrationReceipt_Email, This is a Test Mesage For UserRegistrationReceipt_Email, Email, This is a Test Mesage For UserRegistrationReceipt_Email, 2015-01-01 00:00:00, SuperAdmin, 2015-01-01 00:00:00, SuperAdmin, 2015-01-01 00:00:00, 1
+UserRegistration_Email_Admin, UserRegistration_Email_Admin, This is a Test Mesage For UserIdPassword_Email_Admin, Email, This is a Test Mesage For UserIdPassword_Email_Admin, 2015-01-01 00:00:00, SuperAdmin, 2015-01-01 00:00:00, SuperAdmin, 2015-01-01 00:00:00, 1
+UserRegistration_SMS_Admin, UserRegistration_SMS_Admin, UserRegistration_SMS_Admin, SMS, This is a Test Mesage For UserRegistration_SMS_Admin, 2015-01-01 00:00:00, SuperAdmin, 2015-01-01 00:00:00, SuperAdmin, 2015-01-01 00:00:00, 1

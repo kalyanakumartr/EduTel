@@ -1,0 +1,133 @@
+body {
+	line-height: 22px;
+}
+
+h1, .h1
+{
+	font-weight: 700;
+}
+
+h2, .h2
+{
+	font-weight: 700;
+	line-height: 1;
+}
+
+h3, .h3
+{
+	font-weight: 700;
+}
+
+h4, .h4
+{
+	letter-spacing: -0.2px;
+}
+
+h5, .h5
+{
+	font-weight: 700;
+}
+
+h6, .h6
+{
+}
+
+a {
+	color: @blue-link;
+	&:hover {
+		text-decoration: none;
+		color: @orange-dk;
+	}
+}
+
+ul {
+	padding-left: 20px;
+	& li {
+		margin-bottom: 8px;
+		& a {
+			color: @grey-text;
+			font-size: 12px;
+			&:hover {
+				color: @orange-dk;
+			}
+		}
+	}
+}
+
+ol {
+	padding-left: 20px;
+	margin-bottom: 25px;
+	& li {
+		margin-bottom: 8px;
+		& a {
+			color: @grey-text;
+			font-size: 12px;
+			&:hover {
+				color: @orange-dk;
+			}
+		}
+	}
+}
+
+p {
+	margin-bottom: 30px;
+}
+
+blockquote {
+	position: relative;
+	padding: 14px 37px;
+	padding-right: 35px;
+	margin: 52px 0 47px;
+	border-left: 3px solid #eab830;
+	&:before,
+	&:after {
+		.pseudo(absolute, 100%, 1px);
+		left: 0;
+		background-color: #e1e2e4;
+	}
+	&:before {
+		top: -24px;
+	}
+	&:after {
+		bottom: -23px;
+	}
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+select {
+	max-width: 100%;
+}
+
+.mg-bt-20 {
+	margin-bottom: 20px;
+}
+
+.mg-bt-10 {
+	margin-bottom: 10px;
+}
+
+label,
+.label {
+	padding: 0;
+	margin: 0;
+	margin-bottom: 1px;
+	color: @grey-lt;
+	&.h3,
+	&.h4,
+	&.h5,
+	&.h6 {
+		color: @grey-lt;
+	}
+}
+
+.vc_custom_heading.no-margin-top > * {
+	margin-top: 0;
+}
+
+legend {
+	border-bottom: 0;
+}

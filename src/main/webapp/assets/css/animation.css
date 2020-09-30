@@ -1,0 +1,312 @@
+.stm_archive_product_inner_unit .stm_archive_product_inner_unit_centered:hover .stm_featured_product_show_more,
+.stm_archive_product_inner_unit .stm_archive_product_inner_unit_centered .stm_featured_product_show_more,
+.stm_featured_products_unit .stm_featured_product_single_unit .stm_featured_product_single_unit_centered .stm_featured_product_footer .stm_featured_product_show_more,
+.stm_featured_products_unit .stm_featured_product_single_unit:hover .stm_featured_product_show_more,
+.stm_featured_products_unit .stm_featured_product_single_unit .stm_featured_product_footer,
+.header-menu-mobile .header-menu > li .arrow,
+.header-menu-mobile .header-menu > li .arrow.active,
+.modal-open #wrapper,
+#wrapper,
+.vc_toggle.vc_toggle_active .vc_toggle_title,
+.vc_toggle .vc_toggle_title,
+.event-col .event_archive_item > a:hover .event_img:after,
+.event-col .event_archive_item > a .event_img:after,
+.event-col .event_archive_item > a .title,
+.event-col .event_archive_item > a:hover .title,
+.gallery_single_view .gallery_img a:hover:after, .gallery_single_view .gallery_img a:hover:before,
+.gallery_single_view .gallery_img a:after, .gallery_single_view .gallery_img a:before,
+.btn-carousel-control:after,
+.btn-carousel-control:hover:after,
+.textwidget .btn,
+.textwidget .btn:hover,
+.textwidget .btn:active,
+.textwidget .btn:focus,
+.form-submit .submit,
+.form-submit .submit:hover,
+.form-submit .submit:active,
+.form-submit .submit:focus,
+.button,
+.button:hover,
+.button:active,
+.button:focus,
+.btn-default,
+.btn-default:hover,
+.btn-default:active,
+.btn-default:focus,
+.teacher_single_product_page>a:hover .title,
+.teacher_single_product_page>a .title,
+.panel-group .panel.panel-default>.panel-heading:hover,
+.panel-group .panel.panel-default>.panel-heading,
+.single_product_after_title .meta-unit.teacher:hover .value,
+.single_product_after_title .meta-unit.teacher .value,
+.stm_post_info .stm_post_details .post_meta li a:hover span,
+.stm_post_info .stm_post_details .post_meta li a span,
+.stm_woo_archive_view_type_list .expert_unit_link:hover .expert,
+.stm_woo_archive_view_type_list .expert_unit_link .expert,
+.form-control,
+.form-control:focus,
+.form-control:active,
+.widget_stm_recent_posts .widget_media a:hover .h6,
+.widget_stm_recent_posts .widget_media a .h6,
+.sidebar-area .widget_mailchimp .stm_mailchimp_unit .stm_subscribe_email:focus,
+.sidebar-area .widget_mailchimp .stm_mailchimp_unit .stm_subscribe_email,
+.sidebar-area .widget ul li a:hover:after,
+.sidebar-area .widget ul li a:after,
+.widget_pages ul.style_2 li a:hover .h6,
+.widget_pages ul.style_2 li a .h6,
+.widget_pages ul.style_1 li a:hover .h6, .widget_nav_menu ul.style_1 li a:hover .h6,
+.widget_pages ul.style_1 li a .h6, .widget_nav_menu ul.style_1 li a .h6,
+.sidebar-area .widget > ul > li > a:hover:after,
+.sidebar-area .widget > ul > li > a:after,
+.testimonial_inner_wrapper:hover .testimonial_inner_content p,
+.testimonial_inner_wrapper .testimonial_inner_content p,
+.stm_product_list_widget li a:hover .title,
+.stm_product_list_widget li a .title,
+.widget_pages ul.style_2 li a:hover:after,
+.widget_pages ul.style_2 li a:after,
+.widget_categories ul li a:hover:after,
+.widget_categories ul li a:after,
+#footer_copyright .copyright_text a:hover,
+#footer_copyright .copyright_text a,
+a,
+a:hover,
+.countDiv,
+.countDiv.flash,
+.expert_socials a,
+.expert_socials a:hover,
+.search-submit,
+.search-submit:hover {
+  -webkit-transition: all 0.25s ease;
+  -moz-transition: all 0.25s ease;
+  -o-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+
+.header_default.fixed,
+.header_default {
+	-webkit-transition: padding 0.25s ease,top 0.25s ease;
+  -moz-transition: padding 0.25s ease,top 0.25s ease;
+  -o-transition: padding 0.25s ease,top 0.25s ease;
+  transition: padding 0.25s ease,top 0.25s ease;
+}
+
+.stm_featured_products_unit .stm_featured_product_single_unit:hover .stm_featured_product_footer {
+	transition-delay: 0.25s;
+}
+
+/* Cubic with overlapping */
+.course_table tr td.number.number-visible,
+.course_table tr td.number,
+.stm_subscribe_preloader,
+.stm_subscribe_preloader.loading {
+	-webkit-transition: all 0.25s cubic-bezier(1,.83,.3,1.25);
+	-moz-transition: all 0.25s cubic-bezier(1,.83,.3,1.25);
+	-o-transition: all 0.25s cubic-bezier(1,.83,.3,1.25);
+	transition: all 0.25s cubic-bezier(1,.83,.3,1.25);
+}
+
+/* Cubic normal */
+.stm_pricing_plan .inner .btn-plan:hover:after,
+.stm_pricing_plan .inner .btn-plan:after,
+.teacher_content .teacher_img:hover>a:after,
+.teacher_content .teacher_img>a:after,
+.teacher_content .teacher_img:hover .expert_socials,
+.teacher_content .teacher_img .expert_socials,
+/*
+.panel-default>.panel-heading .panel-title > a.collapsed i.fa-sort-down,
+.panel-default>.panel-heading .panel-title > a i.fa-sort-down,
+*/
+.see_more a:hover,
+.see_more a:hover:after,
+.see_more a,
+.see_more a:after,
+.page-links span:hover,
+.page-links span,
+.page-links span:hover:after,
+.page-links span:after,
+ul.page-numbers > li a.page-numbers:hover:after,
+ul.page-numbers > li a.page-numbers:after,
+ul.page-numbers > li span.page-numbers:hover:after,
+ul.page-numbers > li span.page-numbers:after,
+.search-toggler,
+.search-toggler:hover,
+.search-toggler:hover:after,
+.search-toggler:after {
+	-webkit-transition: all 0.25s cubic-bezier(.66,.36,.17,.91);
+	-moz-transition: all 0.25s cubic-bezier(.66,.36,.17,.91);
+	-o-transition: all 0.25s cubic-bezier(.66,.36,.17,.91);
+	transition: all 0.25s cubic-bezier(.66,.36,.17,.91);
+}
+
+/* Cubic Top */
+.project_cat_single_item:hover,
+.project_cat_single_item,
+.stm_featured_product_single_unit,
+.stm_featured_product_single_unit:hover,
+.icon_box,
+.icon_box:hover {
+	-webkit-transition: all 0.3s cubic-bezier(0,.01,.27,1);
+	-moz-transition: all 0.3s cubic-bezier(0,.01,.27,1);
+	-o-transition: all 0.3s cubic-bezier(0,.01,.27,1);
+	transition: all 0.3s cubic-bezier(0,.01,.27,1);
+}
+
+/* flip the pane when hovered */
+.simple_flip_container:hover .simple_flipper, .simple_flip_container.hover .simple_flipper {
+	transform: rotateY(180deg);
+}
+
+
+
+
+/* Transforms Scale */
+/* Images */
+.post_list_inner_content_unit > a:hover > .post_list_featured_image:after,
+.post_list_inner_content_unit > a > .post_list_featured_image:after,
+.post_list_inner_content_unit > a:hover > .post_list_featured_image:before,
+.post_list_inner_content_unit > a > .post_list_featured_image:before,
+
+.post_list_featured_image > a:hover:before,
+.post_list_featured_image > a:before,
+.post_list_featured_image > a:hover:after,
+.post_list_featured_image > a:after,
+
+.event-col .event_archive_item > a .event_img:before,
+.event-col .event_archive_item > a .event_img:after,
+.event-col .event_archive_item > a .event_img:hover:before {
+	-webkit-transition: all 0.25s ease-in-out;
+	-moz-transition: all 0.25s ease-in-out);
+	-o-transition: all 0.25s ease-in-out;
+	transition: all 0.25s ease-in-out;
+}
+
+.post_list_featured_image > a,
+.post_list_inner_content_unit > a > .post_list_featured_image,
+.event-col .event_archive_item > a .event_img {
+	display: inline-block;
+	max-width: 100%;
+	vertical-align: top;
+	position: relative;
+}
+
+.post_list_featured_image > a:after,
+.post_list_inner_content_unit > a > .post_list_featured_image:after,
+.event-col .event_archive_item > a .event_img:after {
+	content: '';
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: rgba(0,0,0,0.6);
+	visibility: hidden;
+	opacity: 0;
+}
+
+.post_list_featured_image > a:before,
+.post_list_inner_content_unit > a > .post_list_featured_image:before,
+.event-col .event_archive_item > a .event_img:before {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	content: "\e635";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -20px;
+	margin-top: -20px;
+	text-align: center;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	color: #fff;
+	font-size: 30px;
+	visibility: hidden;
+	opacity: 0;
+	z-index: 15;
+}
+
+.post_list_inner_content_unit > a > .post_list_featured_image:before {
+	width: 50px;
+	height: 50px;
+	margin: -25px 0 0 -25px;
+	line-height: 50px;
+	font-size: 40px;
+}
+
+.post_list_featured_image > a:hover:before,
+.post_list_featured_image > a:hover:after,
+.post_list_inner_content_unit > a:hover > .post_list_featured_image:before,
+.post_list_inner_content_unit > a:hover > .post_list_featured_image:after,
+.event-col .event_archive_item > a .event_img:hover:before,
+.event-col .event_archive_item > a .event_img:hover:after {
+	visibility: visible;
+	opacity: 1;
+	color: #fff;
+}
+
+/* Images end */
+
+
+.button:after,
+.button:hover:after,
+.btn:after,
+.btn:hover:after {
+	-webkit-transition: all 0.25s cubic-bezier(.66,.36,.17,.91);
+	-moz-transition: all 0.25s cubic-bezier(.66,.36,.17,.91);
+	-o-transition: all 0.25s cubic-bezier(.66,.36,.17,.91);
+	transition: all 0.25s cubic-bezier(.66,.36,.17,.91);
+}
+
+.icon-btn:hover .link-title,
+.icon-btn .link-title,
+.icon-btn,
+.icon-btn:hover .icon_in_btn,
+.icon-btn .icon_in_btn,
+.tp-caption .icon-btn:hover .icon_in_btn,
+.tp-caption .icon-btn .icon_in_btn,
+.tp-caption .icon-btn:hover .link-title,
+.tp-caption .icon-btn .link-title {
+	-webkit-transition: color 0.2s ease,border-color 0.2s ease,background-color 0.2s ease;
+	-moz-transition: color 0.2s ease,border-color 0.2s ease,background-color 0.2s ease;
+	-o-transition: color 0.2s ease,border-color 0.2s ease,background-color 0.2s ease;
+	transition: color 0.2s ease,border-color 0.2s ease,background-color 0.2s ease;
+}
+
+.tp-caption .icon-btn,
+.tp-caption .icon-btn:hover {
+	-webkit-transition-property: border !important;
+	-moz-transition-property: border !important;
+	-o-transition-property: border !important;
+	transition-property: border !important;
+}
+
+/* Animated line styles */
+.magic_line,
+.magic_line.line_visible,
+.header_main_menu_wrapper .header-menu > li:hover > ul.sub-menu,
+.header_main_menu_wrapper .header-menu > li > ul.sub-menu,
+.header_main_menu_wrapper .header-menu > li > ul.sub-menu > li:hover > .sub-menu,
+.header_main_menu_wrapper .header-menu > li > ul.sub-menu > li > .sub-menu {
+	-webkit-transition: all 0.25s ease;
+	-moz-transition: all 0.25s ease;
+	-o-transition: all 0.25s ease;
+	transition: all 0.25s ease;
+}
+
+/* Remove Transition */
+.stm-no-animation,
+.comment-form-rating.woo_stm_rating_fields .stars span a,
+.comment-form-rating.woo_stm_rating_fields .stars span a.filled {
+	-webkit-transition: all 0s ease !important;
+	-moz-transition: all 0s ease !important;
+	-o-transition: all 0s ease !important;
+	transition: all 0s ease !important;
+}

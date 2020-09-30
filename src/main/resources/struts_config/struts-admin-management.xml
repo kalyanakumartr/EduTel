@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="admin_user_management" namespace="" extends="default">
+
+		<result-types>
+			<result-type name="json" class="org.apache.struts2.json.JSONResult" />
+		</result-types>
+
+		<!-- Admin - User Management Action -->
+		<action name="changePwdPage" class="adminUserManagementAction"
+			method="changePasswordByAdmin">
+			<result name="Success">/jsp/common/change_password.jsp</result>
+		</action>
+		<action name="adminUserMgmt" class="adminUserManagementAction"
+			method="getUsersListBySearch">
+			<!-- <result name="Success">/jsp/admin/adminUserManagement.jsp</result> -->
+			<result name="Success">\jsp\edutel\edutel_user_search.jsp</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+		<action name="getAdminUserList" class="adminUserManagementAction"
+			method="getUsersList">
+			<result name="Success">/jsp/admin/adminUserMgmtList.jsp</result>
+		</action>
+
+
+
+
+		<action name="saveAdminUserDetails" class="adminUserManagementAction"
+			method="saveUsersDetails">
+			<result name="Success">/jsp/admin/adminSuccess.jsp</result>
+		</action>
+		<action name="updateAdminUserDetails" class="adminUserManagementAction"
+			method="updateUsersDetails">
+			<result name="Success">/jsp/admin/adminSuccess.jsp</result>
+		</action>
+		<action name="deleteAdminUserDetails" class="adminUserManagementAction"
+			method="deleteUsersDetails">
+			<result name="Success">/jsp/admin/adminSuccess.jsp</result>
+		</action>
+		<action name="updateAdminUserPwdDetails" class="adminUserManagementAction"
+			method="resetPasswordByAdmin">
+			<result name="Success">/jsp/admin/adminSuccess.jsp</result>
+		</action>
+		<action name="getRolesList" class="adminUserManagementAction"
+			method="getUserRoles">
+			<result name="Success">/jsp/admin/admin_addrolepopup.jsp
+			</result>
+		</action>
+		<action name="adminHasApproverTier" class="adminUserManagementAction"
+			method="adminHasApproverTier">
+			<result name="Success">/jsp/admin/adminSuccess.jsp</result>
+		</action>
+		<!-- End -->
+	</package>
+	<package name="admin_role_management" namespace="" extends="default">
+		<!-- Admin Role Management Action -->
+		<action name="adminRoleMgmt" class="adminRoleManagementAction"
+			method="getUserPage">
+			<result name="Success">/jsp/admin/adminRoleManagement.jsp</result>
+		</action>
+		<action name="getUserRoles" class="adminRoleManagementAction"
+			method="getUserDetailList">
+			<result name="Success">/jsp/admin/adminUserList.jsp</result>
+		</action>
+		<action name="getAvailRolesList" class="adminRoleManagementAction"
+			method="getAvailRolesList">
+			<result name="Success">/jsp/admin/admin_assignRole.jsp</result>
+		</action>
+		<action name="assignUserRoles" class="adminRoleManagementAction"
+			method="assignNewUserRoles">
+			<result name="Success">/jsp/admin/roleSuccessPage.jsp</result>
+		</action>
+		<action name="submitApproverDetails" class="approverLookupAction"
+			method="saveApproverData">
+			<result name="Success">/jsp/admin/roleSuccessPage.jsp</result>
+		</action>
+		<!-- End -->
+	</package>
+</struts>

@@ -1,0 +1,33 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<!-- Database Configuration -->
+	<import resource="config/spring/DataSource.xml" />
+	<import resource="config/spring/HibernateSessionFactory.xml" />
+	<import resource="config/spring/ServiceSource.xml" />
+	<!-- Beans Declaration -->
+	<import resource="com/hbs/edutel/spring/AllBoDaoBean.xml" />
+	<import resource="com/hbs/edutel/spring/LoginActionBean.xml" />
+	<import resource="com/hbs/edutel/spring/WelcomeActionBean.xml" />
+	<import resource="com/hbs/edutel/spring/ChangePasswordActionBean.xml" />
+	<import resource="com/hbs/edutel/spring/ForgotPasswordActionBean.xml" />
+	<import resource="com/hbs/edutel/spring/AdminRoleManagementActionBean.xml" />
+	<import resource="com/hbs/edutel/spring/ReportActionBean.xml" />
+	<import resource="com/hbs/edutel/spring/AdminSerialKeyGenerateActionBean.xml" />
+	<import resource="com/hbs/edutel/spring/AdminStudentEnquiryActionBean.xml" />
+	<import resource="com/hbs/edutel/spring/AdminUserManagementBean.xml" />
+	<import resource="com/hbs/edutel/spring/AdminCollegeManagementActionBean.xml" />
+	<import resource="com/hbs/edutel/spring/AdminSchoolManagementActionBean.xml" />
+	<import resource="com/hbs/edutel/spring/OnlineEBookActionBean.xml" />
+	<import resource="com/hbs/edutel/spring/OnlineEKeyPointsActionBean.xml" />
+	<import resource="com/hbs/edutel/spring/OnlineEBluePrintActionBean.xml" />
+	<import resource="com/hbs/edutel/spring/OnlineExamActionBean.xml" />
+	<import resource="com/hbs/edutel/spring/OnlineExamQuestionActionBean.xml" />
+	<import resource="com/hbs/edutel/spring/DashBoardActionBean.xml" />
+	<import resource="com/hbs/edutel/spring/QueryDiscussionActionBean.xml" />
+	<import resource="com/hbs/edutel/spring/AdminInfoAlertBean.xml" />
+	<import resource="com/hbs/edutel/spring/EmailBean.xml" />
+	<import resource="com/hbs/messagesalert/spring/MessagesAllBoDaoBean.xml" />
+	<import resource="com/hbs/messagesalert/spring/MessagesActionBean.xml"/>
+</beans>

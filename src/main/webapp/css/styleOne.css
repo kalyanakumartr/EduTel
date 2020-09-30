@@ -1,0 +1,345 @@
+@charset "utf-8";
+
+.bodybg {
+	background-color: #6392CE;
+	background-image: url(../images/APWAS/bodybg.gif);
+	background-repeat: repeat-x;
+	background-position: top;
+	margin: 0px;
+	padding: 0px;
+}
+
+.bodybg1 {
+	background-color: #6392CE;
+	margin: 0px;
+	padding: 0px;
+}
+
+.welcometext {
+	font-family: Tahoma;
+	font-size: 11px;
+	font-weight: normal;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+.menutext a {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	color: #3B3B3B;
+	text-decoration: none;
+	line-height: 29px;
+	padding-left: 8px;
+	padding-right: 8px;
+}
+
+.border_white {
+	border: 1px solid #FFFFFF;
+}
+
+.menuroltext  a {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	background: url(../images/APWAS/menurolbg.gif) repeat-x center;
+	text-align: center;
+	display: block;
+	margin: 0;
+	padding: 0;
+	color: #FFFFFF !important;
+	line-height: 29px;
+	padding-left: 10px;
+	padding-right: 10px;
+	text-decoration: none
+}
+
+.titletext {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-decoration: none;
+	line-height: 0px;
+}
+
+.border_gray {
+	border: 1px solid #b7b7b7;
+}
+
+.leftpaneheadbg {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	color: #7a7a7a;
+	text-decoration: none;
+	background-color: #eeeeee;
+	background-image: url(../images/APWAS/leftpanebg.gif);
+	background-repeat: repeat-x;
+	background-position: top;
+}
+
+.normaltext {
+	font-family: Tahoma;
+	font-size: 11px;
+	font-weight: normal;
+	color: #878787;
+	text-decoration: none;
+}
+
+.filtertext {
+	font-family: Tahoma;
+	font-size: 11px;
+	font-weight: normal;
+	color: #878787;
+	text-decoration: none;
+	line-height: 12px;
+}
+
+.totaltext {
+	font-family: Tahoma;
+	font-size: 11px;
+	font-weight: normal;
+	color: #6b6b6b;
+	text-decoration: none;
+}
+
+.gridtext_gray {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	color: #878787;
+	text-decoration: none;
+	background-color: #fafafa;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: solid;
+	border-left-style: none;
+	border-top-color: #ededed;
+	border-right-color: #ededed;
+	border-bottom-color: #ededed;
+	border-left-color: #ededed;
+}
+
+.gridhead {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	color: #656565;
+	text-decoration: none;
+	background-color: #fcfcfc;
+	background-image: url(../images/APWAS/gridheadbg.gif);
+	background-repeat: repeat-x;
+	background-position: bottom;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: solid;
+	border-left-style: none;
+	border-top-color: #cacaca;
+	border-right-color: #cacaca;
+	border-bottom-color: #cacaca;
+	border-left-color: #cacaca;
+}
+
+.gridtext_white {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	color: #878787;
+	text-decoration: none;
+	background-color: #FFFFFF;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: solid;
+	border-left-style: none;
+	border-top-color: #ededed;
+	border-right-color: #ededed;
+	border-bottom-color: #ededed;
+	border-left-color: #ededed;
+}
+
+.formtitle {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	color: #000000;
+	text-decoration: none;
+	background-image: url(../images/APWAS/rightpaneheadbg.gif);
+	background-repeat: repeat-x;
+	background-position: top;
+	background-color: #f0f0f0;
+	line-height: 28px;
+}
+
+.textbox {
+	font-family: Tahoma;
+	font-size: 11px;
+	font-weight: normal;
+	color: #767676;
+	text-decoration: none;
+	width: 180px;
+}
+
+.textarea {
+	font-family: Tahoma;
+	font-size: 11px;
+	font-weight: normal;
+	color: #767676;
+	width: 180px;
+	height: 100px;
+}
+
+.textarea1 {
+	font-family: Tahoma;
+	font-size: 11px;
+	font-weight: normal;
+	color: #767676;
+	width: 180px;
+	height: 30px;
+}
+
+.listbox {
+	font-family: Tahoma;
+	font-size: 11px;
+	font-weight: normal;
+	color: #767676;
+	text-decoration: none;
+	width: 186px;
+}
+
+.textbox_date {
+	font-family: Tahoma;
+	font-size: 11px;
+	font-weight: normal;
+	color: #767676;
+	text-decoration: none;
+	width: 110px;
+}
+
+.formtext {
+	font-family: Tahoma;
+	font-size: 11px;
+	font-weight: normal;
+	color: #000000;
+	text-decoration: none;
+}
+
+.floatright {
+	float: right;
+}
+
+.btnstyle {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #3E3E3E;
+	text-decoration: none;
+	background-image: url(../images/APWAS/btnbg.gif);
+	background-repeat: repeat-x;
+	background-position: center;
+	border: 1px solid #cbcbcb;
+	margin: 0px;
+	padding-top: 2px;
+	padding-right: 4px;
+	padding-bottom: 2px;
+	padding-left: 4px;
+	background-color: #FFFFFF;
+}
+
+.head_l2 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #596874;
+	text-decoration: none;
+}
+
+.head_l2_bg {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #596874;
+	text-decoration: none;
+	background-image: url(../images/APWAS/head_l2bg.gif);
+	background-repeat: no-repeat;
+	background-position: 5px bottom;
+}
+
+.searchtext {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+.logintextbox {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	line-height: 15px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-decoration: none;
+	width: 230px;
+	border: 0px none;
+	background-color: #599eeb;
+}
+
+.formlabel {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	color: #000000;
+	line-height: 28px;
+}
+
+.formfield {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #000000;
+	line-height: 28px;
+}
+
+.listbox1 {
+	font-family: Tahoma;
+	font-size: 11px;
+	font-weight: normal;
+	color: #767676;
+	text-decoration: none;
+	width: 145px;
+}
+
+.right_align {
+	text-align: right;
+	padding-right: 5px
+}
+
+.btn1style {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #3E3E3E;
+	text-decoration: none;
+	background-image: url(../images/loginbtn.gif);
+	background-position: center;
+	border: 1px solid #cbcbcb;
+	margin: 0px;
+	padding-top: 2px;
+	padding-right: 4px;
+	padding-bottom: 2px;
+	padding-left: 4px;
+	background-color: #FFFFFF;
+}

@@ -1,0 +1,3 @@
+INSERT INTO `constproperty` (`constId`, `enumKey`, `constKey`, `constValue`, `constGroup`, `constActive`, `constAllowedValue`) 
+VALUES
+(94, 'message_tracking_object', 'message_tracking_object', 'Users,SerialKeyGenerate', 'EGeneral', '1', '0');

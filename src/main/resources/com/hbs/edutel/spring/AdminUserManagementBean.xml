@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="adminUserManagementAction" class="com.hbs.edutel.action.AdminUserManagementAction"
+		scope="session">
+		<property name="userBo" ref="userBo"></property>
+		<property name="adminBo" ref="adminBo"></property>
+		<property name="keyGenBo" ref="keyGenBo"></property>
+		<property name="propFactory" ref="propFactory"></property>
+		<property name="cities" value="${edutel.cities}"></property>
+		<property name="states" value="${edutel.states}"></property>
+		<property name="eduTelMessageService" ref="eduTelMessageService"></property>
+		<property name="studentUserAdvancedSearchColumns" value="${edutel.studentUserAdvancedSearchColumns}"></property>
+		<property name="employeeUserAdvancedSearchColumns" value="${edutel.employeeUserAdvancedSearchColumns}"></property>
+		<property name="franchiseeUserAdvancedSearchColumns"
+			value="${edutel.franchiseeUserAdvancedSearchColumns}"></property>
+	</bean>
+</beans>

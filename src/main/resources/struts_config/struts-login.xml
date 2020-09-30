@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="login" namespace="" extends="default">
+		<!-- Login Authentication action -->
+		<result-types>
+			<result-type name="json" class="org.apache.struts2.json.JSONResult" />
+		</result-types>
+		<action name="index" class="welcomeAction" method="loadInitialPage">
+			<result name="Success">/jsp/edutel/edutel_home.jsp</result>
+		</action>
+		<action name="loadPage" class="welcomeAction" method="loadPage">
+			<result name="Home">/jsp/edutel/edutel_home.jsp</result>
+			<result name="AboutUs">/jsp/edutel/edutel_aboutus.jsp</result>
+			<result name="ContactUs">/jsp/edutel/edutel_contactus.jsp</result>
+			<result name="Disclaimer">/jsp/edutel/edutel_disclaimer.jsp</result>
+			<result name="WebTerms">/jsp/edutel/edutel_website_terms_conditions.jsp
+			</result>
+			<result name="ProgramDetails">/jsp/edutel/edutel_support_program_details.jsp
+			</result>
+			<result name="Careers">/jsp/edutel/edutel_careers.jsp</result>
+			<result name="Privacy">/jsp/edutel/edutel_privacy_policy.jsp</result>
+			<result name="StudyIndia">/edutel_static/index.html</result>
+			<result name="ResourceTeam">/jsp/edutel/edutel-resource-team.jsp</result>
+			<result name="Gallery">/jsp/edutel/edutel_gallery.jsp</result>
+			<result name="WeAreWith">/jsp/edutel/edutel_we_are_with.jsp</result>
+			<result name="Online-Support">/jsp/edutel/edutel-online-support.jsp</result>
+			<result name="About-NEET">/jsp/edutel/edutel_neet_content_page.jsp</result>
+			
+			
+			<result name="loginAuthenticationNew">/jsp/edutel/edutel_login.jsp</result>
+		</action>
+
+		<action name="loginPage" class="welcomeAction" method="loginByOption">
+			<result name="Student">/jsp/edutel/edutel_login.jsp</result>
+			<result name="Employee">/jsp/edutel/edutel_login.jsp</result>
+			<result name="Franchisee">/jsp/edutel/edutel_login.jsp</result>
+		</action>
+
+		<action name="loginAuthentication" class="loginAction" method="loginAuthentication">
+			<result name="Student" type="redirect">dashBoardStudent.do?p=1</result>
+			<result name="Employee" type="redirect">dashBoardEmployee.do</result>
+			<result name="Franchisee" type="redirect">dashBoardFranchisee.do</result>
+			<result name="Failure">/jsp/edutel/edutel_login.jsp</result>
+			<result name="RemindQuestion">/jsp/common/reminder_question.jsp</result>
+			<result name="CommonLoginPage">/jsp/edutel/edutel_login.jsp</result>
+		</action>
+		
+		
+		
+
+		<action name="logoutPage" class="loginAction" method="logoutAction">
+			<result name="Success">login_index.jsp</result>
+			<result name="Input">index.jsp</result>
+		</action>
+		<action name="saveReminderQues" class="loginAction" method="saveReminderQuestion">
+			<result name="ChangePassword" type="redirect">/changePwdPage.do</result>
+			<result name="Input">/jsp/common/reminder_question.jsp</result>
+		</action>
+		<action name="forgotPasswordPage">
+			<result name="success">/jsp/common/forgot_password.jsp</result>
+		</action>
+		<action name="forgotPasswordSecurityQuestion" class="forgotPasswordAction"
+			method="getSecurityQuestion">
+			<result name="Success">/jsp/common/forgot_password.jsp</result>
+			<result name="Failure">/jsp/common/forgot_password.jsp</result>
+			<result name="Input">/jsp/common/forgot_password.jsp</result>
+		</action>
+		<action name="resetPasswordAction" class="forgotPasswordAction"
+			method="resetUserPassword">
+			<result name="Success">/jsp/common/forgot_password.jsp</result>
+			<result name="Failure">/jsp/common/forgot_password.jsp</result>
+			<result name="Input">/jsp/common/forgot_password.jsp</result>
+		</action>
+		<action name="changePasswordAction" class="changePasswordAction"
+			method="updateUserPassword">
+			<interceptor-ref name="defaultStack" />
+			<interceptor-ref name="token" />
+			<result name="invalid.token">/jsp/common/error.jsp</result>
+			<result name="Success">/jsp/common/change_password_success.jsp</result>
+			<result name="Failure" type="redirectAction">/changePwdPage.do</result>
+		</action>
+	</package>
+</struts>

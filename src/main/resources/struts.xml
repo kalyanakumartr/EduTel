@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.custom.i18n.resources" value="global" />
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.action.extension" value="do" />
+	<constant name="struts.multipart.maxSize" value="52428800" />
+	<package name="default" namespace="" extends="struts-default">
+		<interceptors>
+			<interceptor name="sessValidation"
+				class="com.hbs.edutel.interceptors.SessionInterceptor"></interceptor>
+			<interceptor name="clearActionErrors"
+				class="com.hbs.edutel.interceptors.ClearActionErrorsInterceptor"></interceptor>
+			<interceptor-stack name="defaultStack">
+				<interceptor-ref name="clearActionErrors" />
+				<interceptor-ref name="exception" />
+				<interceptor-ref name="alias" />
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="prepare" />
+				<interceptor-ref name="i18n" />
+				<interceptor-ref name="chain" />
+				<interceptor-ref name="debugging" />
+				<interceptor-ref name="profiling" />
+				<interceptor-ref name="scopedModelDriven" />
+				<interceptor-ref name="modelDriven" />
+				<interceptor-ref name="fileUpload" />
+				<interceptor-ref name="checkbox" />
+				<interceptor-ref name="staticParams" />
+				<interceptor-ref name="params">
+					<param name="excludeParams">dojo\..*</param>
+				</interceptor-ref>
+				<interceptor-ref name="conversionError" />
+				<interceptor-ref name="validation">
+					<param name="excludeMethods">input,back,cancel,browse</param>
+				</interceptor-ref>
+				<interceptor-ref name="workflow">
+					<param name="excludeMethods">input,back,cancel,browse</param>
+				</interceptor-ref>
+				<interceptor-ref name="sessValidation"></interceptor-ref>
+			</interceptor-stack>
+
+			<interceptor-stack name="token-submit">
+				<interceptor-ref name="tokenSession" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+		<global-results>
+			<result name="SessionExpired">/jsp/edutel/edutel_home.jsp</result>
+			<result name="input">/jsp/common/error.jsp</result>
+			<result name="Input">/jsp/common/error.jsp</result>
+			<result name="exception">/jsp/common/error.jsp</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping exception="java.lang.Exception"
+				result="exception" />
+		</global-exception-mappings>
+	</package>
+	<include file="struts_config/struts-login.xml"></include>
+	<include file="struts_config/struts-admin-management.xml"></include>
+	<include file="struts_config/struts-edutel.xml"></include>
+	<include file="struts_config/struts-messagesalert.xml"></include>
+	<include file="struts_config/struts-delegation.xml"></include>
+	<include file="struts_config/struts-reports.xml"></include>
+</struts>

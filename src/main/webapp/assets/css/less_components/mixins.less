@@ -1,0 +1,168 @@
+.rounded(@radius: 2px) {
+	-webkit-border-radius: @radius;
+	-moz-border-radius: @radius;
+		border-radius: @radius;
+}
+
+.bordered(@top-color: #EEE, @right-color: #EEE, @bottom-color: #EEE, @left-color: #EEE) {
+	border-top: solid 1px @top-color;
+	border-left: solid 1px @left-color;
+	border-right: solid 1px @right-color;
+	border-bottom: solid 1px @bottom-color;
+}
+
+.transformY() {
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+		transform: translateY(-50%);
+}
+
+.noTransform() {
+	-webkit-transform: translateY(0%);
+	-ms-transform: translateY(0%);
+		transform: translateY(0%);
+}
+
+.transformX() {
+	-webkit-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+		transform: translateX(-50%);
+}
+
+.transform(...) {
+	-webkit-transform: @arguments;
+	-moz-transform: @arguments;
+	-o-transform: @arguments;
+	-ms-transform: @arguments;
+		transform: @arguments;
+}
+
+.background-gradient(@start, @end) {
+	background: -moz-linear-gradient(90deg, @start 0%, @end 100%);
+	background: -webkit-linear-gradient(90deg, @start 0%, @end 100%);
+	background: -o-linear-gradient(90deg, @start 0%, @end 100%);
+	background: -ms-linear-gradient(90deg, @start 0%, @end 100%);
+	background: linear-gradient(180deg, @start 0%, @end 100%);
+}
+
+.box-shadow(@x: 0, @y: 0, @blur: 10px, @color: #666){
+	-webkit-box-shadow: @arguments;
+	-moz-box-shadow: @arguments;
+		box-shadow: @arguments;
+}
+
+.drop-shadow(@x-axis: 0, @y-axis: 1px, @blur: 2px, @alpha: rgba(0, 0, 0, 0.1)) {
+	-webkit-box-shadow: @x-axis @y-axis @blur @alpha;
+	-moz-box-shadow: @x-axis @y-axis @blur rgba(0, 0, 0, @alpha);
+		box-shadow: @x-axis @y-axis @blur rgba(0, 0, 0, @alpha);
+}
+
+.inner-shadow(@horizontal:0, @vertical:1px, @blur:2px, @alpha: 0.4) {
+	-webkit-box-shadow: inset @horizontal @vertical @blur rgba(0, 0, 0, @alpha);
+	-moz-box-shadow: inset @horizontal @vertical @blur rgba(0, 0, 0, @alpha);
+		box-shadow: inset @horizontal @vertical @blur rgba(0, 0, 0, @alpha);
+}
+
+.bw-gradient(@color: #F5F5F5, @start: 0, @stop: 255) {
+	background: @color;
+	background: -webkit-gradient(linear,
+	                           left bottom,
+	                           left top,
+	                           color-stop(0, rgb(@start,@start,@start)),
+	                           color-stop(1, rgb(@stop,@stop,@stop)));
+	background: -ms-linear-gradient(bottom,
+	                              rgb(@start,@start,@start) 0%,
+	                              rgb(@stop,@stop,@stop) 100%);
+	background: -moz-linear-gradient(center bottom,
+	                               rgb(@start,@start,@start) 0%,
+	                               rgb(@stop,@stop,@stop) 100%);
+	background: -o-linear-gradient(rgb(@stop,@stop,@stop),
+	                             rgb(@start,@start,@start));
+	filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",rgb(@stop,@stop,@stop),rgb(@start,@start,@start)));
+}
+
+.background-clip(@argument: padding-box) {
+  -moz-background-clip: @argument;
+  -webkit-background-clip: @argument;
+  background-clip: @argument;
+}
+
+.opacity(@opacity: 0.5) {
+	-moz-opacity: @opacity;
+	-khtml-opacity: @opacity;
+	-webkit-opacity: @opacity;
+	opacity: @opacity;
+	-ms-filter: ~"progid:DXImageTransform.Microsoft.Alpha(opacity=@{opperc})";
+	filter: ~"alpha(opacity=@{opperc})";
+}
+
+.user-select(@argument: none) {
+	-webkit-user-select: @argument;
+	-moz-user-select: @argument;
+	-ms-user-select: @argument;
+		user-select: @argument;
+}
+
+.box-sizing(@sizing: border-box) {
+	-ms-box-sizing: @sizing;
+	-moz-box-sizing: @sizing;
+	-webkit-box-sizing: @sizing;
+		box-sizing: @sizing;
+}
+
+.transition(@name, @duration:0.5s, @ease:ease-out) {
+  -webkit-transition: @name @duration @ease;
+  -moz-transition: @name @duration @ease;
+  -o-transition: @name @duration @ease;
+  transition: @name @duration @ease;
+}
+
+.scale(@ratio:1.5){
+	.transform(scale(@ratio));
+}
+
+.rotation(@deg:5deg){
+	.transform(rotate(@deg));
+}
+
+.pseudo(@position,@width,@height) {
+	content: '';
+	display: block;
+	position: @position;
+	width: @width;
+	height: @height;
+	z-index: 10;
+}
+
+.set_bg(@img-name, @position, @repeat, @type: 'png') {
+	background-image: url('../img/@{img-name}.@{type}');
+	background-position: @position;
+	background-repeat: @repeat;
+}
+
+.fa(){
+	font: normal normal normal 14px/1 FontAwesome;
+	font-size: inherit;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	transform: translate(0, 0);
+}
+
+.antialiased() {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.absoluted() {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;	
+}
+
+.clearing() {
+	content: '';
+	clear: both;
+	display: block;
+}

@@ -1,0 +1,449 @@
+/* Normal desktop :992px. */
+@media (min-width: 992px) and (max-width: 1169px) {
+.teacher_content {
+  padding: 25px 10px 0;
+}
+.home-2 .teacher_content {
+  padding: 35px 10px 0;
+}
+.menu ul li > a {
+  font-size: 13px;
+  padding: 16px 14px;
+}
+.footer_top_left span, .footer_top_right span {
+  font-size: 11px;
+}
+.footer_top_right {
+  margin-top: 11px;
+}
+/*mobile menu*/
+.mobile_memu_area{
+	display:none;
+}
+.left_sidet1  {
+  margin-left: 10%;
+}
+.slide_title {
+  font-size: 20px;
+}
+.nav_style li a {
+  font-size: 11px;
+  padding: 20px 0 0 41px;
+}
+.nav_area{
+	display:block;
+}
+.nivo-directionNav a {
+  top: 47%;
+}
+.home-2 .search-box input {
+  width: 667px;
+}
+.home-4 .teacher_content {
+  padding: 9px 26px;
+}
+.home-2 .courses_content {
+  padding-bottom:0px;
+}
+.home-2 .news_content {
+  padding: 15px 5px;
+}
+}
+/* Tablet desktop :768px. */
+@media (min-width: 768px) and (max-width: 991px) {
+.left_sidet1 {
+  margin-left: 7%;
+  margin-top: 6%;
+}
+.cap-title h1 {
+  font-size: 55px;
+}
+.home-2.priging_area {
+  background: rgba(0, 0, 0, 0) linear-gradient(to bottom, #ffffff 0%, #ffffff 47%, #2d2d2d 46%, #2d2d2d 100%) repeat scroll 0 0;
+}	
+.single_teacher_item {
+  float: left;
+  position: relative;
+  width: 50%;
+}
+.priging_item {
+  margin-bottom: 30px;
+}
+.share-item {
+  margin-bottom: 30px;
+}
+.read_more.bmore {
+  margin-top: 30px;
+}
+.footer_top_left {
+  text-align: center;
+}
+.footer_top_right {
+  text-align: center;
+}
+.news_content.news_buletin_pra > h1 {
+  font-size: 22px;
+  margin: 10px 0 0;
+}
+.blog-title {
+  font-size: 16px;
+}
+.blog-title > span {
+  font-size: 25px;
+}
+.module-title > span {
+  font-size: 51px;
+}
+.pdr0{
+  padding-right: 15px;
+}
+.pdrl {
+  padding-left: 15px;
+}
+.home-2 .courses_thumb {
+  width: 100%;
+}
+.home-2 .courses_content {
+  width: 100%;
+}
+.home-3.priging_area {
+padding-bottom:60px;
+  background-image: url("img/home3/campaign.png"), linear-gradient(to bottom, rgb(247,247,247) 0%, rgb(247,247,247) 50%, #605ca8 50%, #605ca8 100%);
+}
+.home-3 .priging_content h2 {
+  color: #000;
+}
+.mobile_memu_area{
+	display:block;
+}
+.nav_area{
+	display:none;
+}
+.nav_style li {
+  display: inline-block;
+  position: relative;
+  width: 18.7%;
+}
+.nav_style li a {
+  color: #fff;
+  display: inline-block;
+  font-size: 13px;
+  height: 75px;
+  padding: 10px 0 0 41px;
+}
+.testimonial_text {
+  width: 100%;
+}
+.test_thumb {
+  width: 100%;
+}
+.slide_text {
+  padding: 16px 0 48px 30px;
+}
+.slide_title {
+  font-size: 18px;
+}
+.slide_ptext {
+  font-size: 17px;
+}
+.test_thumb > img {
+  display: block;
+  margin: auto;
+  width: 42%;
+}
+.home-3.priging_area {
+  background-image: url("img/home3/campaign.png"), linear-gradient(to bottom, rgb(247, 247, 247) 0%, rgb(247, 247, 247) 59%, #605ca8 59%, #605ca8 100%);
+}
+.home-4 .slide_text {
+  padding: 13px 0 48px 30px;
+}
+.slider-wrap.home-1-slider {
+  height: auto;
+}
+.nivo-directionNav a {
+  top: 46%;
+}
+ .single_teacher_item {
+  width:50%;
+}
+.module-title > span {
+	margin-left: -2px;
+}
+.single_teacher_item:hover .teacher_content {
+  transform: scale(1);
+}
+.teacher_content {
+  padding: 84px 50px;
+}
+.offer-title {
+  font-size: 25px;
+}
+.offer-title > span {
+  font-size: 46px;
+}
+.home-4 .teacher_content {
+  padding: 80px 40px;
+}
+}
+
+ 
+/* small mobile :320px. */
+@media (max-width: 767px) {
+.container {width:300px}
+/*mobile menu*/
+.mobile_memu_area{
+	display:block;
+}
+.nav_area{
+	display:none;
+}
+.logo > a {
+  display: block;
+  text-align: center;
+  padding-bottom:20px;
+}
+.pull-right {
+  float: none;
+}
+.pull-right {
+  float: left !important;
+}
+.form.pull-right {
+  margin-left: 45px;
+}
+.phone_address p {
+  margin: 22px 0 0;
+}
+.module-title > span {
+  font-size: 35px;
+}
+.media-box {
+  float: none;
+  margin-top: 13%;
+}
+.offer-title {
+  font-size: 21px;
+}
+.offer-title > span {
+  font-size: 22px;
+}
+ .single_teacher_item {
+  width:100%;
+}
+.courses_thumb_text {
+  top: 45%;
+}
+.courses_thumb img {
+  width: 100%;
+}
+.priging_item {
+  margin-bottom: 30px;
+}
+.learnmore {
+  margin: 42px 0 0;
+  text-align: left;
+}
+.share-item {
+  margin-bottom: 30px;
+}
+.footer_top_left span, .footer_top_right span {
+  display: block;
+  text-align: center;
+}
+.footer_top_right {
+  margin-top: 15px;
+  text-align: center;
+}
+.footer_top_left > img {
+  display: block;
+  margin: auto;
+  text-align: center;
+}
+.phone_address span {
+  font-size: 12px;
+  margin-left: 8px;
+}
+.page-title {
+  font-size: 31px;
+  margin-bottom: 0;
+  padding: 10px;
+}
+.print > ul {
+  top: -10px;
+}
+.print.prin_s > ul {
+  top: -34px;
+}
+.news_single_thumb {
+  max-width: 100%;
+}
+.news_content.news_buletin_pra > h1 {
+  font-size: 14px;
+  margin: 10px 0 0;
+}
+.blog-title {
+  font-size: 16px;
+}
+.blog-title > span {
+  font-size: 25px;
+}
+.fnone {
+  text-align: left;
+}
+.pdr0{
+  padding-right: 15px;
+}
+.pdrl {
+  padding-left: 15px;
+}
+.banar_icon {
+  width: 25%;
+}
+.footer_bottom_area p {
+  text-align: center;
+}
+.home-2 .courses_thumb {
+  width: 100%;
+}
+.home-2 .courses_content {
+  width: 100%;
+}
+.home-3.priging_area {
+padding-bottom:60px;
+  background-image: url("img/home3/campaign.png"), linear-gradient(to bottom, rgb(247,247,247) 0%, rgb(247,247,247) 50%, #605ca8 50%, #605ca8 100%);
+}
+.home-3 .priging_content h2 {
+  color: #000;
+}
+.article-title {
+  font-size: 20px;
+}
+.readmore.read3.yellow {
+  font-size: 20px;
+}
+.slide_thumb3 {
+  padding: 12px;
+}
+.slide_thumb3 h1 {
+  font-size: 20px;
+}
+.slide_title {
+  font-size: 20px;
+}
+.home-2.priging_area {
+  background: rgba(0, 0, 0, 0) linear-gradient(to bottom, #ffffff 0%, #ffffff 47%, #2d2d2d 46%, #2d2d2d 100%) repeat scroll 0 0;
+}
+.home-2 .teacher_content {
+  padding: 33px 18px;
+}
+.left_sidet1 {
+  margin-left: 8%;
+  margin-top: 7%;
+}
+.cap-title h1 {
+  font-size: 18px;
+}
+.cap-dec h2 {
+  font-size: 13px;
+}
+.testimonial_text_inner {
+  padding: 22px 0 5px 35px;
+}
+.testimonial_text {
+  width: 100%;
+}
+.test_thumb {
+  width: 100%;
+}
+.nav_style li {
+  width: 100%;
+}
+.teacher_thumb > img {
+  width: 100%;
+}
+.test_thumb > img {
+  display: block;
+  margin: auto;
+  width: 42%;
+}
+.home-3.priging_area {
+  background-image: url("img/home3/campaign.png"), linear-gradient(to bottom, rgb(247, 247, 247) 0%, rgb(247, 247, 247) 69%, #605ca8 69%, #605ca8 100%);
+  padding-bottom: 60px;
+}
+.i_box.input_box40 input {
+  width: 100%;
+}
+.slider-wrap.home-1-slider {
+  height: auto;
+}
+.single_teacher_item:hover .teacher_content {
+  transform: scale(1);
+}
+.module-title > span {
+	margin-left: 0px;
+}
+.teacher_content {
+  padding: 54px 50px;
+}
+.home-4 .module-title > span {
+  font-size: 30px;
+}
+.blogss-title {
+  font-size: 37px;
+}
+.slide_title {
+  margin-top: 9px;
+}
+.home-4 .slide_title {
+  margin-top: 0px;
+}
+}
+ 
+/* Large Mobile :480px. */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+.container {width:450px}
+.social_icon.pull-right > p {
+  margin-left: 140px;
+}
+.home-2.priging_area {
+  background: rgba(0, 0, 0, 0) linear-gradient(to bottom, #ffffff 0%, #ffffff 37%, #2d2d2d 37%, #2d2d2d 100%) repeat scroll 0 0;
+}
+.page-title {
+  font-size: 31px;
+  margin-bottom: 0;
+  padding: 40px 0;
+}
+.phone_address span {
+  font-size: 10px;
+}
+.left_sidet1 {
+  margin-left: 8%;
+  margin-top: 7%;
+}
+.cap-title h1 {
+  font-size: 30px;
+}
+.cap-dec h2 {
+  font-size: 23px;
+}
+.news_thumb img {
+  width: 100%;
+}
+.home-2 .teacher_content {
+  padding: 110px 43px 43px;
+}
+.home-4 .teacher_content {
+  padding: 118px 40px;
+}
+.nav_style li {
+  width: 50%;
+}
+.teacher_content {
+  padding: 134px 50px;
+}
+.home-3.priging_area {
+  background-image: url("img/home3/campaign.png"), linear-gradient(to bottom, rgb(247, 247, 247) 0%, rgb(247, 247, 247) 75%, #605ca8 75%, #605ca8 100%);
+  padding-bottom: 60px;
+}
+}
+ 

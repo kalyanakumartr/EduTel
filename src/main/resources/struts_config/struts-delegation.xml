@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="delegation" namespace="" extends="default">
+		<action name="delegationAction" class="delegateAction" method="getDelegationUser">
+			<result name="Success">/jsp/common/delegation.jsp</result>
+		</action>
+		<action name="submitDelegationAction" class="delegateAction"
+			method="submitDelegationUser">
+			<result name="Success" type="redirect">/delegationAction.do</result>
+			<result name="Failure">/jsp/common/delegation.jsp</result>
+		</action>
+		<action name="revokeDelegationAction" class="delegateAction"
+			method="revokeDelegationUser">
+			<result name="Success" type="redirect">/delegationAction.do</result>
+			<result name="Failure">/jsp/common/delegation.jsp</result>
+		</action>
+		<action name="delegateApproverSearchAction" class="approverLookupAction"
+			method="approverSearch">
+			<result name="Success">/jsp/common/delegate_approver_search.jsp</result>
+			<result name="SearchResults">/jsp/common/delegate_approver_search_list.jsp
+			</result>
+		</action>
+	</package>
+</struts>

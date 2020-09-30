@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="propertyBo"
+		class="com.hbs.edutel.util.common.property.bo.impl.PropertyBoImpl">
+		<property name="propertyDAO" ref="propertyDAO"></property>
+	</bean>
+	<bean id="propertyDAO"
+		class="com.hbs.edutel.util.common.property.dao.impl.PropertyDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="constantBo"
+		class="com.hbs.edutel.util.common.consts.bo.impl.ConstantBoImpl">
+		<property name="constantDAO" ref="constantDAO"></property>
+	</bean>
+	<bean id="constantDAO"
+		class="com.hbs.edutel.util.common.consts.dao.impl.ConstantDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="rolesFactory" class="com.hbs.edutel.util.common.factory.RolesFactory"
+		factory-method="getInstance">
+		<property name="constantBo" ref="constantBo" />
+	</bean>
+	<bean id="propFactory" class="com.hbs.edutel.util.common.property.factory.PropFactory"
+		factory-method="getInstance">
+		<property name="propertyBo" ref="propertyBo" />
+	</bean>
+	<bean id="userBo" class="com.hbs.edutel.common.bo.impl.UserBoImpl">
+		<property name="userDAO" ref="userDAO"></property>
+		<property name="keyGenDAO" ref="keyGenDAO"></property>
+	</bean>
+	<bean id="userDAO" class="com.hbs.edutel.common.dao.impl.UserDAOImpl">
+		<property name="propFactory" ref="propFactory" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="adminBo" class="com.hbs.edutel.common.bo.impl.AdminBoImpl">
+		<property name="adminDAO" ref="adminDAO"></property>
+		<property name="userDAO" ref="userDAO"></property>
+		<property name="keyGenDAO" ref="keyGenDAO"></property>
+	</bean>
+	<bean id="adminDAO" class="com.hbs.edutel.common.dao.impl.AdminDAOImpl">
+		<property name="propFactory" ref="propFactory" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="menuBo" class="com.hbs.edutel.menucomponent.bo.impl.MenuBoImpl">
+		<property name="menuDAO" ref="menuDAO"></property>
+	</bean>
+	<bean id="menuDAO" class="com.hbs.edutel.menucomponent.dao.impl.MenuDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="keyGenBo" class="com.hbs.edutel.bo.impl.SerialKeyGenBoImpl">
+		<property name="keyGenDAO" ref="keyGenDAO"></property>
+	</bean>
+	<bean id="keyGenDAO" class="com.hbs.edutel.dao.impl.SerialKeyGenDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="queryDiscussionBo" class="com.hbs.edutel.bo.impl.QueryDiscussionBoImpl">
+		<property name="queryDiscussionDAO" ref="queryDiscussionDAO"></property>
+	</bean>
+	<bean id="queryDiscussionDAO" class="com.hbs.edutel.dao.impl.QueryDiscussionDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+</beans>

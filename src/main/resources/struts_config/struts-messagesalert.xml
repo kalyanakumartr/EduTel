@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="messages" namespace="" extends="default">
+		<!-- Login Authentication action -->
+		<result-types>
+			<result-type name="json" class="org.apache.struts2.json.JSONResult" />
+		</result-types>
+		<action name="messagePreCreate" class="messagesAction" method="messagePreCreate">
+			<result name="Success">/jsp/edutel/message_generate.jsp</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+		<action name="messagePreUpdate" class="messagesAction" method="messagePreUpdate">
+			<result name="Success">/jsp/edutel/message_generate.jsp</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+		<action name="messageCreate" class="messagesAction" method="messageCreate">
+			<result name="Success">/jsp/edutel/message_generate.jsp</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+		<action name="messagesListByJson" class="messagesAction"
+			method="messagesListByJson">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+		<action name="loadBeanFieldList" class="messagesAction"
+			method="loadBeanFieldList">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+		<action name="viewMessageForUser" class="messagesAction"
+			method="viewMessageForUser">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+		<action name="deleteMessages" class="messagesAction"
+			method="deleteMessages">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+		<action name="blockUnlockMessages" class="messagesAction" 
+			method="blockUnlockMessages">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+		<action name="messageUserMappingPreCreate" class="messagesUserAction" method="messageUserMappingPreCreate">
+			<result name="Success">/jsp/edutel/message_user_mapping_search.jsp</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+		<action name="messageUserMappingCreate" class="messagesUserAction" method="messageUserMappingCreate">
+		<result name="Success" type="redirect">messageUserMappingPreCreate.do</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+		<action name="usersForMessageListByJson" class="messagesUserAction"
+			method="usersForMessageListByJson">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+		<action name="messagesUsersListByJson" class="messagesUserAction"
+			method="messagesUsersListByJson">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+		<action name="messagesUsersGroup" class="messagesUserAction" method="messagesUsersGroup">
+			<result name="Success">/jsp/edutel/message_user_group.jsp</result>
+			<result name="AccessDenied">/jsp/admin/access_denied.jsp</result>
+		</action>
+		<action name="viewUserGroup" class="messagesUserAction"
+			method="viewUserGroup">
+			<result name="Success" type="json" />
+			<result name="Failure" type="json" />
+		</action>
+	</package>
+</struts>

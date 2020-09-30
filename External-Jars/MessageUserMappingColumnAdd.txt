@@ -1,0 +1,4 @@
+ALTER TABLE `edutel`.`messagesusermapping` ADD COLUMN `dataObject` BLOB NULL DEFAULT NULL  AFTER `retryCount` ;
+
+INSERT INTO `edutel`.`constproperty` (`enumKey`, `constKey`, `constValue`, `constGroup`, `constActive`) VALUES ('Message_Tracking_Class', 'Message_Tracking_Class', 'Users,SerialKeyGenerate', 'EGeneral', 1);
+
