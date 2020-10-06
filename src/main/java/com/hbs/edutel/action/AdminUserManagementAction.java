@@ -33,7 +33,6 @@ import com.hbs.edutel.util.common.ConstEnumUtil.EKeyGen;
 import com.hbs.edutel.util.common.ConstEnumUtil.EPage;
 import com.hbs.edutel.util.common.ConstEnumUtil.ERole;
 import com.hbs.edutel.util.common.ConstEnumUtil.ESession;
-import com.hbs.edutel.util.common.ConstEnumUtil.EWrap;
 import com.hbs.edutel.util.common.factory.UsersFactory;
 import com.hbs.edutel.util.common.image.ImageDataVO;
 import com.hbs.edutel.util.common.property.factory.PropFactory;
@@ -423,6 +422,7 @@ public class AdminUserManagementAction extends AdminUserManagementActionData
 					{
 						caLogger.info(Create_User, "User Registration", EPage.Success.name(), this.getClass().getName(), sessionUser.getUsEmployeeId());
 						addActionError(user.getUsUsersType() + " User Information has been saved Successfully. Last saved User : " + user.getUsUserName());
+						createEduTel2020User();
 						return EPage.Success.name();
 					}
 					else
@@ -446,6 +446,7 @@ public class AdminUserManagementAction extends AdminUserManagementActionData
 				{
 					caLogger.info(Create_User, "User Registration By " + EPage.Student.name(), EPage.Success.name(), this.getClass().getName(), user.getUsEmployeeId());
 					addActionError("Your User Account has been created Successfully.\nCheck your registered email for login credentials.");
+					createEduTel2020User();
 					return EPage.Student.name();
 
 				}
@@ -456,9 +457,6 @@ public class AdminUserManagementAction extends AdminUserManagementActionData
 					return EPage.Student.name();
 				}
 			}
-
-			createEduTel2020User();
-
 		}
 		catch (CustomException customExcep)
 		{
@@ -471,48 +469,7 @@ public class AdminUserManagementAction extends AdminUserManagementActionData
 			return EPage.Failure.name();
 	}
 
-	private void createEduTel2020User()
-	{
-		// Add User In New EduTel 2020 Starts
-		try
-		{
-			String accessToken = (String) request.getSession().getAttribute(OAUTH_TOKEN);
-			HttpPost post = new HttpPost(V7EDUTEL);
-			post.addHeader("Authorization", "Bearer " + accessToken);
-			post.addHeader("Content-Type", "application/json");
-
-			StringBuffer userMediaBean = new StringBuffer();
-			userMediaBean.append(join("emailId", user.getUsEmail()) + COMMA_SPACE);
-			userMediaBean.append(join("mobileNo", user.getUsMobileNo()) + COMMA_SPACE);
-			userMediaBean.append(join("mediaType", "Primary"));
-			
-			StringBuffer formUserBean = new StringBuffer();
-			formUserBean.append(join("userName", user.getUsUserName()) + COMMA_SPACE);
-			formUserBean.append(join("userId", user.getUsUserID()) + COMMA_SPACE);
-
-			if (CommonValidator.isEqual(user.getUsUsersType(), EPage.Student.name()))
-				formUserBean.append(join("userType", "Consumer") + COMMA_SPACE);
-			else
-				formUserBean.append(join("userType", "Employee") + COMMA_SPACE);
-			
-			formUserBean.append(join("mediaList", "[{" + userMediaBean.toString() + "}]" ));
-			
-			System.out.println(">>>>>>>>>>>>>>formUserBean>>>>>>>>>>>>>>>>>\n\n{" + formUserBean.toString() + "}");
-			
-		    StringEntity entity = new StringEntity("{" + formUserBean.toString() + "}");
-			post.setEntity(entity);
-
-			CloseableHttpClient httpClient = HttpClientBuilder.create().build();
-			CloseableHttpResponse response = httpClient.execute(post);
-
-			System.out.println(">>>>>>>>>>>>>>CloseableHttpResponse>>>>>>>>>>>>>>>>>" + response.toString());
-		}
-		catch (Exception e)
-		{
-			// TODO: handle exception
-		}
-		// Add User In New EduTel 2020 Ends
-	}
+	
 
 	public String userSearch()
 	{
@@ -749,9 +706,53 @@ public class AdminUserManagementAction extends AdminUserManagementActionData
 
 	private String join(String key, String value)
 	{
-		if (value.startsWith("{"))
-			return EWrap.Quote.enclose(key) + " : " + value;
+		if (value.startsWith("{") || value.startsWith("[{"))
+			return "\"" + key + "\" : " + value;
 		else
-			return EWrap.Quote.enclose(key) + " : " + EWrap.Quote.enclose(value);
+			return "\"" + key + "\" : \"" + value +"\"";
+	}
+	
+	private void createEduTel2020User()
+	{
+		// Add User In New EduTel 2020 Starts
+		try
+		{
+			String accessToken = (String) request.getSession().getAttribute(OAUTH_TOKEN);
+			HttpPost post = new HttpPost(V7EDUTEL + "/addEduTelUser");
+			post.setHeader("Authorization", "Bearer " + accessToken);
+			post.setHeader("Content-Type", "application/json");
+			post.setHeader("Accept", "application/json");
+			
+			StringBuffer userMediaBean = new StringBuffer();
+			userMediaBean.append(join("emailId", user.getUsEmail()) + COMMA_SPACE);
+			userMediaBean.append(join("mobileNo", user.getUsMobileNo()) );
+			
+			StringBuffer formUserBean = new StringBuffer();
+			formUserBean.append(join("userName", user.getUsUserName()) + COMMA_SPACE);
+			formUserBean.append(join("userId", user.getUsUserID()) + COMMA_SPACE);
+			formUserBean.append(join("country", "{" + join("country", "Asia/Calcutta") + "}" ) + COMMA_SPACE );
+			
+			if (CommonValidator.isEqual(user.getUsUsersType(), EPage.Student.name()))
+				formUserBean.append(join("userType", "Consumer") + COMMA_SPACE);
+			else
+				formUserBean.append(join("userType", "Employee") + COMMA_SPACE);
+			
+			formUserBean.append(join("mediaList", "[{" + userMediaBean.toString() + "}]" ));
+			
+			String finalJson = join("formUser", "{" + formUserBean.toString() + "}" );
+			
+		    StringEntity entity = new StringEntity("{" + finalJson + "}");
+			post.setEntity(entity);
+
+			CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+			CloseableHttpResponse response = httpClient.execute(post);
+			
+			System.out.println(">>>>>>>>>>>>>>CloseableHttpResponse>>>>>>>>>>>>>>>>> " + response.getStatusLine().getStatusCode());
+		}
+		catch (Exception e)
+		{
+			// TODO: handle exception
+		}
+		// Add User In New EduTel 2020 Ends
 	}
 }
