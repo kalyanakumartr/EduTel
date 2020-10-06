@@ -189,10 +189,10 @@ h2,.h2 {
 		<div class="container whiteBg clearfix">
 			<div class="latest-title">
 				<s:if test="#loginOption=='Employee'">
-					<p>Login Form e</p>
+					<p>Login Form </p>
 				</s:if>
 				<s:else>
-					<p> Login Form s</p>
+					<p> Login Form </p>
 				</s:else>
 			</div>
 			<div id="signupwrapper" align="center">
