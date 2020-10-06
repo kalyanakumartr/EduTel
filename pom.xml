@@ -177,6 +177,7 @@
 			<version>3.18.0-GA</version>
 		</dependency>
 
+
 		<!-- Hibernate core library dependency end -->
 		<!-- dependency> <groupId>servletapi</groupId> <artifactId>servletapi</artifactId> 
 			<version>2.4</version> </dependency -->
@@ -294,6 +295,13 @@
 			<artifactId>gson</artifactId>
 			<version>1.7.1</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.5.12</version>
+		</dependency>
+
 	</dependencies>
 	<properties>
 		<drools.version>5.5.0.Final</drools.version>

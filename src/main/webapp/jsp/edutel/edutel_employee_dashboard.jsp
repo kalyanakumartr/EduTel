@@ -75,6 +75,11 @@
 				+ oeQuestionId + "&uid=" + Math.random();
 		window.location.href = url;
 	}
+
+	function openVideoSearch()
+	{
+		window.location.href = "${preSearchVideoURL}";
+	}
 </script>
 
 

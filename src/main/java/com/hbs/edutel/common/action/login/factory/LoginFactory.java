@@ -1,5 +1,19 @@
 package com.hbs.edutel.common.action.login.factory;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
+
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.hbs.edutel.common.action.login.LoginAction;
 import com.hbs.edutel.common.exception.CustomException;
 import com.hbs.edutel.common.model.interfaces.IUsers;
@@ -10,10 +24,13 @@ import com.hbs.edutel.util.common.ConstEnumUtil.EPage;
 import com.hbs.edutel.util.common.ConstEnumUtil.ESession;
 import com.hbs.edutel.util.common.consts.ConstInterface;
 import com.hbs.edutel.util.common.image.factory.ImageDownloadFactory;
+import com.hbs.edutel.util.common.property.factory.PropFactory;
 
 public class LoginFactory implements ConstInterface
 {
-	private static final long	serialVersionUID	= 9000746948049684702L;
+	private static final String	CORE_OAUTH_URL	= PropFactory.getInstance().getProperty(EGeneral.OAuthURL);
+
+	private static final long	serialVersionUID			= 9000746948049684702L;
 
 	public String authenticate(LoginAction loginVo) throws CustomException
 	{
@@ -43,12 +60,17 @@ public class LoginFactory implements ConstInterface
 		if (result.equals(EPage.Success.name()))
 		{
 			result = new LoginAttrFactory().assignLoginUserAttributes(loginVo);
+
+			loginVo.getRequest().getSession().setAttribute(OAUTH_TOKEN, getExternalOAuthToken(loginVo));
 		}
 		else if (result.equals(EPage.RemindQuestion.name()))
 		{
 			result = new LoginAttrFactory().assignLoginUserAttributes(loginVo);
+			loginVo.getRequest().getSession().setAttribute(OAUTH_TOKEN, getExternalOAuthToken(loginVo));
+
 			if (result.equals(EPage.Success.name()))
 			{
+
 				result = EPage.RemindQuestion.name();
 			}
 		}
@@ -77,6 +99,7 @@ public class LoginFactory implements ConstInterface
 			if (user != null)
 			{
 				loginVo.getUserBo().userLogAtLogOut(user);
+				loginVo.getRequest().getSession(false).removeAttribute(OAUTH_TOKEN);
 				loginVo.getRequest().getSession(false).removeAttribute(ESession.UserObject.getAttribute());
 				loginVo.getRequest().getSession(false).removeAttribute(ESession.OriginalUserId.getAttribute());
 				loginVo.getRequest().getSession(false).removeAttribute(ESession.OriginalUserName.getAttribute());
@@ -135,5 +158,39 @@ public class LoginFactory implements ConstInterface
 			}
 		}
 		return result;
+	}
+
+	public String getExternalOAuthToken(LoginAction loginVo)
+	{
+
+		try
+		{
+			HttpPost post = new HttpPost(CORE_OAUTH_URL + "/oauth/token");
+			post.addHeader("Authorization", "Basic SEJTQVBQTElDQVRJT046S2FsYW1AMTUxMDMx");
+			post.addHeader("Content-Type", "application/x-www-form-urlencoded");
+
+			// add request parameters or form parameters
+			List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
+			urlParameters.add(new BasicNameValuePair("username", loginVo.getUser().getUsEmail()));
+			urlParameters.add(new BasicNameValuePair("password", "Test@1234")); // We are hard code
+																				// to avoid password
+																				// change work
+			urlParameters.add(new BasicNameValuePair("grant_type", "password"));
+
+			post.setEntity(new UrlEncodedFormEntity(urlParameters));
+
+			CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+			CloseableHttpResponse response = httpClient.execute(post);
+
+			JsonObject jsonObject = new JsonParser().parse(EntityUtils.toString(response.getEntity())).getAsJsonObject();
+
+			return jsonObject.get("access_token").getAsString();
+
+		}
+		catch (Exception e)
+		{
+			// TODO: handle exception
+		}
+		return null;
 	}
 }

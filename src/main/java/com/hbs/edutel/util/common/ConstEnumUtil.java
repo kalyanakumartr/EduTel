@@ -120,7 +120,7 @@ public class ConstEnumUtil
 
 	public enum EGeneral implements EnumInterface
 	{
-		approver_role_name, Authentication_Type, delegation_original_user, delegation_switch_process, EduTel_Mail, EduTel_Mobile, EduTel_Phone, MCQ_Duration_Per_Question, project_authentication_employee, project_authentication_franchisee, project_authentication_student, Project_Logo, Project_Name, Project_Title, session_cookie_domain, User_Login_Column_Name, User_Selection_Column_Name, users_reminder_queries_questions, Message_Tracking_Class
+		approver_role_name, Authentication_Type, delegation_original_user, delegation_switch_process, EduTel_Mail, EduTel_Mobile, EduTel_Phone, MCQ_Duration_Per_Question, project_authentication_employee, project_authentication_franchisee, project_authentication_student, Project_Logo, Project_Name, Project_Title, session_cookie_domain, User_Login_Column_Name, User_Selection_Column_Name, users_reminder_queries_questions, Message_Tracking_Class,VideoSiteURL, OAuthURL
 	}
 
 	public enum EGenerate implements EnumInterface

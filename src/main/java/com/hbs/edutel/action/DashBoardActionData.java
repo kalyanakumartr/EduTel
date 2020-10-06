@@ -38,6 +38,9 @@ public abstract class DashBoardActionData extends EduTelCommonData implements ID
 	protected List<OnlineTestSeriesExamQuestionAnswerMapping>	oeTestSeriesValidatedAnswersNotificationList	= new ArrayList<OnlineTestSeriesExamQuestionAnswerMapping>(0);
 	protected List<OnlineTestSeriesExamQuestionAnswerMapping>	oeTestSeriesUnvalidatedAnswersList				= new ArrayList<OnlineTestSeriesExamQuestionAnswerMapping>(0);
 	protected String											marqueeMsg;
+	protected String											accessToken;
+	protected String											preSearchVideoURL;
+	protected String											endUserVideoURL;
 	List<InformationAlerts>										informationAlertList							= new ArrayList<InformationAlerts>(0);
 
 	public DashBoardActionData()
@@ -255,4 +258,35 @@ public abstract class DashBoardActionData extends EduTelCommonData implements ID
 		this.informationAlertList = informationAlertList;
 	}
 
+	public String getAccessToken()
+	{
+		return accessToken;
+	}
+
+	public void setAccessToken(String accessToken)
+	{
+		this.accessToken = accessToken;
+	}
+
+	public String getEndUserVideoURL()
+	{
+		return endUserVideoURL;
+	}
+
+	public void setEndUserVideoURL(String endUserVideoURL)
+	{
+		this.endUserVideoURL = endUserVideoURL;
+	}
+
+	public String getPreSearchVideoURL()
+	{
+		return preSearchVideoURL;
+	}
+
+	public void setPreSearchVideoURL(String preSearchVideoURL)
+	{
+		this.preSearchVideoURL = preSearchVideoURL;
+	}
+
+ 
 }

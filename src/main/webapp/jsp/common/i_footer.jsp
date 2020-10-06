@@ -95,6 +95,14 @@ span.copyright {
 		if (footerTop < docHeight) {
 			$('#footerDiv').css('margin-top', (docHeight - footerTop) + 'px');
 		}
+
+		// Check browser support
+		if (typeof (Storage) !== "undefined") {
+			// Store
+			localStorage.setItem("accessToken", "${accessToken}");
+		} else {
+			alert("Sorry, your browser does not support. please use chrome browser...");
+		}
 	}
 </script>
 <div class="footer-down" id="footerDiv" align="center"

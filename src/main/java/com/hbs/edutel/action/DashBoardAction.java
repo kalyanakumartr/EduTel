@@ -6,6 +6,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import org.eclipse.core.internal.preferences.Base64;
+
 import com.hbs.edutel.common.action.CommonValidator;
 import com.hbs.edutel.common.model.interfaces.IUserLog;
 import com.hbs.edutel.common.model.interfaces.IUsers;
@@ -18,9 +20,11 @@ import com.hbs.edutel.model.OnlineExamQuestion;
 import com.hbs.edutel.model.OnlineTestSeriesExamQuestionAnswerMapping;
 import com.hbs.edutel.model.School;
 import com.hbs.edutel.util.JQueryDataTableParam;
+import com.hbs.edutel.util.common.ConstEnumUtil.EGeneral;
 import com.hbs.edutel.util.common.ConstEnumUtil.EPage;
 import com.hbs.edutel.util.common.ConstEnumUtil.ESession;
 import com.hbs.edutel.util.common.image.ImageDataVO;
+import com.hbs.edutel.util.common.property.factory.PropFactory;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -29,7 +33,8 @@ public class DashBoardAction extends DashBoardActionData
 {
 	private static final long	serialVersionUID	= 1L;
 	private CustomAuditLogger	caLogger			= new CustomAuditLogger(this.getClass());
-
+	private static final String	V7EDUTEL	= PropFactory.getInstance().getProperty(EGeneral.VideoSiteURL);
+	
 	public String getDashBoardInformation()
 	{
 		user = (IUsers) request.getSession().getAttribute(ESession.UserObject.getAttribute());
@@ -38,6 +43,14 @@ public class DashBoardAction extends DashBoardActionData
 		{
 			if (CommonValidator.isNotNullNotEmpty(user))
 			{
+				System.out.println(">>>>>>>>>>>>>>>>VideoSiteURL>>>>>>>>>>>>>>>>>>> " + V7EDUTEL);
+				accessToken = (String) request.getSession().getAttribute(OAUTH_TOKEN);
+				String accessTokenEncrypt = new String(Base64.encode(accessToken.getBytes()));
+				
+				String subjects = user.isEmployee() ? "/A" : user.getUsGroupName().indexOf("Computer") > 0 ? "/C" : "/B" ;
+					
+				preSearchVideoURL = V7EDUTEL + "/preSearchVideo/" + accessTokenEncrypt ;
+				endUserVideoURL = V7EDUTEL + "/viewEndUserVideo/" + accessTokenEncrypt + subjects + (user.isStudent() ? "/S" : "/A");
 				String msgOption = request.getParameter("p");
 
 				ImageDataVO imVo = new ImageDataVO();
@@ -116,6 +129,7 @@ public class DashBoardAction extends DashBoardActionData
 		}
 		catch (Exception excep)
 		{
+			excep.printStackTrace();
 			caLogger.error(Audit_Logging_Event_StartEntry, "getDashBoardInformation", EPage.Failure.name(), excep.getMessage(), "");
 		}
 		return EPage.AccessDenied.name();

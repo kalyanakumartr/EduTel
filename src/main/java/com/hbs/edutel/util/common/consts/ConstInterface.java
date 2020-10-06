@@ -32,6 +32,7 @@ public interface ConstInterface extends Serializable
 	public String			SELECT_DISTINCT							= " Select Distinct ";
 	public String			UTF_8									= "UTF-8";
 	public String			LASTLOGINID								= "lastLoginId";
+	public String			OAUTH_TOKEN								= "OAUTH_TOKEN";
 	public String			DATE_FORMAT_DD_MM_YYYY_HH_MM			= "dd-MM-yyyy HH:mm";
 	public String			DATE_FORMAT_DD_MMM_YYYY					= "dd-MMM-yyyy";
 	public String			DATE_FORMAT_DD_MMM_YYYY_HH_MM_AM_PM		= "dd-MMM-yyyy hh:mm a";

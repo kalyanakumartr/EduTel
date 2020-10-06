@@ -692,7 +692,8 @@ input[type=text] {
 																</table>
 															</div>
 															<div class="divBody" style="float: left;" align="center">
-																	<img src="edu-images/dashboard/Recordedvideos.jpg" width="50" height ="50" />												
+																<a href="${endUserVideoURL}">
+																	<img src="edu-images/dashboard/Recordedvideos.jpg" /></a>												
 															</div>
 														</div>
 													</td>

@@ -216,7 +216,7 @@ ul#navigation .forms a {
 						on <%=usDateOfJoin%></span></td>
 				<td width="5%">&nbsp;&nbsp;</td>
 				<td width="25%" valign="top"><div>
-						<a href="userPreUpdate.do?usEmployeeId=<%=originalEmployeeId%>"><img src="<%=userImagePath%>" class="thumb" width="50px" height="50px" /></a>
+						<a href="userPreUpdate.do?usEmployeeId=<%=originalEmployeeId%>"><img src="<%=userImagePath%>"/></a>
 					</div></td>
 			</tr>
 		</table>

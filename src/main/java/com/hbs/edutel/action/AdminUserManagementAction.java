@@ -7,6 +7,12 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.hbs.edutel.bo.SerialKeyParam;
@@ -22,12 +28,15 @@ import com.hbs.edutel.model.SerialKeyUserMapping;
 import com.hbs.edutel.model.ToppersClub;
 import com.hbs.edutel.util.CommonUtil;
 import com.hbs.edutel.util.JQueryDataTableParam;
+import com.hbs.edutel.util.common.ConstEnumUtil.EGeneral;
 import com.hbs.edutel.util.common.ConstEnumUtil.EKeyGen;
 import com.hbs.edutel.util.common.ConstEnumUtil.EPage;
 import com.hbs.edutel.util.common.ConstEnumUtil.ERole;
 import com.hbs.edutel.util.common.ConstEnumUtil.ESession;
+import com.hbs.edutel.util.common.ConstEnumUtil.EWrap;
 import com.hbs.edutel.util.common.factory.UsersFactory;
 import com.hbs.edutel.util.common.image.ImageDataVO;
+import com.hbs.edutel.util.common.property.factory.PropFactory;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -36,6 +45,7 @@ public class AdminUserManagementAction extends AdminUserManagementActionData
 {
 	private static final long		serialVersionUID	= 1L;
 	private final CustomAuditLogger	caLogger			= new CustomAuditLogger(this.getClass());
+	private static final String		V7EDUTEL			= PropFactory.getInstance().getProperty(EGeneral.VideoSiteURL);
 
 	public String deleteTopper() throws IOException
 	{
@@ -109,8 +119,8 @@ public class AdminUserManagementAction extends AdminUserManagementActionData
 			if (CommonValidator.isNotNullNotEmpty(user))
 			{
 				caLogger.info(Update_User, "resetPassword", EPage.Success.name(), this.getClass().getName(), sessionUser.getUsEmployeeId());
-				jsonObj.put("value", "USER NAME : " + user.getUsUserName() + "\n\nUSER ID : " + user.getUsUserID() + "\n\nPASSWORD : " + user.getUsUserPwd()
-						+ "\n\npassword has been resetted successfully");
+				jsonObj.put("value",
+						"USER NAME : " + user.getUsUserName() + "\n\nUSER ID : " + user.getUsUserID() + "\n\nPASSWORD : " + user.getUsUserPwd() + "\n\npassword has been resetted successfully");
 			}
 			else
 			{
@@ -380,7 +390,7 @@ public class AdminUserManagementAction extends AdminUserManagementActionData
 			}
 			catch (Exception e)
 			{
-				usUserImageUrl = "images/png/no-image.png";
+				usUserImageUrl = "images/png/no_image_main.png";
 			}
 		}
 		return EPage.Success.name();
@@ -446,6 +456,9 @@ public class AdminUserManagementAction extends AdminUserManagementActionData
 					return EPage.Student.name();
 				}
 			}
+
+			createEduTel2020User();
+
 		}
 		catch (CustomException customExcep)
 		{
@@ -456,6 +469,49 @@ public class AdminUserManagementAction extends AdminUserManagementActionData
 			return EPage.Student.name();
 		else
 			return EPage.Failure.name();
+	}
+
+	private void createEduTel2020User()
+	{
+		// Add User In New EduTel 2020 Starts
+		try
+		{
+			String accessToken = (String) request.getSession().getAttribute(OAUTH_TOKEN);
+			HttpPost post = new HttpPost(V7EDUTEL);
+			post.addHeader("Authorization", "Bearer " + accessToken);
+			post.addHeader("Content-Type", "application/json");
+
+			StringBuffer userMediaBean = new StringBuffer();
+			userMediaBean.append(join("emailId", user.getUsEmail()) + COMMA_SPACE);
+			userMediaBean.append(join("mobileNo", user.getUsMobileNo()) + COMMA_SPACE);
+			userMediaBean.append(join("mediaType", "Primary"));
+			
+			StringBuffer formUserBean = new StringBuffer();
+			formUserBean.append(join("userName", user.getUsUserName()) + COMMA_SPACE);
+			formUserBean.append(join("userId", user.getUsUserID()) + COMMA_SPACE);
+
+			if (CommonValidator.isEqual(user.getUsUsersType(), EPage.Student.name()))
+				formUserBean.append(join("userType", "Consumer") + COMMA_SPACE);
+			else
+				formUserBean.append(join("userType", "Employee") + COMMA_SPACE);
+			
+			formUserBean.append(join("mediaList", "[{" + userMediaBean.toString() + "}]" ));
+			
+			System.out.println(">>>>>>>>>>>>>>formUserBean>>>>>>>>>>>>>>>>>\n\n{" + formUserBean.toString() + "}");
+			
+		    StringEntity entity = new StringEntity("{" + formUserBean.toString() + "}");
+			post.setEntity(entity);
+
+			CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+			CloseableHttpResponse response = httpClient.execute(post);
+
+			System.out.println(">>>>>>>>>>>>>>CloseableHttpResponse>>>>>>>>>>>>>>>>>" + response.toString());
+		}
+		catch (Exception e)
+		{
+			// TODO: handle exception
+		}
+		// Add User In New EduTel 2020 Ends
 	}
 
 	public String userSearch()
@@ -689,5 +745,13 @@ public class AdminUserManagementAction extends AdminUserManagementActionData
 		Calendar calYear = Calendar.getInstance();
 		calYear.add(Calendar.YEAR, reqYear);
 		return calYear.get(Calendar.YEAR);
+	}
+
+	private String join(String key, String value)
+	{
+		if (value.startsWith("{"))
+			return EWrap.Quote.enclose(key) + " : " + value;
+		else
+			return EWrap.Quote.enclose(key) + " : " + EWrap.Quote.enclose(value);
 	}
 }
