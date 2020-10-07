@@ -191,6 +191,6 @@ public class LoginFactory implements ConstInterface
 		{
 			// TODO: handle exception
 		}
-		return null;
+		return "Token Not Generated";
 	}
 }
