@@ -52,7 +52,8 @@
 		
 
 		<action name="logoutPage" class="loginAction" method="logoutAction">
-			<result name="Success">login_index.jsp</result>
+			<result name="Success" type="redirect">loadPage.do?p=loginAuthenticationNew</result>
+			<result name="OldSuccess">login_index.jsp</result>
 			<result name="Input">index.jsp</result>
 		</action>
 		<action name="saveReminderQues" class="loginAction" method="saveReminderQuestion">

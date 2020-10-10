@@ -1,12 +1,12 @@
 package com.hbs.edutel.action;
 
+import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-
-import org.eclipse.core.internal.preferences.Base64;
 
 import com.hbs.edutel.common.action.CommonValidator;
 import com.hbs.edutel.common.model.interfaces.IUserLog;
@@ -45,7 +45,7 @@ public class DashBoardAction extends DashBoardActionData
 			{
 				System.out.println(">>>>>>>>>>>>>>>>VideoSiteURL>>>>>>>>>>>>>>>>>>> " + V7EDUTEL);
 				accessToken = (String) request.getSession().getAttribute(OAUTH_TOKEN);
-				String accessTokenEncrypt = new String(Base64.encode(accessToken.getBytes()));
+				String accessTokenEncrypt = new String(Base64.getEncoder().encode(accessToken.getBytes(StandardCharsets.UTF_8)));
 				
 				String subjects = user.isEmployee() ? "/A" : user.getUsGroupName().indexOf("Computer") > 0 ? "/C" : "/B" ;
 					
