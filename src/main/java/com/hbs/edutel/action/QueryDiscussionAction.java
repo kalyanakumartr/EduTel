@@ -24,6 +24,7 @@ public class QueryDiscussionAction extends QueryDiscussionActionData
 {
 
 	private static final long	serialVersionUID	= 5935725077392445172L;
+	public String subject;
 
 	public String deleteQuery() throws Exception
 	{
@@ -75,6 +76,7 @@ public class QueryDiscussionAction extends QueryDiscussionActionData
 			if (jdtParam.isLibrary == false)
 				jdtParam.usEmployeeId = sessionUser.getUsEmployeeId();
 		}
+		subject = jdtParam.qtSubject = request.getParameter("subject");
 		List<QueryDiscussion> queryList = queryDiscussionBo.queryAnswerList(jdtParam);
 		List<QueryDiscussion> queryListAll = queryDiscussionBo.queryAnswerListAll(jdtParam);
 
@@ -142,11 +144,10 @@ public class QueryDiscussionAction extends QueryDiscussionActionData
 				newArray.add(qd.getQtAutoId() + "");// Admin 8
 				newArray.add(qd.getQtAutoId() + "");// Admin 9
 			}
-			if (sessionUser != null && sessionUser.isStudent() == false)
-			{
-				newArray.add(qd.getQtSubject()+ "");// Admin 10
+			
+			newArray.add(qd.getQtSubject()+ "");// Admin 10 // Student 8
 				
-			}
+			
 			aaData.add(newArray);
 		}
 
@@ -192,7 +193,7 @@ public class QueryDiscussionAction extends QueryDiscussionActionData
 
 			qryDiscModel.setQryDiscussion(qryDisc);
 			qryDiscModel.setUsers(sessionUser);
-			String subject = request.getParameter("subject");
+			subject = request.getParameter("subject");
 			qryDisc.setQtSubject(subject);
 
 			if (queryDiscussionBo.submitUserQuery(qryDiscModel))
@@ -225,10 +226,12 @@ public class QueryDiscussionAction extends QueryDiscussionActionData
 		queryList.clear();
 		queryAnswerList.clear();
 		IUsers sessionUser = (IUsers) request.getSession().getAttribute(ESession.UserObject.getAttribute());
+		subject = request.getParameter("subject");
 		if (sessionUser != null && (sessionUser.isAdmin() || sessionUser.isSuperAdmin() || sessionUser.isEmployee()))
 		{
 
 			qryDiscModel.setUsers(sessionUser);
+			qryDiscModel.getQryDiscussion().setQtSubject(subject);
 			queryList = queryDiscussionBo.viewAdminQueryList(qryDiscModel);
 			queryAnswerList = queryDiscussionBo.viewAdminQueryAnswerList(qryDiscModel);
 			return EPage.Admin.name();
@@ -236,6 +239,7 @@ public class QueryDiscussionAction extends QueryDiscussionActionData
 		else
 		{
 			qryDiscModel.setUsers(sessionUser);
+			qryDiscModel.getQryDiscussion().setQtSubject(subject);
 			queryAnswerList = queryDiscussionBo.viewUserQueryAnswerList(qryDiscModel);
 			if (CommonValidator.isNotNullNotEmpty(request.getParameter("p")))
 				return EPage.Library.name();

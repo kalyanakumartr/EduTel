@@ -1,2 +1,2 @@
 
-<%response.sendRedirect("index.do"); %>
+<%response.sendRedirect("loadPage.do?p=loginAuthenticationNew"); %>

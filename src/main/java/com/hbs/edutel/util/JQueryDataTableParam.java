@@ -43,7 +43,7 @@ public class JQueryDataTableParam
 	public String					studentBatch;
 	public String					oeQuestionType;
 	public boolean					isDownloaded		= false;
-
+	public String					qtSubject;
 	public JQueryDataTableParam()
 	{
 		super();

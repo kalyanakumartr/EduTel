@@ -164,6 +164,9 @@ public class QueryDiscussionDAOImpl extends CommonHibernateDaoSupport implements
 				{
 					sbSelectQry.append(" AND qtRated > 2 AND qtRated < 6");
 				}
+				if (CommonValidator.isNotNullNotEmpty(jdtParam.qtSubject)) {
+					sbSelectQry.append(" AND qtSubject = " + EWrap.Quote.enclose(jdtParam.qtSubject));
+				}
 				sbSelectQry.append(" ORDER BY qtAnswer, qtRaisedDate Desc ");
 			}
 		}
@@ -356,6 +359,7 @@ public class QueryDiscussionDAOImpl extends CommonHibernateDaoSupport implements
 			sbSelectQry.append("From QueryDiscussion QD " + WHERE_1_1);
 			sbSelectQry.append(" AND QD.qtReplyBy = " + EWrap.Quote.enclose(qryDiscModel.getUsers().getUsEmployeeId()));
 			sbSelectQry.append(" AND QD.qtReplyName = " + EWrap.Quote.enclose(qryDiscModel.getUsers().getUsUserName()));
+			sbSelectQry.append(" AND QD.qtSubject = " + EWrap.Quote.enclose(qryDiscModel.getQryDiscussion().getQtSubject()));
 			sbSelectQry.append(" ORDER BY QD.qtReplyDate Desc ");
 
 			return session.createQuery(sbSelectQry.toString()).list();
@@ -420,6 +424,7 @@ public class QueryDiscussionDAOImpl extends CommonHibernateDaoSupport implements
 			sbSelectQry.append("From QueryDiscussion QD " + WHERE_1_1);
 			sbSelectQry.append(" AND QD.qtRaisedBy = " + EWrap.Quote.enclose(qryDiscModel.getUsers().getUsEmployeeId()));
 			sbSelectQry.append(" AND QD.qtRaisedName = " + EWrap.Quote.enclose(qryDiscModel.getUsers().getUsUserName()));
+			sbSelectQry.append(" AND QD.qtSubject = " + EWrap.Quote.enclose(qryDiscModel.getQryDiscussion().getQtSubject()));
 			sbSelectQry.append(" ORDER BY QD.qtReplyDate Desc ");
 
 			return session.createQuery(sbSelectQry.toString()).list();

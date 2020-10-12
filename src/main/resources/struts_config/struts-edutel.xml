@@ -749,7 +749,10 @@
 		</action>
 		<action name="submitQuestionAnswer" class="queryDiscussionAction"
 			method="submitQueryAnswer">
-			<result name="Success" type="redirect">viewQueryAnswer.do</result>
+			<result name="Success" type="redirectAction">
+				<param name="actionName">viewQueryAnswer.do</param>
+				<param name="subject">${subject}</param>
+			</result>
 			<result name="Admin">/jsp/edutel/edutel_admin_queryboard.jsp</result>
 		</action>
 

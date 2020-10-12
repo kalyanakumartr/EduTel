@@ -82,7 +82,15 @@
 															}
 															return rating;
 														}
-													},	{
+													},
+													null,
+													null,
+														
+													
+													null,
+													null,
+													null,
+													{
 														"sName" : "Subject",
 														"bSearchable" : true,
 														"bSortable" : true,
@@ -93,11 +101,7 @@
 																	+ "</div>";
 														}
 													},
-													null,
-													null,
-													null,
-													null,
-													null,
+
 													{
 														"sName" : "ID8",
 														"bSearchable" : false,
@@ -171,7 +175,7 @@
 															});
 													return value;
 												}
-											}, null, null, null, null, null,
+											}, null, null, null, null, null,null,
 											null ]
 								});
 
@@ -217,15 +221,15 @@
 								<thead>
 									<tr>
 										
-										<th width="30%">Queries</th>
-										<th width="30%">Replies</th>
+										<th width="27%">Queries</th>
+										<th width="27%">Replies</th>
 										<th width="8%">Rating</th>
 										<th width="6%">Raised By</th>
 										<th width="6%">Raised Date</th>
-										<th width="5%">Subject</th>
 										<th width="6%">School Name</th>
 										<th width="6%">Replied By</th>
 										<th width="6%">Replied Date</th>
+										<th width="5%">Subject</th>										
 										<th width="2%"></th>
 										<th width="0%"></th>
 										

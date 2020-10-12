@@ -5,6 +5,7 @@
 <script type="text/javascript" charset="utf-8" src="js/ZeroClipboard.js"></script>
 <script type="text/javascript" charset="utf-8"
 	src="js/dataTables.tableTools.js"></script>
+	
 <style>
 .hide_column {
 	display: none;
@@ -37,6 +38,7 @@
 	font-weight: bold;
 }
 </style>
+<% String subject = (String) request.getParameter("subject"); %>
 <script type="text/javascript">
 	var queryListId;
 	$(document)
@@ -49,7 +51,7 @@
 											"bProcessing" : true,
 											"bServerSide" : true,
 											"sAjaxSource" : "queryListByJson.do?uid="
-													+ Math.random(),
+													+ Math.random()+"&subject=<%=subject%>",
 											"bJQueryUI" : true,
 											"sPaginationType" : "full_numbers",
 											"sServerMethod" : "POST",
@@ -98,8 +100,20 @@
 															}
 															return rating;
 														}
-													}, null, null, null, null,
-													null ]
+													}, 
+													null, null,null, 
+													 
+													null,null,{
+														"sName" : "Subject",
+														"bSearchable" : true,
+														"bSortable" : true,
+														"fnRender" : function(
+																obj) {
+															return "<div style='height:90px;max-height:90px;overflow-y:auto;'>"
+																	+ obj.aData[8]
+																	+ "</div>";
+														}
+													} ]
 										});
 
 						$("#queryListTableId tbody")
@@ -115,6 +129,10 @@
 													.fnGetData(iPos);
 											var message = "<table width=\"650px;\" >"
 													+ "<tr>"
+													+ "<td width=\"15%\"><span class=\"lblspanBold\">Subject&nbsp;</span></td>"
+													+ "<td  width=\"35%\"><span class=\"lblspanBold\">"
+													+ aData[8]
+													+ "</span></td>"
 													+ "<td width=\"15%\"><span class=\"lblspanBold\">Posted By&nbsp;</span></td>"
 													+ "<td  width=\"35%\"><span class=\"lblspanBold\">"
 													+ aData[3]
@@ -144,7 +162,8 @@
 													+ "<td colspan=\"4\">&nbsp;</td></tr><tr><td colspan=\"4\"><span class=\"lblspanRed\">Replies</span><br><br><div align=\"justify\" style='border:2px;font-size:11px;color:#336699;width:650px;max-width:650px;height:90px;max-height:90px;overflow:auto;white-space: pre-line;'>"
 													+ aData[1]
 													+ "</div></td>"
-													+ "</tr>" + "</table>";
+													+ "</tr>" 
+													+ "</table>";
 											$("#queryDivDialog")
 													.attr("style",
 															"width: 700px; height: 500px;");
@@ -213,6 +232,7 @@
 						action="submitQuestionAnswer.do?subject=%{#parameters.subject}" method="post"
 						enctype="multipart/form-data" autocomplete="off" show_alert="1"
 						onsubmit="return pagevalidation()">
+						
 						<div align="center">
 							<table>
 								<tr>
@@ -257,6 +277,7 @@
 								</tbody>
 							</table>
 						</div>
+						
 					</s:form>
 				</div>
 				<div id="signupwrapper2" align="center"
@@ -267,19 +288,20 @@
 							id="queryListTableId">
 							<thead>
 								<tr>
-									<th width="30%">Queries</th>
-									<th width="30%">Replies</th>
+									<th width="27%">Queries</th>
+									<th width="27%">Replies</th>
 									<th width="8%">Rating</th>
 									<th width="6%">Raised By</th>
 									<th width="7%">Raised Date</th>
 									<th width="6%">School Name</th>
 									<th width="6%">Replied By</th>
 									<th width="7%">Replied Date</th>
+									<th width="6%">Subject</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
-									<td colspan="8" class="dataTables_empty">Loading data from
+									<td colspan="9" class="dataTables_empty">Loading data from
 										Server</td>
 								</tr>
 							</tbody>
