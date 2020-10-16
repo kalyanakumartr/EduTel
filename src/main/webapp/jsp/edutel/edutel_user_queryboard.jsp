@@ -234,10 +234,14 @@
 						onsubmit="return pagevalidation()">
 						
 						<div align="center">
-							<table>
+							<table style="width: 100%;">
 								<tr>
-									<td>Ask any questions on career across the world and get
-										instant answer.</td>
+									<td>
+									
+									<img src="edu-images/dashboard/<%=subject%>Banner.jpg" width="1200"/>
+
+									
+									</td>
 								</tr>
 							</table>
 							<table class="display" cellspacing="0" style="width: 100%;">
