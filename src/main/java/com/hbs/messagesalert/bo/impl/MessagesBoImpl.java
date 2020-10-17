@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.hbs.edutel.common.action.CommonValidator;
+import com.hbs.edutel.common.bo.UserBo;
 import com.hbs.edutel.util.CommonUtil;
 import com.hbs.edutel.util.JQueryDataTableParam;
 import com.hbs.edutel.util.common.ConstEnumUtil.EGenerate;
@@ -26,8 +27,8 @@ public class MessagesBoImpl implements MessagesBo, ConstInterface
 {
 	private static final long	serialVersionUID	= 264323725343378889L;
 	private MessagesDAO			messagesDAO;
+	private UserBo				userBo;
 
-	
 	public boolean autoPopulateMessagesBeanFields() throws ClassNotFoundException
 	{
 		for (MessagesBeanInformation beanInfo : messagesDAO.getMessagesBeanList(null))
@@ -59,19 +60,16 @@ public class MessagesBoImpl implements MessagesBo, ConstInterface
 		return true;
 	}
 
-	
 	public Messages blockUnlockMessages(String messageId, String status, String usEmployeeId)
 	{
 		return messagesDAO.blockUnlockMessages(messageId, status, usEmployeeId);
 	}
 
-	
 	public MessagesUserMapping blockUnlockMessageUser(String msgAutoId, String status, String usEmployeeId)
 	{
 		return messagesDAO.blockUnlockMessageUser(msgAutoId, status, usEmployeeId);
 	}
 
-	
 	public boolean createMessage(MessagesAction messagesAction)
 	{
 		if (CommonValidator.isNotNullNotEmpty(messagesAction.getMessages().getMessageId()) == false)
@@ -81,7 +79,6 @@ public class MessagesBoImpl implements MessagesBo, ConstInterface
 		return messagesDAO.createMessage(messagesAction);
 	}
 
-	
 	public boolean createMessageUserMapping(MessagesUserAction messagesAction) throws Exception
 	{
 		MessagesParam msgParam = new MessagesParam();
@@ -110,6 +107,7 @@ public class MessagesBoImpl implements MessagesBo, ConstInterface
 			_MUM.setStatus(true);
 			_MUM.setCreatedBy(messagesAction.getSessionUser().getUsEmployeeId());
 			_MUM.setCreatedDate(CommonUtil.getTimeZoneDateInFormat(new Date(), DATE_FORMAT_YYYY_MM_DD_HH_MM_SS_24, IST));
+			_MUM.setDataObjectSerialize(userBo.getUserByEmployeeId(usEmployeeId));
 			messagesAction.getMessagesUserList().add(_MUM);
 		}
 		if (messagesAction.getMessagesUserList().isEmpty())
@@ -135,44 +133,44 @@ public class MessagesBoImpl implements MessagesBo, ConstInterface
 		return isMapped;
 	}
 
-	
 	public boolean createMessageUsersGroup(MessagesUserAction messagesAction)
 	{
-		MessagesParam msgParam = new MessagesParam();
-		msgParam.userGroupName = messagesAction.getMessageUsersGroup().getUserGroupName();
-		for (MessagesUsersGroup _MUG : messagesDAO.getMessageUsersGroupList(msgParam))
+		if (CommonValidator.isNotNullNotEmpty(messagesAction.getMessageUsersGroup().getUserGroupName()))
 		{
-			if (messagesAction.getUsEmployeeIdList().contains(_MUG.getUsEmployeeId()))
+			MessagesParam msgParam = new MessagesParam();
+			msgParam.userGroupName = messagesAction.getMessageUsersGroup().getUserGroupName();
+			for (MessagesUsersGroup _MUG : messagesDAO.getMessageUsersGroupList(msgParam))
 			{
-				messagesAction.getUsEmployeeIdList().remove(_MUG.getUsEmployeeId());
+				if (messagesAction.getUsEmployeeIdList().contains(_MUG.getUsEmployeeId()))
+				{
+					messagesAction.getUsEmployeeIdList().remove(_MUG.getUsEmployeeId());
+				}
 			}
-		}
-		messagesAction.setMessageUsersGroupList(new ArrayList<MessagesUsersGroup>(0));
-		for (String usEmployeeId : messagesAction.getUsEmployeeIdList())
-		{
-			MessagesUsersGroup _MUG = new MessagesUsersGroup(msgParam.userGroupName, usEmployeeId);
-			_MUG.setStatus(true);
-			_MUG.setCreatedBy(messagesAction.getSessionUser().getUsEmployeeId());
-			_MUG.setCreatedDate(CommonUtil.getTimeZoneDateInFormat(new Date(), DATE_FORMAT_YYYY_MM_DD_HH_MM_SS_24, IST));
+			messagesAction.setMessageUsersGroupList(new ArrayList<MessagesUsersGroup>(0));
+			for (String usEmployeeId : messagesAction.getUsEmployeeIdList())
+			{
+				MessagesUsersGroup _MUG = new MessagesUsersGroup(msgParam.userGroupName, usEmployeeId);
+				_MUG.setStatus(true);
+				_MUG.setCreatedBy(messagesAction.getSessionUser().getUsEmployeeId());
+				_MUG.setCreatedDate(CommonUtil.getTimeZoneDateInFormat(new Date(), DATE_FORMAT_YYYY_MM_DD_HH_MM_SS_24, IST));
 
-			messagesAction.getMessageUsersGroupList().add(_MUG);
+				messagesAction.getMessageUsersGroupList().add(_MUG);
+			}
+			return messagesDAO.createMessageUsersGroup(messagesAction);
 		}
-		return messagesDAO.createMessageUsersGroup(messagesAction);
+		return false;
 	}
 
-	
 	public Messages deleteMessages(String messageId)
 	{
 		return messagesDAO.deleteMessages(messageId);
 	}
 
-	
 	public MessagesUserMapping deleteMessageUser(String msgAutoId)
 	{
 		return messagesDAO.deleteMessageUser(msgAutoId);
 	}
 
-	
 	public List<MessagesUsersGroup> getDistinctMessageUsersGroupList()
 	{
 		List<MessagesUsersGroup> msgUserGroupList = new ArrayList<MessagesUsersGroup>(0);
@@ -189,13 +187,11 @@ public class MessagesBoImpl implements MessagesBo, ConstInterface
 		return msgUserGroupList;
 	}
 
-	
 	public List<MessagesBeanFieldInformation> getMessagesBeanFieldList(MessagesParam msgParam)
 	{
 		return messagesDAO.getMessagesBeanFieldList(msgParam);
 	}
 
-	
 	public List<MessagesBeanInformation> getMessagesBeanList(MessagesParam msgParam)
 	{
 		return messagesDAO.getMessagesBeanList(msgParam);
@@ -206,25 +202,21 @@ public class MessagesBoImpl implements MessagesBo, ConstInterface
 		return messagesDAO;
 	}
 
-	
 	public List<Messages> getMessagesList(JQueryDataTableParam jdtParam)
 	{
 		return messagesDAO.getMessagesList(jdtParam);
 	}
 
-	
 	public List<MessagesUserMapping> getMessagesUserList(JQueryDataTableParam jdtParam)
 	{
 		return messagesDAO.getMessagesUserList(jdtParam);
 	}
 
-	
 	public List<MessagesUserMapping> getMessagesUsersList(JQueryDataTableParam jdtParam)
 	{
 		return messagesDAO.getMessagesUsersList(jdtParam);
 	}
 
-	
 	public List<MessagesUsersGroup> getMessageUsersGroupList(MessagesParam msgParam)
 	{
 		return messagesDAO.getMessageUsersGroupList(msgParam);
@@ -234,4 +226,16 @@ public class MessagesBoImpl implements MessagesBo, ConstInterface
 	{
 		this.messagesDAO = messagesDAO;
 	}
+
+	public UserBo getUserBo()
+	{
+		return userBo;
+	}
+
+	public void setUserBo(UserBo userBo)
+	{
+		this.userBo = userBo;
+	}
+	
+	
 }

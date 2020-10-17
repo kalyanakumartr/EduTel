@@ -6,6 +6,7 @@
 
 	<bean id="messagesBo" class="com.hbs.messagesalert.bo.impl.MessagesBoImpl">
 		<property name="messagesDAO" ref="messagesDAO"></property>
+		<property name="userBo" ref="userBo"></property>
 	</bean>
 	<bean id="messagesDAO" class="com.hbs.messagesalert.dao.impl.MessagesDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory" />

@@ -4,6 +4,8 @@ import java.sql.Timestamp;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.apache.struts2.json.annotations.JSON;
+
 import com.hbs.edutel.common.action.CommonValidator;
 import com.hbs.edutel.common.model.abstracts.AUsers;
 import com.hbs.edutel.common.model.interfaces.IUserLog;

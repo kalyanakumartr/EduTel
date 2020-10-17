@@ -9,6 +9,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.sql.Blob;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -17,6 +18,7 @@ import javax.sql.rowset.serial.SerialBlob;
 import javax.sql.rowset.serial.SerialException;
 
 import com.hbs.edutel.common.model.interfaces.IUsers;
+import com.hbs.edutel.util.CommonUtil;
 
 public class MessagesUserMapping extends CommonBeanFields
 {
@@ -144,18 +146,31 @@ public class MessagesUserMapping extends CommonBeanFields
 		this.dataObject = dataObject;
 	}
 
+	public void setDataObjectSerialize(Object... objects) throws IllegalArgumentException, IllegalAccessException, InvocationTargetException, SerialException, IOException, SQLException
+	{
+		this.dataObject = this.serialize(objects);
+	}
+
 	public void setExternalMessage(String externalMessage)
 	{
 		this.externalMessage = externalMessage;
 	}
 
+	@SuppressWarnings("unchecked")
 	public Blob serialize(Object... obj) throws IllegalArgumentException, IllegalAccessException, InvocationTargetException, IOException, SerialException, SQLException
 	{
 		HashMap<String, Object> hmBlob = new HashMap<String, Object>(0);
 		for (Object object : obj)
 		{
-			String clazzName = object.getClass().getSimpleName();
-			extractValuesFromObject(object, hmBlob, clazzName);
+			if (object instanceof HashMap)
+			{
+				hmBlob.putAll((HashMap<String, Object>)object);
+			}
+			else
+			{
+				String clazzName = object.getClass().getSimpleName();
+				extractValuesFromObject(object, hmBlob, clazzName);
+			}
 		}
 		ByteArrayOutputStream b = new ByteArrayOutputStream();
 		ObjectOutputStream o = new ObjectOutputStream(b);
@@ -191,7 +206,13 @@ public class MessagesUserMapping extends CommonBeanFields
 							if (value instanceof String || value instanceof Integer || value instanceof Float || value instanceof Long || value instanceof Boolean || value instanceof Character
 									|| value instanceof Double || value instanceof Short)
 							{
-								hmBlob.put(clazzName + DOT + field.getName(), value);
+								hmBlob.put(clazzName.replaceAll("\\.", "_") + UNDERSCORE + field.getName(), value);
+								break;
+							}
+							else if (value instanceof Timestamp)
+							{
+								String fmtDateTime = CommonUtil.getDateInFormat((Timestamp)value, DATE_FORMAT_DD_MMM_YYYY_HH_MM_SS_AM_PM);
+								hmBlob.put(clazzName.replaceAll("\\.", "_") + UNDERSCORE + field.getName(), fmtDateTime);
 								break;
 							}
 							else if (clazzList.contains(value.getClass().getSimpleName()))

@@ -2,12 +2,15 @@ package com.hbs.edutel.common.dao.impl;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.google.gson.Gson;
 import com.hbs.edutel.action.AdminUserManagementAction;
 import com.hbs.edutel.action.DashBoardAction;
 import com.hbs.edutel.common.action.CommonValidator;
@@ -21,6 +24,7 @@ import com.hbs.edutel.model.SerialKeyUserMapping;
 import com.hbs.edutel.model.ToppersClub;
 import com.hbs.edutel.util.CommonUtil;
 import com.hbs.edutel.util.JQueryDataTableParam;
+import com.hbs.edutel.util.common.ConstEnumUtil.EGeneral;
 import com.hbs.edutel.util.common.ConstEnumUtil.EMessage;
 import com.hbs.edutel.util.common.ConstEnumUtil.EMessageTemplate;
 import com.hbs.edutel.util.common.ConstEnumUtil.EMessageType;
@@ -30,6 +34,7 @@ import com.hbs.edutel.util.common.ConstEnumUtil.EUser;
 import com.hbs.edutel.util.common.ConstEnumUtil.EWrap;
 import com.hbs.edutel.util.common.factory.RolesFactory;
 import com.hbs.edutel.util.common.factory.UsersFactory;
+import com.hbs.edutel.util.common.property.factory.PropFactory;
 import com.hbs.messagesalert.model.Messages;
 import com.hbs.messagesalert.model.MessagesUserMapping;
 
@@ -683,7 +688,7 @@ public abstract class UserAdminDAOImpl extends SchoolAdminDAOImpl
 		}
 		return false;
 	}
-
+	
 	private boolean sendSMSAndEmailToNewUsersAndAdmin(AdminUserManagementAction adminUser)
 	{
 		Transaction _Txn = null;
@@ -692,7 +697,16 @@ public abstract class UserAdminDAOImpl extends SchoolAdminDAOImpl
 		{
 			session = getSession();
 
+//			Map<String, Object> dataMap = new LinkedHashMap<String, Object>();
+//			dataMap.put("userName", adminUser.getUser().getUsUserName());
+//			dataMap.put("userId", adminUser.getUser().getUsUserID());
+//			dataMap.put("password", adminUser.getUser().getUsUserPwdOriginal());
+//			dataMap.put("emailId", new ArrayList<String>().add(adminUser.getUser().getUsEmail()));
+//			dataMap.put("mobileNo", new ArrayList<String>().add(adminUser.getUser().getUsMobileNo()));
+//			dataMap.put("groupName", adminUser.getUser().getUsGroupName());
+			
 			// Make an entry in MessagesUserMapping Table for Sending SMS
+			
 			_Txn = session.beginTransaction();
 			MessagesUserMapping _MUM = new MessagesUserMapping();
 			_MUM.setUsEmployeeId(adminUser.getUser().getUsEmployeeId());
@@ -700,10 +714,10 @@ public abstract class UserAdminDAOImpl extends SchoolAdminDAOImpl
 			_MUM.setStatus(true);
 			_MUM.setCreatedBy(EUser.SuperAdmin.name());
 			_MUM.setCreatedDate(CommonUtil.getTimeZoneDateInFormat(new Date(), DATE_FORMAT_YYYY_MM_DD_HH_MM_SS_24, IST));
-			_MUM.setExternalField(IUsers.UsUserPwd);
-			_MUM.setExternalMessage(adminUser.getUser().getUsUserPwdOriginal());
 			_MUM.setMessageId(EMessageTemplate.UserIdPassword_SMS.name());
 			_MUM.setMessages(new Messages(EMessageTemplate.UserIdPassword_SMS.name(), EMessageType.SMS.name()));
+			
+			_MUM.setDataObjectSerialize(adminUser.getUser());
 			session.save(_MUM);
 
 			_MUM = new MessagesUserMapping();
@@ -712,10 +726,10 @@ public abstract class UserAdminDAOImpl extends SchoolAdminDAOImpl
 			_MUM.setStatus(true);
 			_MUM.setCreatedBy(EUser.SuperAdmin.name());
 			_MUM.setCreatedDate(CommonUtil.getTimeZoneDateInFormat(new Date(), DATE_FORMAT_YYYY_MM_DD_HH_MM_SS_24, IST));
-			_MUM.setExternalField(IUsers.UsUserPwd);
-			_MUM.setExternalMessage(adminUser.getUser().getUsUserPwdOriginal());
 			_MUM.setMessageId(EMessageTemplate.UserIdPassword_Email.name());
 			_MUM.setMessages(new Messages(EMessageTemplate.UserIdPassword_Email.name(), EMessageType.Email.name()));
+
+			_MUM.setDataObjectSerialize(adminUser.getUser());
 			session.save(_MUM);
 
 			_MUM = new MessagesUserMapping();
@@ -726,7 +740,11 @@ public abstract class UserAdminDAOImpl extends SchoolAdminDAOImpl
 			_MUM.setCreatedDate(CommonUtil.getTimeZoneDateInFormat(new Date(), DATE_FORMAT_YYYY_MM_DD_HH_MM_SS_24, IST));
 			_MUM.setMessageId(EMessageTemplate.UserRegistration_Email_Admin.name());
 			_MUM.setMessages(new Messages(EMessageTemplate.UserRegistration_Email_Admin.name(), EMessageType.Email.name()));
-			_MUM.setDataObject(_MUM.serialize(adminUser.getUser()));
+			
+			Map<String, Object> dataMap = new LinkedHashMap<String, Object>();
+			dataMap.put("to", PropFactory.getInstance().getProperty(EGeneral.EduTel_Mail));
+			_MUM.setDataObjectSerialize(adminUser.getUser(), dataMap);
+			
 			session.save(_MUM);
 			_Txn.commit();
 
@@ -742,6 +760,8 @@ public abstract class UserAdminDAOImpl extends SchoolAdminDAOImpl
 				_MUM.setCreatedDate(CommonUtil.getTimeZoneDateInFormat(new Date(), DATE_FORMAT_YYYY_MM_DD_HH_MM_SS_24, IST));
 				_MUM.setMessageId(EMessageTemplate.UserRegistrationReceipt_SMS.name());
 				_MUM.setMessages(new Messages(EMessageTemplate.UserRegistrationReceipt_SMS.name(), EMessageType.SMS.name()));
+				_MUM.setDataObjectSerialize(adminUser.getUser());
+				
 				session.save(_MUM);
 
 				_MUM = new MessagesUserMapping();
@@ -752,6 +772,8 @@ public abstract class UserAdminDAOImpl extends SchoolAdminDAOImpl
 				_MUM.setCreatedDate(CommonUtil.getTimeZoneDateInFormat(new Date(), DATE_FORMAT_YYYY_MM_DD_HH_MM_SS_24, IST));
 				_MUM.setMessageId(EMessageTemplate.UserRegistrationReceipt_Email.name());
 				_MUM.setMessages(new Messages(EMessageTemplate.UserRegistrationReceipt_Email.name(), EMessageType.Email.name()));
+				_MUM.setDataObjectSerialize(adminUser.getUser());
+
 				session.save(_MUM);
 
 				_MUM = new MessagesUserMapping();
@@ -762,6 +784,8 @@ public abstract class UserAdminDAOImpl extends SchoolAdminDAOImpl
 				_MUM.setCreatedDate(CommonUtil.getTimeZoneDateInFormat(new Date(), DATE_FORMAT_YYYY_MM_DD_HH_MM_SS_24, IST));
 				_MUM.setMessageId(EMessageTemplate.UserRegistrationWelcome_Email.name());
 				_MUM.setMessages(new Messages(EMessageTemplate.UserRegistrationWelcome_Email.name(), EMessageType.Email.name()));
+				_MUM.setDataObjectSerialize(adminUser.getUser());
+
 				session.save(_MUM);
 
 				_Txn.commit();

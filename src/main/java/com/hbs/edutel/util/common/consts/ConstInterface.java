@@ -21,6 +21,7 @@ public interface ConstInterface extends Serializable
 	public String			SPACE									= " ";
 	public String			DECIMAL_FORMAT_0_00						= "#0.00";
 	public String			DOT										= ".";
+	public String			UNDERSCORE										= "_";
 	public String			FROM									= " From ";
 	public String			GET										= "get";
 	public String			IS										= "is";

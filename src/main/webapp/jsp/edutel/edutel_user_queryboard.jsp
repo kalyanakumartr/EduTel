@@ -50,8 +50,7 @@
 											"sDom" : 'T<"clear">lfrtip',
 											"bProcessing" : true,
 											"bServerSide" : true,
-											"sAjaxSource" : "queryListByJson.do?uid="
-													+ Math.random()+"&subject=<%=subject%>",
+											"sAjaxSource" : "queryListByJson.do?uid=" + Math.random() + "&subject=<%=subject%>",
 											"bJQueryUI" : true,
 											"sPaginationType" : "full_numbers",
 											"sServerMethod" : "POST",
