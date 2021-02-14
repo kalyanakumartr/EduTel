@@ -108,13 +108,13 @@ public class DashBoardAction extends DashBoardActionData
 					onlinePractiseExamList = adminBo.getOnlinePractiseExamList(this);
 					onlinePractiseExamResultList = adminBo.getPracticeExamResultList(new AuditLoggingUDParam(usEmployeeId, 0, 20));
 
-					getStudentMarks(msgOption);
+					//getStudentMarks(msgOption); // Prevent Student Marks update
 
 					getInformationAlertToDisplay(msgOption);
 					getMarqueeMessage();
-					getTopperClubList(lastExamName);
+					//getTopperClubList(lastExamName); // Prevent Topper Club
 
-					getStudentChartData();
+					//getStudentChartData(); //Prevent Loading Charts
 
 					getOnlineTestSeriesExamValidatedAnswersNotifications(msgOption);
 				}

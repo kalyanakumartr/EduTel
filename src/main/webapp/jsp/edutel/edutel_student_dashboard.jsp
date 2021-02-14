@@ -349,10 +349,11 @@ input[type=text] {
 	$(document)
 	.ready(
 			function() {
-				if ("${studentsMark.status}" == "false") {
+				/*if ("${studentsMark.status}" == "false") {
 					$("#student_mark_enroll").modal("show");
 				}
-				else if ('${noOfValidatedAnswers}' != 0) {
+				else */
+				if ('${noOfValidatedAnswers}' != 0) {
 					$("#test_series_validated_answers_notification").modal("show");
 				}
 				else if ("${informationAlerts.iaStatus}" == "true")

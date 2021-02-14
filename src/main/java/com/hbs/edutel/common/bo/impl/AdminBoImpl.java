@@ -61,44 +61,37 @@ public class AdminBoImpl extends CommonActionDAOData implements AdminBo, ConstIn
 	private final CustomAuditLogger	caLogger			= new CustomAuditLogger(this.getClass());
 	private String					oePractiseExamIdForOnlineExam;
 
-	
 	public OnlineExam blockUnlockExam(String oeExamId, String status, String usEmployeeId)
 	{
 		return adminDAO.blockUnlockExam(oeExamId, status, usEmployeeId);
 	}
 
-	
 	public OnlineExamAssigned blockUnlockExamAssigned(String oeExamAutoId, String status, String modifiedBy)
 	{
 		return adminDAO.blockUnlockExamAssigned(oeExamAutoId, status, modifiedBy);
 	}
 
-	
 	public OnlineExamQuestion blockUnlockExamQuestion(String oeExamQuestionId, String status, String modifiedBy)
 	{
 		return adminDAO.blockUnlockExamQuestion(oeExamQuestionId, status, modifiedBy);
 	}
 
-	
 	public List<CollegeEForm> collegeEFormListByJson(JQueryDataTableParam jdtParam)
 	{
 		return adminDAO.collegeEFormListByJson(jdtParam);
 	}
 
-	
 	public List<CollegeEForm> collegeEFormListByJsonAll(JQueryDataTableParam jdtParam)
 	{
 		return adminDAO.collegeEFormListByJsonAll(jdtParam);
 	}
 
-	
 	public List<CollegeEForm> collegeEFormOrderedList(IUsers sessionUser)
 	{
 		return adminDAO.collegeEFormOrderedList(sessionUser);
 
 	}
 
-	
 	public boolean collegeRegistration(AdminCollegeManagementAction adminCollege)
 	{
 		ImageDataVO imageDataVO = new ImageDataVO();
@@ -107,13 +100,11 @@ public class AdminBoImpl extends CommonActionDAOData implements AdminBo, ConstIn
 		return adminDAO.collegeRegistration(adminCollege);
 	}
 
-	
 	public boolean createInformationAlert(InformationAlerts infoAlertMsg)
 	{
 		return adminDAO.createInformationAlert(infoAlertMsg);
 	}
 
-	
 	public boolean createOnlineExam(OnlineExamAction adminExam)
 	{
 		adminExam.getOnlineExam().setOeExamId(EGenerate.Exam.getPrimaryId());
@@ -122,7 +113,6 @@ public class AdminBoImpl extends CommonActionDAOData implements AdminBo, ConstIn
 		return adminDAO.createOnlineExam(adminExam);
 	}
 
-	
 	public boolean createOnlineExamAssigned(OnlineExamAssignedAction adminExam) throws Exception
 	{
 		JQueryDataTableParam jdtParam = new JQueryDataTableParam();
@@ -149,7 +139,6 @@ public class AdminBoImpl extends CommonActionDAOData implements AdminBo, ConstIn
 
 	}
 
-	
 	public boolean createOnlineExamQuestion(OnlineExamQuestionAdminAction adminExamQuestion)
 	{
 		adminExamQuestion.getOnlineExamQuestion().setOnlineExam(adminExamQuestion.getOnlineExam());
@@ -269,7 +258,6 @@ public class AdminBoImpl extends CommonActionDAOData implements AdminBo, ConstIn
 		return adminDAO.createOnlineExamQuestion(adminExamQuestion);
 	}
 
-	
 	public boolean createOnlinePractiseExam(IOnlineExamAction adminExam)
 	{
 		adminExam.getOnlinePractiseExam().setOePractiseExamId(EGenerate.ExamPractise.getPrimaryId());
@@ -279,7 +267,6 @@ public class AdminBoImpl extends CommonActionDAOData implements AdminBo, ConstIn
 		return adminDAO.createOnlinePractiseExam(adminExam);
 	}
 
-	
 	public boolean createOnlineTestSeriesExamAnswer(OnlineExamQuestionAdminAction oeQAction)
 	{
 		String oeExamId = oeQAction.getOnlineExamQuestion().getOnlineExam().getOeExamId();
@@ -313,43 +300,36 @@ public class AdminBoImpl extends CommonActionDAOData implements AdminBo, ConstIn
 		return false;
 	}
 
-	
 	public boolean createToppersClubInfo(ToppersClub toppersClub)
 	{
 		return adminDAO.createToppersClubInfo(toppersClub);
 	}
 
-	
 	public College deleteCollege(AdminCollegeManagementAction adminCollegeManagementAction)
 	{
 		return adminDAO.deleteCollege(adminCollegeManagementAction);
 	}
 
-	
 	public boolean deleteEdutelEnquiry(AdminStudentEnquiryAction adminStudentEnquiryAction)
 	{
 		return adminDAO.deleteEdutelEnquiry(adminStudentEnquiryAction);
 	}
 
-	
 	public CollegeEForm deleteEForm(AdminCollegeManagementAction adminCollegeManagementAction)
 	{
 		return adminDAO.deleteEForm(adminCollegeManagementAction);
 	}
 
-	
 	public boolean deleteInfoAlert(AdminInfoAlertAction adminUserManagementAction)
 	{
 		return adminDAO.deleteInfoAlert(adminUserManagementAction);
 	}
 
-	
 	public OnlineEBluePrint deleteOnlineEBluePrint(String oEBluePrintId)
 	{
 		return adminDAO.deleteOnlineEBluePrint(oEBluePrintId);
 	}
 
-	
 	public OnlineEBook deleteOnlineEBook(String oeBookId)
 	{
 		OnlineEBook delBk = adminDAO.deleteOnlineEBook(oeBookId);
@@ -366,19 +346,16 @@ public class AdminBoImpl extends CommonActionDAOData implements AdminBo, ConstIn
 		return delBk;
 	}
 
-	
 	public OnlineEKeyPoints deleteOnlineEKeyPoints(String oeKeyPointsId)
 	{
 		return adminDAO.deleteOnlineEKeyPoints(oeKeyPointsId);
 	}
 
-	
 	public OnlineExam deleteOnlineExam(String oeExamId)
 	{
 		return adminDAO.deleteOnlineExam(oeExamId);
 	}
 
-	
 	public OnlineTestSeriesExamQuestionAnswerMapping deleteOnlineExamAnswer(OnlineExamQuestionAction onlineExamQuestionAction)
 	{
 
@@ -386,340 +363,287 @@ public class AdminBoImpl extends CommonActionDAOData implements AdminBo, ConstIn
 
 	}
 
-	
 	public OnlineExamAssigned deleteOnlineExamAssigned(String oeExamAutoId)
 	{
 		return adminDAO.deleteOnlineExamAssigned(oeExamAutoId);
 	}
 
-	
 	public List<OnlinePractiseExam> deleteOnlineExamPracticeEntry(IDashBoardAction dashBoardAction)
 	{
 		return adminDAO.deleteOnlineExamPracticeEntry(dashBoardAction);
 	}
 
-	
 	public OnlineExamQuestion deleteOnlineExamQuestion(String oeExamQuestionId)
 	{
 		return adminDAO.deleteOnlineExamQuestion(oeExamQuestionId);
 	}
 
-	
 	public School deleteSchool(AdminSchoolManagementAction adminSchoolManagementAction)
 	{
 		return adminDAO.deleteSchool(adminSchoolManagementAction);
 	}
 
-	
 	public ToppersClub deleteTopper(JQueryDataTableParam jdtParam)
 	{
 		return adminDAO.deleteTopper(jdtParam);
 	}
 
-	
 	public IUsers deleteUser(AdminUserManagementAction adminUserManagementAction)
 	{
 		return adminDAO.deleteUser(adminUserManagementAction);
 	}
 
-	
 	public OnlineExam displayExamPublic(String oeExamId, boolean displayPublic, String modifiedBy)
 	{
 		return adminDAO.displayExamPublic(oeExamId, displayPublic, modifiedBy);
 	}
 
-	
 	public College getCollegeById(JQueryDataTableParam jdtParam)
 	{
 		return adminDAO.getCollegeById(jdtParam);
 	}
 
-	
 	public List<CollegeEForm> getCollegeEFormById(AdminCollegeManagementAction adminCollegeManagementAction)
 	{
 		return adminDAO.getCollegeEFormById(adminCollegeManagementAction);
 	}
 
-	
 	public List<College> getCollegesList(JQueryDataTableParam jdtParam)
 	{
 		return adminDAO.getCollegesList(jdtParam);
 	}
 
-	
 	public List<College> getCollegesListAll(JQueryDataTableParam jdtParam)
 	{
 		return adminDAO.getCollegesListAll(jdtParam);
 	}
 
-	
 	public List<StudentEnquiry> getEnquiryList(JQueryDataTableParam jdtParam)
 	{
 		return adminDAO.getEnquiryList(jdtParam);
 	}
 
-	
 	public List<InformationAlerts> getInfoAlertList(JQueryDataTableParam jdtParam)
 	{
 		return adminDAO.getInfoAlertList(jdtParam);
 	}
 
-	
 	public List<InformationAlerts> getInfoAlertListAll(JQueryDataTableParam jdtParam)
 	{
 		return adminDAO.getInfoAlertListAll(jdtParam);
 	}
 
-	
 	public int[] getLoginUsersCount()
 	{
 		return userDAO.getLoginUsersCount();
 	}
 
-	
 	public String getOePractiseExamIdForOnlineExam()
 	{
 		return oePractiseExamIdForOnlineExam;
 	}
 
-	
 	public List<OnlineEBluePrint> getOnlineEBluePrintListByJson(JQueryDataTableParam jdtParam)
 	{
 		return adminDAO.getOnlineEBluePrintListByJson(jdtParam);
 	}
 
-	
 	public List<OnlineEBluePrint> getOnlineEBluePrintListByJsonAll(JQueryDataTableParam jdtParam)
 	{
 		return adminDAO.getOnlineEBluePrintListByJsonAll(jdtParam);
 	}
 
-	
 	public List<OnlineEBook> getOnlineEBookListByJson(JQueryDataTableParam jdtParam)
 	{
 		return adminDAO.getOnlineEBookListByJson(jdtParam);
 	}
 
-	
 	public List<OnlineEBook> getOnlineEBookListByJsonAll(JQueryDataTableParam jdtParam)
 	{
 		return adminDAO.getOnlineEBookListByJsonAll(jdtParam);
 	}
 
-	
 	public List<OnlineEKeyPoints> getOnlineEKeyPointsListByJson(JQueryDataTableParam jdtParam)
 	{
 		return adminDAO.getOnlineEKeyPointsListByJson(jdtParam);
 	}
 
-	
 	public List<OnlineEKeyPoints> getOnlineEKeyPointsListByJsonAll(JQueryDataTableParam jdtParam)
 	{
 		return adminDAO.getOnlineEKeyPointsListByJsonAll(jdtParam);
 	}
 
-	
 	public List<OnlineExamAssigned> getOnlineExamAssigned(JQueryDataTableParam jdtParam)
 	{
 		return adminDAO.getOnlineExamAssignedList(jdtParam);
 	}
 
-	
 	public List<OnlineExamAssigned> getOnlineExamAssignedList(IDashBoardAction dashBoardAction)
 	{
 		return adminDAO.getOnlineExamAssignedList(dashBoardAction);
 	}
 
-	
 	public List<OnlineExamAssigned> getOnlineExamAssignedListByJson(JQueryDataTableParam jdtParam)
 	{
 		return adminDAO.getOnlineExamAssignedListByJson(jdtParam);
 	}
 
-	
 	public List<OnlineExamAssigned> getOnlineExamAssignedListByJsonAll(JQueryDataTableParam jdtParam)
 	{
 		return adminDAO.getOnlineExamAssignedListByJsonAll(jdtParam);
 	}
 
-	
 	public List<OnlineExam> getOnlineExamList(IDashBoardAction dashBoardAction)
 	{
 		return adminDAO.getOnlineExamList(dashBoardAction);
 	}
 
-	
 	public List<OnlineExam> getOnlineExamListByJson(JQueryDataTableParam jdtParam)
 	{
 		return adminDAO.getOnlineExamListByJson(jdtParam);
 	}
 
-	
 	public List<OnlineExam> getOnlineExamListByJsonAll(JQueryDataTableParam jdtParam)
 	{
 		return adminDAO.getOnlineExamListByJsonAll(jdtParam);
 	}
 
-	
 	public OnlineExamQuestion getOnlineExamQuestion(OnlineExamQuestionAdminAction onlineExamQuestionAction)
 	{
 		return adminDAO.getOnlineExamQuestion(onlineExamQuestionAction);
 	}
 
-	
 	public List<OnlineExamQuestion> getOnlineExamQuestionList(OnlineExamQuestionAdminAction onlineExamQuestionAction)
 	{
 		return adminDAO.getOnlineExamQuestionList(onlineExamQuestionAction);
 	}
 
-	
 	public List<OnlineExamQuestion> getOnlineExamQuestionListByJson(JQueryDataTableParam jdtParam)
 	{
 		return adminDAO.getOnlineExamQuestionListByJson(jdtParam);
 	}
 
-	
 	public List<OnlineExamQuestion> getOnlineExamQuestionListByJsonAll(JQueryDataTableParam jdtParam)
 	{
 		return adminDAO.getOnlineExamQuestionListByJsonAll(jdtParam);
 	}
 
-	
 	public List<OnlinePractiseExam> getOnlinePractiseExamList(IDashBoardAction dashBoardAction)
 	{
 		return adminDAO.getOnlinePractiseExamList(dashBoardAction);
 	}
 
-	
 	public List<OnlinePractiseExam> getOnlinePractiseExamList(OnlineExamQuestionAdminAction onlineExamQuestionAction)
 	{
 		return adminDAO.getOnlinePractiseExamList(onlineExamQuestionAction);
 	}
 
-	
 	public List<OnlineExamQuestion> getOnlineTestSeriesExamQuestionListByJson(JQueryDataTableParam jdtParam)
 	{
 		return adminDAO.getOnlineTestSeriesExamQuestionListByJson(jdtParam);
 	}
 
-	
 	public List<OnlineExamQuestion> getOnlineTestSeriesExamQuestionListByJsonAll(JQueryDataTableParam jdtParam)
 	{
 		return adminDAO.getOnlineTestSeriesExamQuestionListByJson(jdtParam);
 	}
 
-	
 	public OnlineTestSeriesExamQuestionAnswerMapping getOnlineTestSeriesQuestionAnswer(JQueryDataTableParam jdtParam)
 	{
 		return adminDAO.getOnlineTestSeriesQuestionAnswer(jdtParam);
 	}
 
-	
 	public List<OnlineTestSeriesExamQuestionAnswerMapping> getOnlineTestSeriesQuestionAnswerList(OnlineExamQuestionAdminAction oeQuestionAction)
 	{
 		return adminDAO.getOnlineTestSeriesQuestionAnswerList(oeQuestionAction);
 	}
 
-	
 	public List<CollegeEForm> getOrderedEFormList(AdminCollegeManagementAction adminCollegeManagementAction)
 	{
 		return adminDAO.getOrderedEFormList(adminCollegeManagementAction);
 	}
 
-//	
-//	public List<IAuditLogging> getPracticeExamResultList(AuditLoggingUDParam adtParam)
-//	{
-//		adtParam.eAuditList = new String[] { Result_MCQ_Practice_Exam, Result_MCQ_Exam, Result_TestSeries_Exam };
-//		adtParam.clazz = LogStudentOnlineMCQPractice.class.getCanonicalName();
-//		return adminDAO.getAuditLoggingDataList(adtParam);
-//	}
+	//
+	// public List<IAuditLogging> getPracticeExamResultList(AuditLoggingUDParam adtParam)
+	// {
+	// adtParam.eAuditList = new String[] { Result_MCQ_Practice_Exam, Result_MCQ_Exam,
+	// Result_TestSeries_Exam };
+	// adtParam.clazz = LogStudentOnlineMCQPractice.class.getCanonicalName();
+	// return adminDAO.getAuditLoggingDataList(adtParam);
+	// }
 
-	
 	public School getSchoolById(JQueryDataTableParam jdtParam)
 	{
 		return adminDAO.getSchoolById(jdtParam);
 	}
 
-	
 	public List<School> getSchoolsList(JQueryDataTableParam jdtParam)
 	{
 		return adminDAO.getSchoolsList(jdtParam);
 	}
 
-	
 	public List<School> getSchoolsListAll(JQueryDataTableParam jdtParam)
 	{
 		return adminDAO.getSchoolsListAll(jdtParam);
 	}
 
-	
 	public OnlineTestSeriesExamQuestionAnswerMapping getTestSeriesExamAnswerByCreatedBy(JQueryDataTableParam jdtParam)
 	{
 		return adminDAO.getTestSeriesExamAnswerByCreatedBy(jdtParam);
 	}
 
-	
 	public OnlineTestSeriesExamQuestionAnswerMapping getTestSeriesExamAnswerById(JQueryDataTableParam jdtParam)
 	{
 		return adminDAO.getTestSeriesExamAnswerById(jdtParam);
 	}
 
-	
 	public List<ToppersClub> getToppersClubList(JQueryDataTableParam jdtParam)
 	{
 		return adminDAO.getToppersClubList(jdtParam);
 	}
 
-	
 	public List<ToppersClub> getToppersClubListAll(JQueryDataTableParam jdtParam)
 	{
 		return adminDAO.getToppersClubListAll(jdtParam);
 	}
 
-	
 	public List<ToppersClub> getToppersClubListByMarks(String lastExamName)
 	{
 		return adminDAO.getToppersClubListByMarks(lastExamName);
 	}
 
-//	
-//	public List<IAuditLogging> getUserActivityList(AuditLoggingUDParam adtParam)
-//	{
-//		adtParam.clazz = AuditLoggingUD.class.getCanonicalName();
-//		return adminDAO.getAuditLoggingDataList(adtParam);
-//	}
+	//
+	// public List<IAuditLogging> getUserActivityList(AuditLoggingUDParam adtParam)
+	// {
+	// adtParam.clazz = AuditLoggingUD.class.getCanonicalName();
+	// return adminDAO.getAuditLoggingDataList(adtParam);
+	// }
 
-	
 	public IUsers getUserById(JQueryDataTableParam jdtParam)
 	{
 		return adminDAO.getUserById(jdtParam);
 	}
 
-	
 	public List<IUsers> getUsersList(JQueryDataTableParam jdtParam)
 	{
 		return adminDAO.getUsersList(jdtParam);
 	}
 
-	
 	public List<IUsers> getUsersListAll(JQueryDataTableParam jdtParam)
 	{
 		return adminDAO.getUsersListAll(jdtParam);
 	}
 
-	
 	public boolean isExamTakenAlready(JQueryDataTableParam jdtParam)
 	{
 		return adminDAO.isExamTakenAlready(jdtParam);
 	}
 
-	
 	public List<OnlineEBluePrint> onlineEBluePrintListByAjax(JQueryDataTableParam jdtParam)
 	{
 		return adminDAO.onlineEBluePrintListByAjax(jdtParam);
 	}
 
-	
 	public boolean onlineEBluePrintRepositoryUpload(OnlineEBluePrintAction adminEBluePrint)
 	{
 		adminEBluePrint.setOnlineEBluePrintArray(new OnlineEBluePrint[adminEBluePrint.getUploadFileDisplayName().size()]);
@@ -746,13 +670,11 @@ public class AdminBoImpl extends CommonActionDAOData implements AdminBo, ConstIn
 		return adminDAO.onlineEBluePrintRepositoryUpload(adminEBluePrint);
 	}
 
-	
 	public List<OnlineEBook> onlineEBookListByAjax(JQueryDataTableParam jdtParam)
 	{
 		return adminDAO.onlineEBookListByAjax(jdtParam);
 	}
 
-	
 	public boolean onlineEBookRepositoryUpload(OnlineEBookAction adminEBook)
 	{
 		adminEBook.setOnlineEBookArray(new OnlineEBook[adminEBook.getUploadFileDisplayName().size()]);
@@ -780,13 +702,11 @@ public class AdminBoImpl extends CommonActionDAOData implements AdminBo, ConstIn
 		return adminDAO.onlineEBookRepositoryUpload(adminEBook);
 	}
 
-	
 	public List<OnlineEKeyPoints> onlineEKeyPointsListByAjax(JQueryDataTableParam jdtParam)
 	{
 		return adminDAO.onlineEKeyPointsListByAjax(jdtParam);
 	}
 
-	
 	public boolean onlineEKeyPointsRepositoryUpload(OnlineEKeyPointsAction adminEKeyPoints)
 	{
 		adminEKeyPoints.setOnlineEKeyPointsArray(new OnlineEKeyPoints[adminEKeyPoints.getUploadFileDisplayName().size()]);
@@ -814,7 +734,6 @@ public class AdminBoImpl extends CommonActionDAOData implements AdminBo, ConstIn
 		return adminDAO.onlineEKeyPointsRepositoryUpload(adminEKeyPoints);
 	}
 
-	
 	public boolean orderEForm(AdminCollegeManagementAction adminCollegeManagementAction)
 	{
 		List<CollegeEForm> eFormList = adminDAO.getCollegeEFormById(adminCollegeManagementAction);
@@ -826,7 +745,6 @@ public class AdminBoImpl extends CommonActionDAOData implements AdminBo, ConstIn
 
 	}
 
-	
 	public IUsers resetPassword(AdminUserManagementAction adminUser)
 	{
 		String usEmployeeId = adminUser.getRequest().getParameter("usEmployeeId");
@@ -847,7 +765,6 @@ public class AdminBoImpl extends CommonActionDAOData implements AdminBo, ConstIn
 
 	}
 
-	
 	public boolean schoolRegistration(AdminSchoolManagementAction adminSchool)
 	{
 		ImageDataVO imageDataVO = new ImageDataVO();
@@ -856,25 +773,24 @@ public class AdminBoImpl extends CommonActionDAOData implements AdminBo, ConstIn
 		return adminDAO.schoolRegistration(adminSchool);
 	}
 
-	
 	public String searchSchoolName(JQueryDataTableParam jdtParam)
 	{
 		return adminDAO.searchSchoolName(jdtParam);
 	}
 
-//	
-//	public boolean setAuditLogginUdInfo(AuditLoggingUD auditLoggingUD)
-//	{
-//		return adminDAO.setAuditLogginUdInfo(auditLoggingUD);
-//	}
+	//
+	// public boolean setAuditLogginUdInfo(AuditLoggingUD auditLoggingUD)
+	// {
+	// return adminDAO.setAuditLogginUdInfo(auditLoggingUD);
+	// }
 
-//	
-//	public boolean setLogStudentOnlineMCQPracticeInfo(LogStudentOnlineMCQPractice logStudentOnlineMCQPractice)
-//	{
-//		return adminDAO.setLogStudentOnlineMCQPracticeInfo(logStudentOnlineMCQPractice);
-//	}
+	//
+	// public boolean setLogStudentOnlineMCQPracticeInfo(LogStudentOnlineMCQPractice
+	// logStudentOnlineMCQPractice)
+	// {
+	// return adminDAO.setLogStudentOnlineMCQPracticeInfo(logStudentOnlineMCQPractice);
+	// }
 
-	
 	public void setOePractiseExamIdForOnlineExam(String oePractiseExamIdForOnlineExam)
 	{
 		this.oePractiseExamIdForOnlineExam = oePractiseExamIdForOnlineExam;
@@ -882,17 +798,15 @@ public class AdminBoImpl extends CommonActionDAOData implements AdminBo, ConstIn
 
 	public boolean setPurchasedEFormList(AdminCollegeManagementAction adminCollegeManagementAction)
 	{
-		//return adminDAO.setPurchasedEFormList(adminCollegeManagementAction);
+		// return adminDAO.setPurchasedEFormList(adminCollegeManagementAction);
 		return false;
 	}
 
-	
 	public boolean studentEdutelEnquiry(AdminStudentEnquiryAction adminStudentEnquiryAction)
 	{
 		return adminDAO.studentEdutelEnquiry(adminStudentEnquiryAction);
 	}
 
-	
 	public boolean updateCollege(AdminCollegeManagementAction adminCollegeManagementAction)
 	{
 		ImageDataVO imageDataVO = new ImageDataVO();
@@ -901,7 +815,6 @@ public class AdminBoImpl extends CommonActionDAOData implements AdminBo, ConstIn
 		return adminDAO.updateCollege(adminCollegeManagementAction);
 	}
 
-	
 	public boolean updateSchool(AdminSchoolManagementAction adminSchoolManagementAction)
 	{
 		ImageDataVO imageDataVO = new ImageDataVO();
@@ -910,7 +823,6 @@ public class AdminBoImpl extends CommonActionDAOData implements AdminBo, ConstIn
 		return adminDAO.updateSchool(adminSchoolManagementAction);
 	}
 
-	
 	public boolean updateUser(AdminUserManagementAction adminUser)
 	{
 		ImageDataVO imageDataVO = new ImageDataVO();
@@ -941,7 +853,6 @@ public class AdminBoImpl extends CommonActionDAOData implements AdminBo, ConstIn
 		return adminDAO.updateUser(adminUser);
 	}
 
-	
 	public boolean userRegistration(AdminUserManagementAction adminUser) throws CustomException
 	{
 		if (CommonValidator.isListFirstNotEmpty(adminDAO.getUsersListByMobileNo(adminUser)) == false)
@@ -974,11 +885,20 @@ public class AdminBoImpl extends CommonActionDAOData implements AdminBo, ConstIn
 			}
 			else
 			{
-				String autoGenPassword = PwdGenerator.getPassword();
-				caLogger.info(Audit_Logging_Event_DataEntry, "Password Assigned By System", autoGenPassword, adminUser.getUser().getUsUserID(), null);
-				adminUser.getUser().setUsUserPwdOriginal(autoGenPassword);
-				String shaPassWord = PasswordEncrypt.encrypt(autoGenPassword, "SHA", "UTF-8").trim();
-				adminUser.getUser().setUsUserPwd(shaPassWord);
+				if (CommonValidator.isNotNullNotEmpty(adminUser.getUser().getUsMobileNo()))
+				{
+					adminUser.getUser().setUsUserPwdOriginal(adminUser.getUser().getUsMobileNo());
+					String shaPassWord = PasswordEncrypt.encrypt(adminUser.getUser().getUsMobileNo(), "SHA", "UTF-8").trim();
+					adminUser.getUser().setUsUserPwd(shaPassWord);
+				}
+				else
+				{
+					String autoGenPassword = PwdGenerator.getPassword();
+					caLogger.info(Audit_Logging_Event_DataEntry, "Password Assigned By System", autoGenPassword, adminUser.getUser().getUsUserID(), null);
+					adminUser.getUser().setUsUserPwdOriginal(autoGenPassword);
+					String shaPassWord = PasswordEncrypt.encrypt(autoGenPassword, "SHA", "UTF-8").trim();
+					adminUser.getUser().setUsUserPwd(shaPassWord);
+				}
 			}
 			ImageDataVO imageDataVO = new ImageDataVO();
 			imageDataVO.subFolderStructure = adminUser.getUser().getUsUsersType();
@@ -1018,49 +938,41 @@ public class AdminBoImpl extends CommonActionDAOData implements AdminBo, ConstIn
 		}
 	}
 
-	
 	public boolean saveStudentMarkEnroll(DashBoardAction dashBoardAction)
 	{
 		return adminDAO.saveStudentMarkEnroll(dashBoardAction);
 	}
 
-	
 	public List<StudentsMarks> getStudentMarksList(JQueryDataTableParam jdtParam)
 	{
 		return adminDAO.getStudentMarksList(jdtParam);
 	}
 
-	
 	public List<StudentsMarks> getStudentMarksListAll(JQueryDataTableParam jdtParam)
 	{
 		return adminDAO.getStudentMarksListAll(jdtParam);
 	}
 
-	
 	public List<StudentsMarks> getStudentMarksUpdatingList(JQueryDataTableParam jdtParam)
 	{
 		return adminDAO.getStudentMarksUpdatingList(jdtParam);
 	}
 
-	
 	public StudentsMarks updateStudentHSCMark(String employeeId, String HSCMark)
 	{
 		return adminDAO.updateStudentHSCMark(employeeId, HSCMark);
 	}
 
-	
 	public List<StudentsMarks> getStudentMarkByEmpId(JQueryDataTableParam jdtParam)
 	{
 		return adminDAO.getStudentMarkByEmpId(jdtParam);
 	}
 
-	
 	public boolean saveStudentHSCMarkUpdate(AdminUserManagementAction adminUserManagementAction)
 	{
 		return adminDAO.saveStudentHSCMarkUpdate(adminUserManagementAction);
 	}
 
-	
 	public boolean validatedAnswersBulkUpload(OnlineExamQuestionAction oeQuestionAction)
 	{
 		System.out.println(oeQuestionAction.getAnswerFileName().size());
@@ -1106,24 +1018,24 @@ public class AdminBoImpl extends CommonActionDAOData implements AdminBo, ConstIn
 		return adminDAO.validatedAnswersBulkUpload(oeQuestionAction);
 	}
 
-	
 	public List<OnlineTestSeriesExamQuestionAnswerMapping> getTestSeriesExamValidatedAnswersListByCreatedBy(JQueryDataTableParam jdtParam)
 	{
 		return adminDAO.getTestSeriesExamValidatedAnswersListByCreatedBy(jdtParam);
 	}
 
-	
 	public boolean updateDownloadStatusForTestSeriesAnswerMapping(OnlineTestSeriesExamQuestionAnswerMapping oeValidatedAnswer)
 	{
 		return adminDAO.updateDownloadStatusForTestSeriesAnswerMapping(oeValidatedAnswer);
 	}
 
-	public List<IAuditLogging> getPracticeExamResultList(AuditLoggingUDParam adtParam) {
+	public List<IAuditLogging> getPracticeExamResultList(AuditLoggingUDParam adtParam)
+	{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public List<IAuditLogging> getUserActivityList(AuditLoggingUDParam adtParam) {
+	public List<IAuditLogging> getUserActivityList(AuditLoggingUDParam adtParam)
+	{
 		// TODO Auto-generated method stub
 		return null;
 	}
